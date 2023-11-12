@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../app.tsx";
-import HomePage from "@pages/home/home.page.tsx";
-import NotFound from "@pages/404/not-found.tsx";
+import App from "../app";
+import { HomePage } from "@pages/home/home.async";
+import { NotFound } from "@pages/404/not-found.async";
 
 export const appRoute = createBrowserRouter([
   {

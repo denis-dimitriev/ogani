@@ -91,7 +91,12 @@
 
     .header-menu {
         width: 100%;
-        height: calc(100% - var(--header-top-height));
+        height: calc(100% - var(--header-top-height) - var(--header-bottom-height));
+    }
+
+    .header-bottom {
+        width: 100%;
+        height: var(--header-bottom-height);
     }
 
     .main {

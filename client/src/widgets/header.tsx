@@ -35,9 +35,14 @@ function Header() {
 
       {/* menu */}
       <div className="header-menu">
-        <div className="container">
+        <div className="container flex items-center">
           <Logo />
         </div>
+      </div>
+
+      {/* bottom */}
+      <div className="header-bottom">
+        <div className="container py-2"></div>
       </div>
     </header>
   );
