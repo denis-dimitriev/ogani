@@ -1,10 +1,19 @@
 {
   "common": {
     "meet": "Привет",
-    "native language": "Русский"
+    "native language": "Русский",
+    "invert language": "Română",
+    "enter": "Войти"
   },
   "header": {
     "free shipping for all order of 1000 lei": "Бесплатная доставка при заказе от 1000 лей"
+  },
+  "menu" : {
+    "main": "Главная",
+    "shop": "Маркет",
+    "blog": "Блог",
+    "pages": "Страницы",
+    "contacts": "Контакты"
   },
   "homepage": {}
 }

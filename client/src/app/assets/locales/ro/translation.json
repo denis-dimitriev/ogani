@@ -1,10 +1,19 @@
 {
   "common": {
     "meet": "Salut",
-    "native language": "Română"
+    "native language": "Română",
+    "invert language": "Русский",
+    "enter": "Intrare"
   },
   "header": {
     "free shipping for all order of 1000 lei": "Livrare gratuita pentru toate comenzile de la 1000 lei"
+  },
+  "menu" : {
+    "main": "Acasă",
+    "shop": "Market",
+    "blog": "Blog",
+    "pages": "Pagini",
+    "contacts": "Contacte"
   },
   "homepage": {}
 }

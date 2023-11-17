@@ -1,10 +1,14 @@
 import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.tsx";
 import Logo from "@shared/ui/logo";
-import { HiEnvelope } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import { FiLogIn } from "react-icons/fi";
+import { CustomerSupportIco, LoginIco, MailIco } from "@app//assets/icons";
 import LanguageSelector from "@shared/ui/language-selector.tsx";
+import MainNav from "@widgets/main-nav.tsx";
+import Favorites from "@shared/ui/favorites.tsx";
+import ShoppingCart from "@shared/ui/shopping-cart.tsx";
+import CategoriesToggleButton from "@widgets/ui/categories-toggle-button.tsx";
+import SearchForm from "@widgets/search-form.tsx";
 
 function Header() {
   const { t } = useContext(LanguageContext);
@@ -13,21 +17,22 @@ function Header() {
     <header className="header">
       {/* top */}
       <div className="header-top">
-        <div className="container grid grid-cols-2 items-center">
-          <ul className="flex gap-x-[45px]">
-            <li>
-              <Link to="#" className="flex items-center gap-x-1">
-                <HiEnvelope /> hello@colorlib.com
-              </Link>
-            </li>
-            <li>{t?.header["free shipping for all order of 1000 lei"]}</li>
-          </ul>
+        <div className="container flex items-center gap-[--col-gap]">
+          <div className="col-sm">
+            <Link to="#" className="flex items-center gap-x-1">
+              <MailIco className="h-[14px] w-[14px]" /> hello@colorlib.com
+            </Link>
+          </div>
 
-          <div className=" flex justify-end gap-[30px]">
+          <div className="col-lg">
+            <p>{t?.header["free shipping for all order of 1000 lei"]}</p>
+          </div>
+
+          <div className="col-sm flex justify-end gap-[30px]">
             <LanguageSelector />
             <Link to="#" className="flex items-center gap-x-2">
-              <FiLogIn />
-              Login
+              <LoginIco className="h-[18px] w-[18px]" />
+              <span>{t?.common.enter}</span>
             </Link>
           </div>
         </div>
@@ -35,14 +40,39 @@ function Header() {
 
       {/* menu */}
       <div className="header-menu">
-        <div className="container flex items-center">
-          <Logo />
+        <div className="container flex items-center gap-[--col-gap]">
+          <div className="col-sm">
+            <Logo />
+          </div>
+          <div className="col-lg">
+            <MainNav />
+          </div>
+          <div className="col-sm flex justify-end gap-[30px]">
+            <Favorites />
+            <ShoppingCart />
+          </div>
         </div>
       </div>
 
       {/* bottom */}
       <div className="header-bottom">
-        <div className="container py-2"></div>
+        <div className="container flex items-center gap-[--col-gap]">
+          <div className="col-sm">
+            <CategoriesToggleButton />
+          </div>
+          <div className="col-lg">
+            <SearchForm />
+          </div>
+          <div className="col-sm flex justify-end">
+            <div className="flex items-center gap-x-3">
+              <CustomerSupportIco className="h-[35px] w-[35px]" />
+              <span className="flex flex-col items-start justify-start">
+                <p>(022) 231-231</p>
+                <p className="text-xs">Customer support</p>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );

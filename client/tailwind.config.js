@@ -6,9 +6,9 @@ export default {
       sm: { max: "320px" },
       phone: { max: "480px" },
       tablet: { max: "760px" },
-      laptop: { max: "960px" }
+      laptop: { max: "960px" },
     },
-    extend: {}
+    extend: {},
   },
-  plugins: []
+  plugins: [],
 };

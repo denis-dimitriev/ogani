@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Logo() {
   return (
-    <div>
+    <div className="min-w-[120px]">
       <Link to="/">
         <img src={logo} alt="" />
       </Link>

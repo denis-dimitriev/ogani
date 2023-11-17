@@ -1,7 +1,17 @@
+import CategoriesMenu from "@widgets/categories-menu.tsx";
+import MainCarousel from "@widgets/main-carousel.tsx";
+
 function HomePage() {
   return (
     <div className="container">
-      <h2 className="">HomePage</h2>
+      <section className="flex h-[450px] gap-[24px]">
+        <div className="col-sm h-full">
+          <CategoriesMenu />
+        </div>
+        <div className="col-xl h-full">
+          <MainCarousel />
+        </div>
+      </section>
     </div>
   );
 }
