@@ -1,14 +1,14 @@
-import { Router } from 'express'
-import * as userController from '../controllers/users.controller'
+import { Router } from "express";
+import * as userController from "../controllers/users.controller";
 
-const router = Router()
+const router = Router();
 
-router.route('/').get(userController.getUsers).post(userController.createUser)
+router.route("/").get(userController.getUsers).post(userController.createUser);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(userController.getUser)
   .patch(userController.updateUser)
-  .delete(userController.deleteUser)
+  .delete(userController.deleteUser);
 
-export { router as esersRouter }
+export { router as userRouter };

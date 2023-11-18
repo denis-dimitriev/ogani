@@ -5,6 +5,7 @@ import { appRoute } from "./app/routes/app.route.tsx";
 import { Suspense } from "react";
 import Backdrop from "@shared/ui/backdrop.tsx";
 import Spinner from "@shared/ui/spinner.tsx";
+import { AuthProvider } from "@app/providers/auth.provider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     }
   >
     <TranslateProvider>
-      <RouterProvider router={appRoute} />
+      <AuthProvider>
+        <RouterProvider router={appRoute} />
+      </AuthProvider>
     </TranslateProvider>
   </Suspense>,
 );

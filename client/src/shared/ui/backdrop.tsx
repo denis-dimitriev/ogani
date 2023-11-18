@@ -1,15 +1,11 @@
-import {ReactNode} from "react";
+import { HTMLProps, ReactNode } from "react";
 
-interface Props {
-    children: ReactNode
+interface Props extends HTMLProps<HTMLDivElement> {
+  children: ReactNode;
 }
 
-function Backdrop({children}: Props) {
-    return (
-        <div className="backdrop">
-            {children}
-        </div>
-    );
+function Backdrop({ children, className }: Props) {
+  return <div className={`backdrop ${className}`}>{children}</div>;
 }
 
 export default Backdrop;

@@ -2,13 +2,14 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
+    "baseUrl": "server",
     "outDir": "server/dist",
-    "rootDir": "src",
+    "rootDir": "server/src",
     "strict": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
+  "include": ["server/src/**/*"],
   "exclude": ["src/types/*.ts", "node_modules", ".vscode"]
 }

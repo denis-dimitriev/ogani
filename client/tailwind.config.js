@@ -8,7 +8,17 @@ export default {
       tablet: { max: "760px" },
       laptop: { max: "960px" },
     },
-    extend: {},
+    extend: {
+      animation: {
+        fadeIn: "fadeIn 500ms ease-in",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+      },
+    },
   },
   plugins: [],
 };

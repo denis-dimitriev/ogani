@@ -37,7 +37,7 @@
 
 
     --padding-container: 0.5rem;
-    --min-width-container: calc(var(--col-sm-width) + var(--padding-container));
+    --min-width-container: 320px;
     --max-width-container: calc((var(--col-sm-width) * 2)
                             + var(--col-lg-width)
                             + (var(--col-gap) * 2)

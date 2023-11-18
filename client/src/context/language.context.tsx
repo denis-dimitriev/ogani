@@ -6,7 +6,7 @@ export type LanguageType = "ro" | "ru";
 interface ITranslation {
   language: LanguageType;
   t: JSONDataLanguage | null;
-  setLanguage: (land: LanguageType) => SetStateAction<void>;
+  setLanguage: (lang: LanguageType) => SetStateAction<void>;
   loading: boolean;
   error?: Error | null;
 }

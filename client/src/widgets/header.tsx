@@ -9,6 +9,8 @@ import Favorites from "@shared/ui/favorites.tsx";
 import ShoppingCart from "@shared/ui/shopping-cart.tsx";
 import CategoriesToggleButton from "@widgets/ui/categories-toggle-button.tsx";
 import SearchForm from "@widgets/search-form.tsx";
+import UserAccount from "@widgets/user-account.tsx";
+import { Links } from "@shared/types/enums/links.ts";
 
 function Header() {
   const { t } = useContext(LanguageContext);
@@ -30,7 +32,7 @@ function Header() {
 
           <div className="col-sm flex justify-end gap-[30px]">
             <LanguageSelector />
-            <Link to="#" className="flex items-center gap-x-2">
+            <Link to={Links.AUTH} className="flex items-center gap-x-2">
               <LoginIco className="h-[18px] w-[18px]" />
               <span>{t?.common.enter}</span>
             </Link>
@@ -47,9 +49,10 @@ function Header() {
           <div className="col-lg">
             <MainNav />
           </div>
-          <div className="col-sm flex justify-end gap-[30px]">
+          <div className="col-sm flex items-center justify-end gap-[30px]">
             <Favorites />
             <ShoppingCart />
+            <UserAccount />
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import ArrowIco from "./arrow.svg";
 import CategoriesIco from "./categories.svg";
+import CloseIco from "./close.svg";
 import CustomerSupportIco from "./customer-support.svg";
 import FacebookIco from "./facebook.svg";
 import FavoritesIco from "./favorites.svg";
@@ -15,6 +16,7 @@ import ShippingIco from "./shipping.svg";
 import ShoppingCartIco from "./shopping-cart.svg";
 import SupportIco from "./support.svg";
 import TwitterIco from "./twitter.svg";
+import UserIco from "./user.svg";
 
 export {
   ArrowIco,
@@ -34,4 +36,6 @@ export {
   FacebookIco,
   CategoriesIco,
   CustomerSupportIco,
+  UserIco,
+  CloseIco,
 };

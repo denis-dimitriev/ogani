@@ -30,7 +30,7 @@ function MainNav() {
            group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0
            group-hover:opacity-100"
           >
-            <ul className="flex flex-col ">
+            <ul className="flex flex-col">
               <li className="cursor-pointer p-2 transition  hover:text-[--teal]">
                 <Link to="">About</Link>
               </li>
