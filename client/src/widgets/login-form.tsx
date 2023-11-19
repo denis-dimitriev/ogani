@@ -2,20 +2,16 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import InputForm from "@shared/ui/input-form.tsx";
 import { Link } from "react-router-dom";
 import { AuthContext } from "@context/auth.context.ts";
-import axios from "axios";
+import { LoginData } from "@shared/types/auth.types.ts";
+import ApiService from "@app/service/api.service.ts";
 
-interface FormFields {
-  email: string;
-  password: string;
-}
-
-const initial: FormFields = {
+const initial: LoginData = {
   email: "",
   password: "",
 };
 
 function LoginForm() {
-  const [formFields, setFormFields] = useState<FormFields>(initial);
+  const [formFields, setFormFields] = useState(initial);
 
   const { userWantRegister } = useContext(AuthContext);
 
@@ -23,7 +19,7 @@ function LoginForm() {
     setFormFields({ ...formFields, [e.target.id]: e.target.value });
   }
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const userFields = {
@@ -31,15 +27,16 @@ function LoginForm() {
       password: formFields.password,
     };
 
-    const result = await axios
-      .post("/api/users", userFields)
-      .then((res) => res.data);
+    const data = await ApiService.loginUser(userFields);
 
-    console.log(result);
+    console.log(data);
   }
 
   return (
-    <form className="flex flex-col gap-y-[20px] p-2.5" onSubmit={onSubmit}>
+    <form
+      className="flex flex-col gap-y-[20px] p-2.5"
+      onSubmit={onSubmitHandler}
+    >
       <InputForm
         id="email"
         label="Email *"

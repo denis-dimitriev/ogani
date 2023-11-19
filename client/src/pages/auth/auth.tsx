@@ -4,7 +4,7 @@ import Logo from "@shared/ui/logo.tsx";
 import { CloseIco } from "@app/assets/icons";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "@widgets/login-form.tsx";
-import SignupForm from "@widgets/ui/signup-form.tsx";
+import SignupForm from "@widgets/signup-form.tsx";
 import { AuthContext } from "@context/auth.context.ts";
 
 function Auth() {
@@ -18,7 +18,7 @@ function Auth() {
   return (
     <Backdrop className="flex items-center justify-center">
       <div
-        className="animate-fadeIn flex w-[--min-width-container] flex-col gap-y-[20px]
+        className="flex w-[--min-width-container] animate-fadeIn flex-col gap-y-[20px]
                   rounded border border-[--light] bg-[--white] p-2 shadow-md"
       >
         <div className="flex items-center justify-between">

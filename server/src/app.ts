@@ -6,8 +6,8 @@ import { userRouter } from "./routes/users.route";
 import { categoriesRouter } from "./routes/categories.route";
 
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 app.use(morgan("tiny"));
 
 app.use("/api/products", productsRouter);

@@ -7,6 +7,8 @@ export const getUser = async () => {};
 
 export const updateUser = async () => {};
 
+export const loginUser = async () => {};
+
 export const createUser = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const { email, password } = req.body;
@@ -16,7 +18,7 @@ export const createUser = asyncHandler(
       data: req.body,
     });
 
-    console.log(user);
+    console.log(req);
   },
 );
 
