@@ -7,7 +7,7 @@ interface IAuthContext {
 }
 
 const initial: IAuthContext = {
-  hasAccount: true,
+  hasAccount: false,
   userWantLogin: () => {},
   userWantRegister: () => {},
 };

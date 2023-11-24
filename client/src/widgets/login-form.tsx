@@ -2,34 +2,62 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import InputForm from "@shared/ui/input-form.tsx";
 import { Link } from "react-router-dom";
 import { AuthContext } from "@context/auth.context.ts";
-import { LoginData } from "@shared/types/auth.types.ts";
-import ApiService from "@app/service/api.service.ts";
+import { LanguageContext } from "@context/language.context.tsx";
+import SignInStore from "@app/store/signin.store.ts";
+import SubmitButton from "@shared/ui/submit-button.tsx";
+import { observer } from "mobx-react-lite";
+import Alert from "@shared/ui/alert.tsx";
+import { ServerResponse } from "@shared/types/response.types.ts";
+import UserStore, { IUserData } from "@app/store/user.store.ts";
+import AlertStore from "@app/store/alert.store.ts";
 
-const initial: LoginData = {
-  email: "",
-  password: "",
-};
-
-function LoginForm() {
-  const [formFields, setFormFields] = useState(initial);
-
+const LoginForm = observer(() => {
+  const { t } = useContext(LanguageContext);
   const { userWantRegister } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [clearFields, setClearFields] = useState(false);
 
-  function onLoginHandler(e: ChangeEvent<HTMLInputElement>) {
-    setFormFields({ ...formFields, [e.target.id]: e.target.value });
+  function onEmailHandler(e: ChangeEvent<HTMLInputElement>) {
+    SignInStore.onEmailInput(e.target.value);
+  }
+
+  function onPasswordHandler(e: ChangeEvent<HTMLInputElement>) {
+    SignInStore.onPasswordInput(e.target.value);
+  }
+
+  function onCloseAlertHandler() {
+    if (error) {
+      setError("");
+      window.location.reload();
+    }
+    success && setSuccess("");
+    AlertStore.setClose();
   }
 
   async function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setLoading(true);
 
-    const userFields = {
-      email: formFields.email,
-      password: formFields.password,
-    };
+    const res: ServerResponse<IUserData> = await SignInStore.onSubmit()
+      .then((res) => res?.data)
+      .catch((err) => {
+        if (err) {
+          setError(err.response?.data.message);
+          return err.response;
+        }
+      })
+      .finally(() => {
+        SignInStore.resetAll();
+        setClearFields(true);
+        setLoading(false);
+      });
 
-    const data = await ApiService.loginUser(userFields);
-
-    console.log(data);
+    if (res) {
+      setSuccess(res.message);
+      UserStore.setUser(res.data);
+    }
   }
 
   return (
@@ -39,40 +67,73 @@ function LoginForm() {
     >
       <InputForm
         id="email"
-        label="Email *"
-        value={formFields.email}
-        placeholder={"Email"}
-        onInput={onLoginHandler}
+        label={t?.auth.email.concat(" *")}
+        autoFocus
+        error={SignInStore.email.error}
+        success={SignInStore.email.success}
+        message={t?.auth.messages[SignInStore.email.message as never]}
+        disabled={loading}
+        clear={clearFields}
+        placeholder="example@mail.com"
+        onInput={onEmailHandler}
       />
+
       <InputForm
         id="password"
         type="password"
-        label="Password *"
-        value={formFields.password}
-        placeholder={"Password"}
-        onInput={onLoginHandler}
+        label={t?.auth.password.concat(" *")}
+        error={SignInStore.password.error}
+        success={SignInStore.password.success}
+        message={t?.auth.messages[SignInStore.password.message as never]}
+        disabled={loading}
+        clear={clearFields}
+        placeholder={t?.auth.password}
+        onInput={onPasswordHandler}
       />
 
       <p className="mb-2 text-[14px] transition hover:text-[--blue]">
-        <Link to="">Forgot the password?</Link>
+        <Link to="">{t?.auth["forgot the password"].concat("?")}</Link>
       </p>
 
-      <button
-        type="submit"
-        className="rounded bg-[--red] py-2 text-[--white] transition hover:bg-[--red-dark]"
+      <SubmitButton
+        loading={loading}
+        disabled={!SignInStore.email.success || !SignInStore.password.success}
       >
-        Login
-      </button>
+        {loading ? t?.auth.processing : t?.auth.login}
+      </SubmitButton>
 
       <button
         type="button"
         className="mt-2 text-center text-[14px] transition hover:text-[--blue]"
         onClick={userWantRegister}
       >
-        Dont register?
+        {t?.auth["don't have an account"].concat("?")}
       </button>
+
+      <div
+        className={`${
+          AlertStore.open && "hidden"
+        } top-o absolute left-0 right-0`}
+      >
+        {error && (
+          <Alert
+            type="danger"
+            onClick={onCloseAlertHandler}
+            message={
+              t?.auth.messages["something went wrong, check the data"] as string
+            }
+          />
+        )}
+        {success && (
+          <Alert
+            type="success"
+            message={t?.auth.messages["login successful"] as string}
+            onClick={onCloseAlertHandler}
+          />
+        )}
+      </div>
     </form>
   );
-}
+});
 
 export default LoginForm;

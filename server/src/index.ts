@@ -1,11 +1,9 @@
 import app from "./app";
-import dotenv from "dotenv";
+import config from "config";
 import mongoose from "mongoose";
 
-dotenv.config();
-
-const PORT = process.env.PORT!;
-const DB = process.env.MONGO_URI!;
+const PORT = config.get("server.port") as number;
+const DB = config.get("db.mongoUri") as string;
 
 async function connect() {
   await mongoose.connect(DB);

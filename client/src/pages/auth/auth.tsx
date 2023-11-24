@@ -16,10 +16,10 @@ function Auth() {
   }
 
   return (
-    <Backdrop className="flex items-center justify-center">
+    <Backdrop className="flex items-center justify-center ">
       <div
-        className="flex w-[--min-width-container] animate-fadeIn flex-col gap-y-[20px]
-                  rounded border border-[--light] bg-[--white] p-2 shadow-md"
+        className="relative flex w-[--min-width-container] animate-fadeInY flex-col
+                  gap-y-[20px] rounded border border-[--light] bg-[--white] p-2 shadow-xl"
       >
         <div className="flex items-center justify-between">
           <Logo />

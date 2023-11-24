@@ -5,13 +5,17 @@ import { LoginData, RegisterData } from "@shared/types/auth.types.ts";
 class ApiService {
   constructor() {}
 
-  async loginUser(data: LoginData) {
+  static async logoutUser() {
+    return await axios.post(API.USER_LOGOUT);
+  }
+
+  static async loginUser(data: LoginData) {
     return await axios.post(API.USER_LOGIN, data);
   }
 
-  async registerUser(data: RegisterData) {
+  static async registerUser(data: RegisterData) {
     return await axios.post(API.USER_REGISTER, data);
   }
 }
 
-export default new ApiService();
+export default ApiService;

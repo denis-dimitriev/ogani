@@ -5,7 +5,7 @@ export type LoginData = {
 
 export type RegisterData = {
   email: string;
-  phone: string;
+  phoneNumber: string;
   password: string;
-  confirmedPassword: string;
+  confirmPassword: string;
 };

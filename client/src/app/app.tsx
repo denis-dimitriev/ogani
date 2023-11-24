@@ -6,8 +6,9 @@ import Footer from "@widgets/footer";
 import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.tsx";
 import Spinner from "@shared/ui/spinner.tsx";
+import { observer } from "mobx-react-lite";
 
-function App() {
+const App = observer(function () {
   const { loading } = useContext(LanguageContext);
 
   if (loading) {
@@ -23,6 +24,6 @@ function App() {
       <Footer />
     </Layout>
   );
-}
+});
 
 export default App;

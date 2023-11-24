@@ -1,33 +1,41 @@
 import { Schema, model } from "mongoose";
+import bcrypt from "bcrypt";
 
 interface User {
   email: string;
   password: string;
-  confirmedPassword: string;
   phoneNumber: string;
 }
 
-const schema = new Schema<User>({
-  email: {
-    type: String,
-    trim: true,
-    lowercase: true,
-    unique: true,
-    required: [true, "Email address is required"],
+const schema = new Schema<User>(
+  {
+    email: {
+      type: String,
+      trim: true,
+      lowercase: true,
+      unique: true,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    phoneNumber: {
+      type: String,
+      required: true,
+      unique: true,
+    },
   },
-  password: {
-    type: String,
-    required: [true, "Password is required"],
-  },
-  confirmedPassword: {
-    type: String,
-    required: [true, "Confirm password is required"],
-  },
-  phoneNumber: {
-    type: String,
-    required: [true, "Phone number is required"],
-    unique: true,
-  },
+  { timestamps: true },
+);
+
+schema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    next();
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 export const User = model("User", schema);

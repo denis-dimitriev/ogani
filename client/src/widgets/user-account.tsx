@@ -1,5 +1,6 @@
 import { UserIco } from "@app/assets/icons";
 import { Link } from "react-router-dom";
+import { LINKS } from "@shared/types/enums/links.ts";
 
 function UserAccount() {
   return (
@@ -17,7 +18,7 @@ function UserAccount() {
       >
         <ul>
           <li className="cursor-pointer p-2 transition  hover:text-[--teal]">
-            <Link to="#">Profile</Link>
+            <Link to={LINKS.USER}>Profile</Link>
           </li>
           <li className="cursor-pointer p-2 transition  hover:text-[--teal]">
             <Link to="#">Logout</Link>

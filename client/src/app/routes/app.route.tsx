@@ -3,37 +3,42 @@ import App from "../app";
 import { HomePage } from "@pages/home/home.async";
 import { NotFound } from "@pages/404/not-found.async";
 import { Auth } from "@pages/auth/auth.async.ts";
-import { Links } from "@shared/types/enums/links.ts";
+import { LINKS } from "@shared/types/enums/links.ts";
+import Protected from "@pages/protected.tsx";
+import { UserProfile } from "@pages/user-profile/user-profile.auth.ts";
+import Guest from "@pages/guest.tsx";
 
 export const appRoute = createBrowserRouter([
   {
-    path: Links.HOME,
+    path: LINKS.HOME,
     element: <App />,
     children: [
       {
-        element: <HomePage />,
-        index: true,
-      },
-      {
-        path: Links.AUTH,
-        element: <Auth />,
-      },
-      {
-        path: Links.ABOUT,
-        element: <Auth />,
-      },
-      {
-        path: Links.BLOG,
-        element: <Auth />,
-      },
-      {
-        path: Links.CONTACTS,
-        element: <Auth />,
+        element: <Guest />,
+        children: [
+          {
+            index: true,
+            element: <HomePage />,
+          },
+          {
+            path: LINKS.AUTH,
+            element: <Auth />,
+          },
+          {
+            element: <Protected />,
+            children: [
+              {
+                path: LINKS.USER,
+                element: <UserProfile />,
+              },
+            ],
+          },
+          {
+            path: "*",
+            element: <NotFound />,
+          },
+        ],
       },
     ],
-  },
-  {
-    path: "*",
-    element: <NotFound />,
   },
 ]);

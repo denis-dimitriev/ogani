@@ -10,12 +10,17 @@ export default {
     },
     extend: {
       animation: {
-        fadeIn: "fadeIn 500ms ease-in",
+        fadeInY: "fadeInY 500ms ease-in",
+        fadeInX: "fadeInX 500ms ease-in",
       },
       keyframes: {
-        fadeIn: {
+        fadeInY: {
           "0%": { transform: "translateY(-100%)" },
           "100%": { transform: "translateY(0)" },
+        },
+        fadeInX: {
+          "0%": { transform: "translateX(10%)", opacity: 0 },
+          "100%": { transform: "translateX(0)", opacity: 100 },
         },
       },
     },

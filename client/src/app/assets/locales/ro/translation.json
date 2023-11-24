@@ -15,5 +15,33 @@
     "pages": "Pagini",
     "contacts": "Contacte"
   },
-  "homepage": {}
+  "homepage": {},
+  "auth": {
+    "email": "Email",
+    "password": "Parola",
+    "confirm_password": "Confirma parola",
+    "phone_number": "Nr. de mobil",
+    "remember_me": "Ține-mă minte",
+    "forgot the password": "Am uitat parola",
+    "login": "Intră",
+    "register": "Inregistreaza-te",
+    "already have an account": "Ai deja un cont",
+    "don't have an account": "Nu ai cont",
+    "processing": "Prelucrare",
+    "messages": {
+      "invalid_email": "e-mail invalid",
+      "the field is empty": "Câmpul este gol",
+      "password too short": "Parola prea scurta",
+      "password_mismatch": "Nepotrivire a parolei",
+      "non-existent number": "Număr inexistent",
+      "incorrect_password": "Parola incorrecta",
+      "min length 6": "Lungime min. 6 caractere",
+      "min 1 letter & 1 digit": "Min. 1 literă și 1 cifră",
+      "letters and digits": "Litere și cifre",
+      "something went wrong, check the data": "Ceva a mers prost, verificați datele",
+      "login successful": "Autentificare reușită",
+      "user has been created successfully": "Utilizatorul a fost creat cu succes",
+      "this email does not exist": "Acest e-mail nu există"
+    }
+  }
 }

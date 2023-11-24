@@ -1,112 +1,69 @@
 import InputForm from "@shared/ui/input-form.tsx";
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { AuthContext } from "@context/auth.context.ts";
-import { isEmpty } from "@shared/helpers/common.helper.ts";
-import { emailValidate } from "@shared/helpers/auth.helper.ts";
+import SignupStore from "@app/store/signup.store.ts";
+import { observer } from "mobx-react-lite";
+import { LanguageContext } from "@context/language.context.tsx";
+import SubmitButton from "@shared/ui/submit-button.tsx";
+import Alert from "@shared/ui/alert.tsx";
 
-type FormFields = {
-  value: string;
-  error: boolean;
-  success: boolean;
-  message: string;
-};
-
-const initialEmail = {
-  value: "",
-  error: false,
-  success: false,
-  message: "",
-};
-
-const initialPhone = {
-  value: "",
-  error: false,
-  success: false,
-  message: "",
-};
-
-const initialPassword = {
-  value: "",
-  error: false,
-  success: false,
-  message: "",
-};
-
-const initialConfirmPassword = {
-  value: "",
-  error: false,
-  success: false,
-  message: "",
-};
-
-function SignupForm() {
+const SignupForm = observer(function () {
   const { userWantLogin } = useContext(AuthContext);
-
-  const [email, setEmail] = useState<FormFields>(initialEmail);
-  const [phone, setPhone] = useState<FormFields>(initialPhone);
-  const [password, setPassword] = useState<FormFields>(initialPassword);
-  const [confirmPassword, setConfirmPassword] = useState<FormFields>(
-    initialConfirmPassword,
-  );
+  const { t } = useContext(LanguageContext);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [clearFields, setClearFields] = useState(false);
+  const [closeAlert, setCloseAlert] = useState(false);
 
   function onEmailHandler(e: ChangeEvent<HTMLInputElement>) {
-    setEmail({ ...email, value: e.target.value });
+    SignupStore.onEmailInput(e.target.value);
   }
+
   function onPhoneHandler(e: ChangeEvent<HTMLInputElement>) {
-    setPhone({ ...phone, value: e.target.value });
+    SignupStore.onPhoneNumberInput(e.target.value);
   }
   function onPasswordHandler(e: ChangeEvent<HTMLInputElement>) {
-    setPassword({ ...password, value: e.target.value });
+    SignupStore.onPasswordInput(e.target.value);
   }
   function onConfirmPasswordHandler(e: ChangeEvent<HTMLInputElement>) {
-    setConfirmPassword({ ...confirmPassword, value: e.target.value });
+    SignupStore.onConfirmPasswordInput(e.target.value);
+  }
+
+  function onCloseAlertHandler() {
+    setCloseAlert(true);
+    if (error) {
+      setError("");
+      window.location.reload();
+    }
+    success && setSuccess("");
   }
 
   async function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    //     /^(()?\d?[0]{1}[6-7]{1}[0-9]{1}\s?\-?[0-9]{3}\s?\-?[0-9]{3})$/
+    setLoading(true);
 
-    if (isEmpty(email.value)) {
-      setEmail({ ...email, error: true, message: "field is empty" });
-      return;
-    } else if (!emailValidate(email.value)) {
-      setEmail({ ...email, error: true, message: "Invalid email" });
-      return;
-    } else {
-      setEmail({ ...email, error: false, message: "", success: true });
-    }
-
-    if (isEmpty(password.value)) {
-      setPassword({ ...password, error: true, message: "field is empty" });
-      return;
-    } else if (password.value.length < 6) {
-      setPassword({ ...password, error: true, message: "password too short" });
-      return;
-    } else {
-      setPassword({ ...password, error: false, message: "" });
-    }
-
-    if (
-      isEmpty(confirmPassword.value) ||
-      confirmPassword.value !== password.value
-    ) {
-      setConfirmPassword({
-        ...confirmPassword,
-        error: true,
-        message: "Password mismatch",
+    const response = await SignupStore.onSubmit()
+      .then((res) => {
+        if (res?.status === 201) {
+          setSuccess(res.data.message);
+        }
+        return res;
+      })
+      .catch((err) => {
+        if (err) {
+          setError(err.response?.data.message);
+          return err.response;
+        }
+      })
+      .finally(() => {
+        SignupStore.resetAll();
+        setClearFields(true);
+        setLoading(false);
       });
-      setPassword({ ...password, error: true, message: "Password mismatch" });
-      return;
-    } else {
-      setPassword({ ...password, error: false, message: "", success: true });
-      setConfirmPassword({
-        ...confirmPassword,
-        error: false,
-        message: "",
-        success: true,
-      });
-    }
+
+    console.log(response);
   }
 
   return (
@@ -116,71 +73,108 @@ function SignupForm() {
     >
       <InputForm
         id="email"
-        label="Email *"
-        value={email.value}
-        error={email.error}
-        success={email.success}
-        message={email.message}
+        label={t?.auth.email.concat(" *")}
+        autoFocus
+        error={SignupStore.email.error}
+        success={SignupStore.email.success}
+        message={t?.auth.messages[SignupStore.email.message as never]}
+        disabled={loading}
+        clear={clearFields}
         placeholder="example@mail.com"
         onInput={onEmailHandler}
       />
 
       <InputForm
         id="phone"
-        label="Phone number *"
-        value={phone.value}
-        error={phone.error}
-        success={phone.success}
-        message={phone.message}
-        placeholder={"(069) 123 456"}
+        label={t?.auth.phone_number.concat(" *")}
+        error={SignupStore.phoneNumber.error}
+        success={SignupStore.phoneNumber.success}
+        message={t?.auth.messages[SignupStore.phoneNumber.message as never]}
+        disabled={loading}
+        clear={clearFields}
+        placeholder={"069 123 456"}
         onInput={onPhoneHandler}
       />
 
       <InputForm
         id="password"
         type="password"
-        label="Password *"
-        value={password.value}
-        error={password.error}
-        success={password.success}
-        message={password.message}
-        placeholder="min 6 simbols"
+        label={t?.auth.password.concat(" *")}
+        subLabel={`[${t?.auth.messages["min 1 letter & 1 digit"]}]`}
+        error={SignupStore.password.error}
+        success={SignupStore.password.success}
+        message={t?.auth.messages[SignupStore.password.message as never]}
+        disabled={loading}
+        clear={clearFields}
+        placeholder={t?.auth.messages["min length 6"]}
         onInput={onPasswordHandler}
       />
 
       <InputForm
         id="confirmPassword"
         type="password"
-        label="Confirm password *"
-        value={confirmPassword.value}
-        error={confirmPassword.error}
-        success={confirmPassword.success}
-        message={confirmPassword.message}
-        placeholder={"Confirm password"}
+        label={t?.auth.confirm_password.concat(" *")}
+        error={SignupStore.confirmPassword.error}
+        success={SignupStore.confirmPassword.success}
+        message={t?.auth.messages[SignupStore.confirmPassword.message as never]}
+        disabled={loading}
+        clear={clearFields}
+        placeholder={t?.auth.confirm_password}
         onInput={onConfirmPasswordHandler}
       />
 
       <div className="mb-2 flex gap-x-2 text-[14px] transition hover:text-[--blue]">
-        <input id="checkbox" type="checkbox" />
-        <label htmlFor="checkbox">Remember me</label>
+        <input id="checkbox" type="checkbox" disabled={loading} />
+        <label htmlFor="checkbox">{t?.auth.remember_me}</label>
       </div>
 
-      <button
-        type="submit"
-        className="rounded bg-[--red] py-2 text-[--white] transition hover:bg-[--red-dark]"
+      <SubmitButton
+        loading={loading}
+        disabled={
+          !SignupStore.email.success ||
+          !SignupStore.phoneNumber.success ||
+          !SignupStore.password.success ||
+          !SignupStore.confirmPassword.success
+        }
       >
-        Register
-      </button>
+        {loading ? t?.auth.processing : t?.auth.register}
+      </SubmitButton>
 
       <button
         type="button"
-        className="mt-2 text-center text-[14px] transition hover:text-[--blue]"
+        disabled={loading}
+        className="text-center text-[14px] transition hover:text-[--blue]"
         onClick={userWantLogin}
       >
-        Already have an account?
+        {t?.auth["already have an account"].concat("?")}
       </button>
+
+      <div
+        className={`${
+          closeAlert && "hidden"
+        } absolute left-0 right-0 top-[40%]`}
+      >
+        {error && (
+          <Alert
+            type="danger"
+            onClick={onCloseAlertHandler}
+            message={
+              t?.auth.messages["something went wrong, check the data"] as string
+            }
+          />
+        )}
+        {success && (
+          <Alert
+            type="success"
+            message={
+              t?.auth.messages["user has been created successfully"] as string
+            }
+            onClick={onCloseAlertHandler}
+          />
+        )}
+      </div>
     </form>
   );
-}
+});
 
 export default SignupForm;

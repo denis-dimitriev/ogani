@@ -15,5 +15,33 @@
     "pages": "Страницы",
     "contacts": "Контакты"
   },
-  "homepage": {}
+  "homepage": {},
+  "auth": {
+    "email": "Email",
+    "password": "Пароль",
+    "confirm_password": "Подтвердите пароль",
+    "phone_number": "Номер тел. моб.",
+    "remember_me": "Запомнить меня",
+    "forgot the password": "Забыли пароль",
+    "login": "Войти",
+    "register": "Зарегистрироваться",
+    "already have an account": "Уже есть аккаунт",
+    "don't have an account": "Нет учетной записи",
+    "processing": "Обработка",
+    "messages": {
+      "invalid_email": "Неверный адрес эл. почты",
+      "the field is empty": "Поле пусто",
+      "password too short": "Пароль слишком короткий",
+      "password_mismatch": "Пароли не совпадают",
+      "non-existent number": "Несуществующий н-р",
+      "incorrect_password": "Неверный пароль",
+      "min length 6": "Мин. длина 6 символов",
+      "min 1 letter & 1 digit": "Мин. 1 буква и 1 цифра",
+      "letters and digits": "Буквы и цифры",
+      "something went wrong, check the data": "Что-то пошло не так, проверьте данные",
+      "login successful": "Авторизация успешна",
+      "user has been created successfully": "Пользователь успешно создан",
+      "This email does not exist": "Этот адрес эл. почты не существует"
+    }
+  }
 }
