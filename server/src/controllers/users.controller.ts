@@ -47,30 +47,37 @@ export const getCurrentUser = asyncHandler(
 export const updateUser = async () => {};
 
 export const createUser = asyncHandler(
-  async (req: Request, res: Response, next: NextFunctin): Promise<Response> => {
+  async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<Response> => {
     const { email, password, phoneNumber, confirmPassword } =
       req.body as RegisterData;
 
     if (!email)
       return next(
-        new AppError("Email is required", STATUS_CODE.UNAUTHORIZED_ERRO),
+        new AppError("Email is required", STATUS_CODE.UNAUTHORIZED_ERROR),
       ) as never;
     else if (!phoneNumber)
       return next(
-        new AppError("Phone number is required", STATUS_CODE.UNAUTHORIZED_ERRR),
+        new AppError(
+          "Phone number is required",
+          STATUS_CODE.UNAUTHORIZED_ERROR,
+        ),
       ) as never;
     else if (!password)
       return next(
         new AppError(
           "Password number is required",
-          STATUS_CODE.UNAUTHORIZED_ERRR,
+          STATUS_CODE.UNAUTHORIZED_ERROR,
         ),
       ) as never;
     else if (!confirmPassword)
       return next(
         new AppError(
           "ConfirmPassword number is required",
-          STATUS_CODE.UNAUTHORIZED_ERRR,
+          STATUS_CODE.UNAUTHORIZED_ERROR,
         ),
       ) as never;
 
@@ -83,7 +90,7 @@ export const createUser = asyncHandler(
       ) as never;
     }
 
-    if await Userexists({ email })) {
+    if (await User.exists({ email })) {
       return next(
         new AppError(
           MESSAGES.EMAIL_ALREADY_EXIST,
@@ -92,7 +99,7 @@ export const createUser = asyncHandler(
       ) as never;
     }
 
-    if await Userexists({ phoneNumber })) {
+    if (await User.exists({ phoneNumber })) {
       return next(
         new AppError(
           MESSAGES.PHONE_NUMBER_ALREADY_EXIST,
@@ -101,7 +108,7 @@ export const createUser = asyncHandler(
       ) as never;
     }
 
-    cont newUser  await User.create({
+    const newUser = await User.create({
       email,
       password,
       phoneNumber,
@@ -109,25 +116,25 @@ export const createUser = asyncHandler(
     });
 
     if (newUser) {
-      const tokn = generateToken(newUser._id);
+      const token = generateToken(newUser._id);
 
       res.cookie("jwt", token, {
         httpOnly: true,
         //secure: true /* true for https  */
         sameSite: "strict",
-        maxAge: EXPIRY_TIME.DAY * 30
+        maxAge: EXPIRY_TIME.DAY * 30,
       });
 
       return res.status(STATUS_CODE.CREATED).json({
         status: "success",
-        message: MESSAGES.USER_SUCCESS_CREATED
+        message: MESSAGES.USER_SUCCESS_CREATED,
       } as ResBody);
     } else {
       return next(
         new AppError(
           MESSAGES.SOMETHING_WENT_WRONG,
-          STATUS_CODE.INTERNAL_SERVER_ERROR
-        )
+          STATUS_CODE.INTERNAL_SERVER_ERROR,
+        ),
       ) as never;
     }
   },
@@ -137,7 +144,7 @@ export const loginUser = asyncHandler(
   async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<Response> => {
     const { email, password } = req.body as LoginData;
     let token = req.cookies["jwt"];
@@ -155,14 +162,14 @@ export const loginUser = asyncHandler(
             httpOnly: true,
             //secure: true /* true for https  */
             sameSite: "strict",
-            maxAge: EXPIRY_TIME.DAY * 30
+            maxAge: EXPIRY_TIME.DAY * 30,
           });
         }
 
         return res.status(STATUS_CODE.SUCCESS_OK).json({
           status: "success",
           message: MESSAGES.USER_SUCCESS_SIGN,
-          data: user
+          data: user,
         } as ResBody);
       } else {
         return next(new AppError(MESSAGES.PASSWORD_INCORRECT, 401)) as never;
@@ -173,19 +180,19 @@ export const loginUser = asyncHandler(
   },
 );
 
-export const logoutUser = asyncHandler(async function(
+export const logoutUser = asyncHandler(async function (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   res.cookie("jwt", "", {
     httpOnly: true,
-    expires: new Date(EXPIRY_TIME.END_OF_SESSION)
+    expires: new Date(EXPIRY_TIME.END_OF_SESSION),
   });
 
   return res.status(STATUS_CODE.SUCCESS_OK).json({
     status: "success",
-    message: "User logged out"
+    message: "User logged out",
   } as ResBody);
 });
 
