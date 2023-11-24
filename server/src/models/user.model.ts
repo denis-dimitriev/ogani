@@ -5,6 +5,8 @@ interface User {
   email: string;
   password: string;
   phoneNumber: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const schema = new Schema<User>(

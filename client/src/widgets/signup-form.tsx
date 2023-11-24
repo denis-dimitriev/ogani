@@ -6,6 +6,10 @@ import { observer } from "mobx-react-lite";
 import { LanguageContext } from "@context/language.context.tsx";
 import SubmitButton from "@shared/ui/submit-button.tsx";
 import Alert from "@shared/ui/alert.tsx";
+import UserStore from "@app/store/user.store.ts";
+import ApiService from "@app/service/api.service.ts";
+import { useNavigate } from "react-router-dom";
+import { LINKS } from "@shared/types/enums/links.ts";
 
 const SignupForm = observer(function () {
   const { userWantLogin } = useContext(AuthContext);
@@ -15,6 +19,9 @@ const SignupForm = observer(function () {
   const [success, setSuccess] = useState("");
   const [clearFields, setClearFields] = useState(false);
   const [closeAlert, setCloseAlert] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const navigate = useNavigate();
 
   function onEmailHandler(e: ChangeEvent<HTMLInputElement>) {
     SignupStore.onEmailInput(e.target.value);
@@ -28,6 +35,10 @@ const SignupForm = observer(function () {
   }
   function onConfirmPasswordHandler(e: ChangeEvent<HTMLInputElement>) {
     SignupStore.onConfirmPasswordInput(e.target.value);
+  }
+
+  function onCheckRememberMeHandler(e: ChangeEvent<HTMLInputElement>) {
+    setRememberMe(e.target.checked);
   }
 
   function onCloseAlertHandler() {
@@ -44,12 +55,11 @@ const SignupForm = observer(function () {
 
     setLoading(true);
 
-    const response = await SignupStore.onSubmit()
+    await SignupStore.onSubmit()
       .then((res) => {
         if (res?.status === 201) {
           setSuccess(res.data.message);
         }
-        return res;
       })
       .catch((err) => {
         if (err) {
@@ -63,7 +73,22 @@ const SignupForm = observer(function () {
         setLoading(false);
       });
 
-    console.log(response);
+    if (rememberMe) {
+      const user = await ApiService.getCurrentUser().then(
+        (res) => res.data.user,
+      );
+      if (user) {
+        UserStore.setUser(user);
+        UserStore.setHasSignedIn();
+        if (UserStore.getUser()) {
+          setTimeout(() => {
+            navigate(LINKS.HOME);
+          }, 1000);
+        }
+      }
+    } else {
+      setTimeout(() => userWantLogin(), 1000);
+    }
   }
 
   return (
@@ -124,7 +149,12 @@ const SignupForm = observer(function () {
       />
 
       <div className="mb-2 flex gap-x-2 text-[14px] transition hover:text-[--blue]">
-        <input id="checkbox" type="checkbox" disabled={loading} />
+        <input
+          id="checkbox"
+          type="checkbox"
+          disabled={loading}
+          onInput={onCheckRememberMeHandler}
+        />
         <label htmlFor="checkbox">{t?.auth.remember_me}</label>
       </div>
 

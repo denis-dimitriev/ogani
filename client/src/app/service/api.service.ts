@@ -6,7 +6,11 @@ class ApiService {
   constructor() {}
 
   static async logoutUser() {
-    return await axios.post(API.USER_LOGOUT);
+    return await axios.get(API.USER_LOGOUT);
+  }
+
+  static async getCurrentUser() {
+    return await axios.get(API.USER_GET_CURRENT);
   }
 
   static async loginUser(data: LoginData) {

@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import InputForm from "@shared/ui/input-form.tsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "@context/auth.context.ts";
 import { LanguageContext } from "@context/language.context.tsx";
 import SignInStore from "@app/store/signin.store.ts";
@@ -10,6 +10,7 @@ import Alert from "@shared/ui/alert.tsx";
 import { ServerResponse } from "@shared/types/response.types.ts";
 import UserStore, { IUserData } from "@app/store/user.store.ts";
 import AlertStore from "@app/store/alert.store.ts";
+import { LINKS } from "@shared/types/enums/links.ts";
 
 const LoginForm = observer(() => {
   const { t } = useContext(LanguageContext);
@@ -18,6 +19,8 @@ const LoginForm = observer(() => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [clearFields, setClearFields] = useState(false);
+
+  const navigate = useNavigate();
 
   function onEmailHandler(e: ChangeEvent<HTMLInputElement>) {
     SignInStore.onEmailInput(e.target.value);
@@ -40,7 +43,7 @@ const LoginForm = observer(() => {
     e.preventDefault();
     setLoading(true);
 
-    const res: ServerResponse<IUserData> = await SignInStore.onSubmit()
+    const data: ServerResponse<IUserData> = await SignInStore.onSubmit()
       .then((res) => res?.data)
       .catch((err) => {
         if (err) {
@@ -54,9 +57,16 @@ const LoginForm = observer(() => {
         setLoading(false);
       });
 
-    if (res) {
-      setSuccess(res.message);
-      UserStore.setUser(res.data);
+    if (data) {
+      setSuccess(data.message);
+      UserStore.setUser(data.user);
+      UserStore.setHasSignedIn();
+
+      if (UserStore.getUser()) {
+        setTimeout(() => {
+          navigate(LINKS.HOME);
+        }, 1000);
+      }
     }
   }
 

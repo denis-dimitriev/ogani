@@ -11,9 +11,12 @@ import CategoriesToggleButton from "@widgets/ui/categories-toggle-button.tsx";
 import SearchForm from "@widgets/search-form.tsx";
 import UserAccount from "@widgets/user-account.tsx";
 import { LINKS } from "@shared/types/enums/links.ts";
+import UserStore from "@app/store/user.store.ts";
+import { observer } from "mobx-react-lite";
 
-function Header() {
+const Header = observer(function () {
   const { t } = useContext(LanguageContext);
+  const user = UserStore.getUser();
 
   return (
     <header className="header">
@@ -32,7 +35,10 @@ function Header() {
 
           <div className="col-sm flex justify-end gap-[30px]">
             <LanguageSelector />
-            <Link to={LINKS.AUTH} className="flex items-center gap-x-2">
+            <Link
+              to={LINKS.AUTH}
+              className={`${user && "hidden"} flex items-center gap-x-2`}
+            >
               <LoginIco className="h-[18px] w-[18px]" />
               <span>{t?.common.enter}</span>
             </Link>
@@ -79,6 +85,6 @@ function Header() {
       </div>
     </header>
   );
-}
+});
 
 export default Header;

@@ -26,7 +26,7 @@ export interface ResBody {
   status: Status;
   message?: string;
   stack?: any;
-  data?: Document;
+  user?: Document;
 }
 
 export const getUsers = async () => {};
@@ -39,7 +39,7 @@ export const getCurrentUser = asyncHandler(
     res.status(STATUS_CODE.SUCCESS_OK).json({
       status: "success",
       message: MESSAGES.RESOURCE_HAS_FOUND,
-      data: user,
+      user: user,
     } as ResBody);
   },
 );
@@ -166,10 +166,18 @@ export const loginUser = asyncHandler(
           });
         }
 
+        const userWithNoPassword = {
+          _id: user._id,
+          email: user.email,
+          phoneNumber: user.phoneNumber,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
+        };
+
         return res.status(STATUS_CODE.SUCCESS_OK).json({
           status: "success",
           message: MESSAGES.USER_SUCCESS_SIGN,
-          data: user,
+          user: userWithNoPassword as unknown,
         } as ResBody);
       } else {
         return next(new AppError(MESSAGES.PASSWORD_INCORRECT, 401)) as never;
