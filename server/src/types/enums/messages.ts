@@ -1,7 +1,11 @@
 export enum MESSAGES {
-  PASSWORD_MISMATCH = "Password mismatch",
+  EMAIL_REQUIRED = "Email required",
+  PASSWORD_REQUIRED = "Password required",
+  CONFIRM_PASSWORD_REQUIRED = "Confirm password required",
+  PHONE_NUMBER_REQUIRED = "Phone number required",
   EMAIL_ALREADY_EXIST = "Email already exist",
   EMAIL_NOT_EXIST = "This email does not exist",
+  PASSWORD_MISMATCH = "Password mismatch",
   PASSWORD_INCORRECT = "Incorrect password",
   PHONE_NUMBER_ALREADY_EXIST = "Phone number already exist",
   INVALID_EMAIL_OR_PASSWORD = "Invalid email or password",

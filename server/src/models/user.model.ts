@@ -1,15 +1,33 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, ObjectId } from "mongoose";
 import bcrypt from "bcrypt";
 
-interface User {
+type Role = "guest" | "customer" | "admin" | "operator";
+
+interface UserModel {
   email: string;
+  username: string;
   password: string;
   phoneNumber: string;
+  role: Role;
+  personalInfo: PersonalInfo;
+  cart: [];
+  orders: [];
+  favorites: [];
   createdAt: Date;
   updatedAt: Date;
 }
 
-const schema = new Schema<User>(
+interface PersonalInfo {
+  name: string;
+  paymentCard: {
+    cardNumber: number;
+    cardHolderName: string;
+    expiryDate: string;
+    SecurityCode: number;
+  };
+}
+
+const userSchema = new Schema<UserModel>(
   {
     email: {
       type: String,
@@ -20,6 +38,7 @@ const schema = new Schema<User>(
     },
     password: {
       type: String,
+      minlength: 6,
       required: true,
     },
     phoneNumber: {
@@ -27,11 +46,38 @@ const schema = new Schema<User>(
       required: true,
       unique: true,
     },
+    role: {
+      type: String,
+      enum: ["customer", "admin", "operator"],
+      default: "customer",
+    },
+    username: String,
+    personalInfo: {
+      name: {
+        type: String,
+        maxlength: 100,
+      },
+      paymentCard: {
+        cardNumber: Number,
+        cardHolderName: String,
+        expiryDate: String,
+        SecurityCode: Number,
+      },
+    },
+    cart: [],
+    orders: [],
+    favorites: [],
   },
   { timestamps: true },
 );
 
-schema.pre("save", async function (next) {
+userSchema.pre("save", async function (next) {
+  this.username = this.email
+    .substring(0, this.email.indexOf("@"))
+    .concat(`-${this._id}`.substring(0, 4));
+});
+
+userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -40,4 +86,4 @@ schema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-export const User = model("User", schema);
+export const User = model("User", userSchema, "users");

@@ -57,26 +57,26 @@ export const createUser = asyncHandler(
 
     if (!email)
       return next(
-        new AppError("Email is required", STATUS_CODE.UNAUTHORIZED_ERROR),
+        new AppError(MESSAGES.EMAIL_REQUIRED, STATUS_CODE.UNAUTHORIZED_ERROR),
       ) as never;
     else if (!phoneNumber)
       return next(
         new AppError(
-          "Phone number is required",
+          MESSAGES.PHONE_NUMBER_REQUIRED,
           STATUS_CODE.UNAUTHORIZED_ERROR,
         ),
       ) as never;
     else if (!password)
       return next(
         new AppError(
-          "Password number is required",
+          MESSAGES.PASSWORD_REQUIRED,
           STATUS_CODE.UNAUTHORIZED_ERROR,
         ),
       ) as never;
     else if (!confirmPassword)
       return next(
         new AppError(
-          "ConfirmPassword number is required",
+          MESSAGES.CONFIRM_PASSWORD_REQUIRED,
           STATUS_CODE.UNAUTHORIZED_ERROR,
         ),
       ) as never;
@@ -166,18 +166,14 @@ export const loginUser = asyncHandler(
           });
         }
 
-        const userWithNoPassword = {
-          _id: user._id,
-          email: user.email,
-          phoneNumber: user.phoneNumber,
-          createdAt: user.createdAt,
-          updatedAt: user.updatedAt,
-        };
+        const userWithoutPassword = await User.findById(user._id)
+          .select("-password")
+          .select("-__v");
 
         return res.status(STATUS_CODE.SUCCESS_OK).json({
           status: "success",
           message: MESSAGES.USER_SUCCESS_SIGN,
-          user: userWithNoPassword as unknown,
+          user: userWithoutPassword,
         } as ResBody);
       } else {
         return next(new AppError(MESSAGES.PASSWORD_INCORRECT, 401)) as never;

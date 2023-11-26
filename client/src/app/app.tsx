@@ -12,6 +12,7 @@ import UserStore from "@app/store/user.store.ts";
 const App = observer(function () {
   const { loading } = useContext(LanguageContext);
   const user = UserStore.getUser();
+
   console.log(user);
 
   if (loading) {

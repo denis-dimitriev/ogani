@@ -8,7 +8,7 @@ import SubmitButton from "@shared/ui/submit-button.tsx";
 import { observer } from "mobx-react-lite";
 import Alert from "@shared/ui/alert.tsx";
 import { ServerResponse } from "@shared/types/response.types.ts";
-import UserStore, { IUserData } from "@app/store/user.store.ts";
+import UserStore, { IUser } from "@app/store/user.store.ts";
 import AlertStore from "@app/store/alert.store.ts";
 import { LINKS } from "@shared/types/enums/links.ts";
 
@@ -43,7 +43,7 @@ const LoginForm = observer(() => {
     e.preventDefault();
     setLoading(true);
 
-    const data: ServerResponse<IUserData> = await SignInStore.onSubmit()
+    const data: ServerResponse<IUser> = await SignInStore.onSubmit()
       .then((res) => res?.data)
       .catch((err) => {
         if (err) {
@@ -60,7 +60,7 @@ const LoginForm = observer(() => {
     if (data) {
       setSuccess(data.message);
       UserStore.setUser(data.user);
-      UserStore.setHasSignedIn();
+      UserStore.saveToLS();
 
       if (UserStore.getUser()) {
         setTimeout(() => {

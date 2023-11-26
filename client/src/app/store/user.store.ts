@@ -1,77 +1,77 @@
 import { makeAutoObservable, toJS } from "mobx";
 import ApiService from "@app/service/api.service.ts";
 
-export interface IUserData {
-  _id: string;
-  email: string;
-  phoneNumber: string;
-  createdAt: Date;
-  updatedAt: Date;
+type Role = "guest" | "customer" | "admin" | "operator";
+
+interface GuestModel {
+  username: string;
+  role: string;
+  cart: [];
+  favorites?: [];
 }
 
-type LStorage = {
-  hasSignedIn: boolean;
-  hasLoggedOut: boolean;
-};
+export interface IUser extends GuestModel {
+  _id?: string;
+  email?: string;
+  phoneNumber?: string;
+  role: Role;
+  personalInfo?: PersonalInfo;
+  cart: [];
+  orders?: [];
+  favorites?: [];
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+interface PersonalInfo {
+  name: string;
+  paymentCard?: {
+    cardNumber: number;
+    cardHolderName: string;
+    expiryDate: string;
+    SecurityCode: number;
+  };
+}
 
 class UserStore {
-  private currentUser: null | IUserData = null;
-  protected hasSignedIn = true;
-  protected hasLoggedOut = false;
+  protected user: IUser = {
+    username: "guest",
+    role: "guest",
+    cart: [],
+    favorites: [],
+  };
 
   constructor() {
     makeAutoObservable(this);
-    const state = JSON.parse(localStorage.getItem("user")!) as LStorage;
-
-    this.hasSignedIn = state.hasSignedIn;
-    this.hasLoggedOut = state.hasLoggedOut;
-
-    if (this.hasSignedIn && !this.hasLoggedOut) {
-      UserStore.fetchUser()
-        .then((res) => {
-          if (res.data) {
-            this.setUser(res.data.user);
-          }
-        })
-        .catch((err) => console.log(err));
-    }
   }
 
-  setUser(user: IUserData): void {
-    this.currentUser = user;
+  setUser(user: IUser) {
+    this.user = user;
   }
 
-  getUser(): IUserData | null {
-    return toJS(this.currentUser);
+  getUser(): IUser {
+    return toJS(this.user);
   }
 
-  setHasSignedIn() {
-    this.hasSignedIn = true;
-    this.hasLoggedOut = false;
-
+  saveToLS() {
     localStorage.setItem(
-      "user",
+      "ogani",
       JSON.stringify({
-        hasSignedIn: this.hasSignedIn,
-        hasLoggedOut: this.hasLoggedOut,
+        user: {
+          username: this.user.username,
+          role: this.user.role,
+          cart: this.user.cart,
+          favorites: this.user.favorites,
+        },
       }),
     );
   }
 
-  setHasLoggedOut() {
-    this.hasSignedIn = false;
-    this.hasLoggedOut = true;
-
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        hasSignedIn: this.hasSignedIn,
-        hasLoggedOut: this.hasLoggedOut,
-      }),
-    );
+  getFromLS() {
+    localStorage.getItem("ogani");
   }
 
-  protected static async fetchUser() {
+  static async fetchUser() {
     return await ApiService.getCurrentUser();
   }
 }

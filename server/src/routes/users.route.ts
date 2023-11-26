@@ -4,8 +4,8 @@ import { verifyToken } from "../middlewares/verify-token.middleware";
 
 const router = Router();
 
-router.route("/").get(userController.getUsers);
-router.route("/create").post(userController.createUser);
+router.route("/all").get(userController.getUsers);
+router.route("/register").post(userController.createUser);
 router.route("/login").post(userController.loginUser);
 router.route("/logout").get(userController.logoutUser);
 router.route("/current").get(verifyToken, userController.getCurrentUser);
