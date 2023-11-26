@@ -5,6 +5,7 @@ import AppError from "../helpers/appError";
 import { STATUS_CODE } from "../types/enums/status-code";
 import { MESSAGES } from "../types/enums/messages";
 import { User } from "../models/user.model";
+import { EXPIRY_TIME } from "../types/enums/expiry-time";
 
 const jwt_secret = config.get("jwt.secret") as string;
 

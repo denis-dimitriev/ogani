@@ -116,7 +116,7 @@ export const createUser = asyncHandler(
     });
 
     if (newUser) {
-      const token = generateToken(newUser._id);
+      const token = generateToken(newUser._id, newUser.role);
 
       res.cookie("jwt", token, {
         httpOnly: true,
@@ -156,7 +156,7 @@ export const loginUser = asyncHandler(
 
       if (comparePassword) {
         if (!token) {
-          token = generateToken(user._id);
+          token = generateToken(user._id, user.role);
 
           res.cookie("jwt", token, {
             httpOnly: true,

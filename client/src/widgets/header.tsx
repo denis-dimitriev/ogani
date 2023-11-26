@@ -37,7 +37,9 @@ const Header = observer(function () {
             <LanguageSelector />
             <Link
               to={LINKS.AUTH}
-              className={`${user && "hidden"} flex items-center gap-x-2`}
+              className={`${
+                user.role !== "guest" && "hidden"
+              } flex items-center gap-x-2`}
             >
               <LoginIco className="h-[18px] w-[18px]" />
               <span>{t?.common.enter}</span>
@@ -55,7 +57,7 @@ const Header = observer(function () {
           <div className="col-lg">
             <MainNav />
           </div>
-          <div className="col-sm flex items-center justify-end gap-[30px]">
+          <div className="col-sm flex items-center justify-end gap-[10px]">
             <Favorites />
             <ShoppingCart />
             <UserAccount />

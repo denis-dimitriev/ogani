@@ -1,7 +1,7 @@
 import { Schema, model, ObjectId } from "mongoose";
 import bcrypt from "bcrypt";
 
-type Role = "guest" | "customer" | "admin" | "operator";
+export type Role = "guest" | "customer" | "admin" | "operator";
 
 interface UserModel {
   email: string;

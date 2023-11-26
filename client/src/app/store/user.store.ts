@@ -5,7 +5,7 @@ type Role = "guest" | "customer" | "admin" | "operator";
 
 interface GuestModel {
   username: string;
-  role: string;
+  role: Role;
   cart: [];
   favorites?: [];
 }
@@ -33,16 +33,34 @@ interface PersonalInfo {
   };
 }
 
+interface Ogani<T> {
+  user: T;
+}
+
+const guest: IUser = {
+  username: "guest",
+  role: "guest",
+  cart: [],
+  favorites: [],
+};
+
 class UserStore {
-  protected user: IUser = {
-    username: "guest",
-    role: "guest",
-    cart: [],
-    favorites: [],
-  };
+  protected user: IUser = guest;
 
   constructor() {
     makeAutoObservable(this);
+
+    const ogani = this.getUserFromLS();
+
+    if (ogani && ogani.user.role === "customer") {
+      UserStore.fetchUser()
+        .then((res) => {
+          if (res.data) {
+            this.setUser(res.data.user);
+          }
+        })
+        .catch((e) => console.log(e));
+    }
   }
 
   setUser(user: IUser) {
@@ -53,7 +71,7 @@ class UserStore {
     return toJS(this.user);
   }
 
-  saveToLS() {
+  saveUserToLS() {
     localStorage.setItem(
       "ogani",
       JSON.stringify({
@@ -67,8 +85,23 @@ class UserStore {
     );
   }
 
-  getFromLS() {
-    localStorage.getItem("ogani");
+  getUserFromLS() {
+    const storage: string | null = localStorage.getItem("ogani");
+
+    if (storage) {
+      return JSON.parse(storage) as Ogani<IUser>;
+    }
+
+    return null;
+  }
+
+  setDefaultUserLS() {
+    localStorage.setItem(
+      "ogani",
+      JSON.stringify({
+        user: guest,
+      }),
+    );
   }
 
   static async fetchUser() {

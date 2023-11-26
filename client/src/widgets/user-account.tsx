@@ -3,22 +3,26 @@ import { Link } from "react-router-dom";
 import { LINKS } from "@shared/types/enums/links.ts";
 import { observer } from "mobx-react-lite";
 import UserStore from "@app/store/user.store.ts";
-import { FormEvent } from "react";
 import ApiService from "@app/service/api.service.ts";
 
 const UserAccount = observer(function () {
   const user = UserStore.getUser();
 
-  async function onSubmitHandler(e: FormEvent<HTMLFormElement>) {
-    await ApiService.logoutUser();
-    UserStore.setHasLoggedOut();
+  async function onSubmitHandler() {
+    await ApiService.logoutUser()
+      .then((res) => {
+        if (res.status === 200) {
+          UserStore.setDefaultUserLS();
+        }
+      })
+      .catch((e) => console.error(e));
   }
 
   return (
     <div
       className={`${
-        !user && "hidden"
-      } group relative flex cursor-pointer items-center`}
+        user.role === "guest" && "hidden"
+      } group relative flex cursor-pointer items-center p-1`}
     >
       <button type="button">
         <UserIco className="h-[26px] w-[26px]" />
