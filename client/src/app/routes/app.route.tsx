@@ -14,31 +14,31 @@ export const appRoute = createBrowserRouter([
     element: <App />,
     children: [
       {
-        element: <Guest />,
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        element: <Protected />,
         children: [
           {
-            index: true,
-            element: <HomePage />,
+            path: LINKS.USER,
+            element: <UserProfile />,
           },
+        ],
+      },
+      {
+        element: <Guest />,
+        children: [
           {
             path: LINKS.AUTH,
             element: <Auth />,
           },
-          {
-            element: <Protected />,
-            children: [
-              {
-                path: LINKS.USER,
-                element: <UserProfile />,
-              },
-            ],
-          },
-          {
-            path: "*",
-            element: <NotFound />,
-          },
         ],
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);

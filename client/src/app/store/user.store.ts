@@ -1,41 +1,7 @@
 import { makeAutoObservable, toJS } from "mobx";
 import ApiService from "@app/service/api.service.ts";
-
-type Role = "guest" | "customer" | "admin" | "operator";
-
-interface GuestModel {
-  username: string;
-  role: Role;
-  cart: [];
-  favorites?: [];
-}
-
-export interface IUser extends GuestModel {
-  _id?: string;
-  email?: string;
-  phoneNumber?: string;
-  role: Role;
-  personalInfo?: PersonalInfo;
-  cart: [];
-  orders?: [];
-  favorites?: [];
-  createdAt?: Date;
-  updatedAt?: Date;
-}
-
-interface PersonalInfo {
-  name: string;
-  paymentCard?: {
-    cardNumber: number;
-    cardHolderName: string;
-    expiryDate: string;
-    SecurityCode: number;
-  };
-}
-
-interface Ogani<T> {
-  user: T;
-}
+import { IUser } from "@shared/types/user.types.ts";
+import { Ogani } from "@shared/types/common.types.ts";
 
 const guest: IUser = {
   username: "guest",
@@ -52,14 +18,21 @@ class UserStore {
 
     const ogani = this.getUserFromLS();
 
-    if (ogani && ogani.user.role === "customer") {
-      UserStore.fetchUser()
-        .then((res) => {
-          if (res.data) {
-            this.setUser(res.data.user);
-          }
-        })
-        .catch((e) => console.log(e));
+    if (ogani !== null) {
+      if (ogani.user) {
+        if (ogani.user.role !== "guest") {
+          UserStore.fetchUser()
+            .then((res) => {
+              if (res.data) {
+                this.setUser(res.data.user);
+                this.saveUserToLS();
+              }
+            })
+            .catch((e) => console.log(e));
+        }
+      } else {
+        this.setDefaultUserLS();
+      }
     }
   }
 
@@ -72,17 +45,24 @@ class UserStore {
   }
 
   saveUserToLS() {
-    localStorage.setItem(
-      "ogani",
-      JSON.stringify({
-        user: {
-          username: this.user.username,
-          role: this.user.role,
-          cart: this.user.cart,
-          favorites: this.user.favorites,
-        },
-      }),
-    );
+    const ogani = this.getUserFromLS();
+
+    if (ogani !== null) {
+      localStorage.setItem(
+        "ogani",
+        JSON.stringify({
+          ...ogani,
+          user: {
+            username: this.user.username,
+            role: this.user.role,
+            cart: this.user.cart,
+            favorites: this.user.favorites,
+          },
+        }),
+      );
+    } else {
+      return;
+    }
   }
 
   getUserFromLS() {
@@ -96,12 +76,19 @@ class UserStore {
   }
 
   setDefaultUserLS() {
-    localStorage.setItem(
-      "ogani",
-      JSON.stringify({
-        user: guest,
-      }),
-    );
+    const ogani = this.getUserFromLS();
+
+    if (ogani !== null) {
+      localStorage.setItem(
+        "ogani",
+        JSON.stringify({
+          ...ogani,
+          user: guest,
+        }),
+      );
+    } else {
+      return;
+    }
   }
 
   static async fetchUser() {

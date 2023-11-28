@@ -5,6 +5,7 @@ import {
   loadRUJson,
 } from "@shared/helpers/translation.helper.ts";
 import { LanguageContext, LanguageType } from "@context/language.context.tsx";
+import { Ogani } from "@shared/types/common.types.ts";
 
 interface Props {
   children: ReactNode;
@@ -28,8 +29,31 @@ function TranslateProvider({ children }: Props) {
     setLoading(true);
     loadLanguageFromFile()
       .catch((e: Error) => setError({ name: e.name, message: e.message }))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        saveLangToLS();
+      });
   }, [language]);
+
+  useEffect(() => {
+    const ogani = JSON.parse(
+      localStorage.getItem("ogani")!,
+    ) as Ogani<LanguageType>;
+
+    if (ogani !== null) {
+      if (ogani.language) {
+        setLanguage(ogani.language);
+      }
+    }
+  }, []);
+
+  function saveLangToLS() {
+    const ogani = JSON.parse(localStorage.getItem("ogani")!) as Ogani<{
+      language: LanguageType;
+    }>;
+
+    localStorage.setItem("ogani", JSON.stringify({ ...ogani, language }));
+  }
 
   return (
     <LanguageContext.Provider

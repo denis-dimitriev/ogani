@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 
 const Protected = observer(function () {
   const user = UserStore.getUser();
-  return user.role === "guest" ? <Navigate to={LINKS.AUTH} /> : <Outlet />;
+  return user.role !== "guest" ? <Outlet /> : <Navigate to={LINKS.HOME} />;
 });
 
 export default Protected;

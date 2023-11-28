@@ -3,3 +3,8 @@ export interface ServerResponse<T> {
   message: string;
   user: T;
 }
+
+export interface Ogani<T> {
+  user?: T;
+  language?: T;
+}

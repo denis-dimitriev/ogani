@@ -79,7 +79,6 @@ const SignupForm = observer(function () {
       );
       if (user) {
         UserStore.setUser(user);
-        UserStore.saveUserToLS();
         if (UserStore.getUser()) {
           setTimeout(() => {
             navigate(LINKS.HOME);
