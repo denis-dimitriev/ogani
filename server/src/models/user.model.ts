@@ -27,7 +27,7 @@ interface PersonalInfo {
   };
 }
 
-const userSchema = new Schema<UserModel>(
+const schema = new Schema<UserModel>(
   {
     email: {
       type: String,
@@ -71,13 +71,13 @@ const userSchema = new Schema<UserModel>(
   { timestamps: true },
 );
 
-userSchema.pre("save", async function (next) {
+schema.pre("save", async function (next) {
   this.username = this.email
     .substring(0, this.email.indexOf("@"))
     .concat(`-${this._id}`.substring(0, 4));
 });
 
-userSchema.pre("save", async function (next) {
+schema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -86,4 +86,4 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-export const User = model("User", userSchema, "users");
+export const User = model("User", schema, "users");
