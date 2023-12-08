@@ -6,6 +6,7 @@ import { productsRouter } from "./routes/products.route";
 import { userRouter } from "./routes/users.route";
 import { categoriesRouter } from "./routes/categories.route";
 import { errorHandler, notFound } from "./middlewares/error-middleware";
+import { carouselRouter } from "./routes/carousel.route";
 
 const app = express();
 app.use(cors());
@@ -18,6 +19,8 @@ app.use("/api/products", productsRouter);
 app.use("/api/users", userRouter);
 
 app.use("/api/category", categoriesRouter);
+
+app.use("/api/carousel", carouselRouter);
 
 app.all("*", notFound);
 
