@@ -4,12 +4,24 @@ import { STATUS_CODE } from "../types/enums/status-code";
 import { Carousel } from "../models/carousel.model";
 import AppError from "../helpers/appError";
 import { ImageFile } from "../types/common";
+import { MESSAGES } from "../types/enums/messages";
 
 export const getCarousel = asyncHandler(async function (
   req: Request,
   res: Response,
   next: NextFunction,
-) {});
+) {
+  const carousel = await Carousel.find().select("-__v");
+
+  if (carousel) {
+    return res.status(STATUS_CODE.SUCCESS_OK).json({
+      status: "success",
+      carousel,
+    });
+  } else {
+    return next(new AppError("Not found", STATUS_CODE.NOT_FOUND));
+  }
+});
 
 export const addCarousel = asyncHandler(async function (
   req: Request,
@@ -17,12 +29,15 @@ export const addCarousel = asyncHandler(async function (
   next: NextFunction,
 ) {
   const { title, link } = req.body;
-  const { filename, path } = req.file as ImageFile;
+  const { filename } = req.file as ImageFile;
 
   const slide = await Carousel.create({
     title,
     link,
-    image: { name: filename, path },
+    image: {
+      name: filename,
+      path: `http://localhost:8000/api/images/${filename}`,
+    },
   });
 
   if (slide) {

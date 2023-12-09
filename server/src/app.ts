@@ -14,6 +14,8 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(cookieParser());
 
+app.use("/api", express.static("server/src/public"));
+
 app.use("/api/products", productsRouter);
 
 app.use("/api/users", userRouter);

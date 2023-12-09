@@ -7,13 +7,9 @@ import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.tsx";
 import Spinner from "@shared/ui/spinner.tsx";
 import { observer } from "mobx-react-lite";
-import UserStore from "@app/store/user.store.ts";
 
 const App = observer(function () {
   const { loading } = useContext(LanguageContext);
-  const user = UserStore.getUser();
-
-  console.log(user);
 
   if (loading) {
     return <Spinner />;

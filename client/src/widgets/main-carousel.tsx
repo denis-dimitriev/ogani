@@ -1,20 +1,25 @@
-import tomato from "@app/assets/img/slide-tomatos.png";
 import { ArrowIco } from "@app/assets/icons";
 import { useEffect, useState } from "react";
+import ApiService from "@app/service/api.service.ts";
+import Spinner from "@shared/ui/spinner.tsx";
+import { Link } from "react-router-dom";
 
-const slidesDB = [
-  {
-    id: "1",
-    title: "fruits & vegetables from local manufacturer",
-    thumbnail: tomato,
-  },
-  { id: "2", title: "Autumn Sale 50% Off", thumbnail: tomato },
-  { id: "3", title: "fresh meat from local farmers", thumbnail: tomato },
-  { id: "4", title: "fresh fruits from turkey", thumbnail: tomato },
-];
+interface Image {
+  name: string;
+  path: string;
+}
+
+interface CarouselItem {
+  createdAt: string;
+  image: Image;
+  link: string;
+  title: string;
+  updatedAt: string;
+  _id: string;
+}
 
 function MainCarousel() {
-  const [slides, setSlides] = useState(slidesDB);
+  const [slides, setSlides] = useState<CarouselItem[] | never[]>([]);
   const [pos, setPos] = useState(0);
   const [disabled, setDisabled] = useState(false);
 
@@ -56,25 +61,47 @@ function MainCarousel() {
     return () => clearTimeout(timeout);
   }, [pos]);
 
+  useEffect(() => {
+    ApiService.getMainCarousel()
+      .then((res) => {
+        if (res.data) {
+          setSlides(res.data.carousel);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  if (!slides) {
+    return <Spinner />;
+  }
+
   return (
     <div className="group relative h-full w-full">
       <ul className="relative flex h-full w-auto overflow-hidden ">
         {slides.map((s) => (
           <li
             className="h-full min-w-full transition-transform duration-1000"
-            key={s.id}
+            key={s._id}
             style={{
               transform: `translateX(${pos}%)`,
             }}
           >
             <figure className="relative h-full w-full">
               <img
-                src={s.thumbnail}
+                src={s.image.path}
                 alt=""
                 className="h-full w-full object-cover"
               />
-              <figcaption className="absolute left-[30px] top-[30px] w-1/2">
-                <h1 className="capitalize leading-[70px]">{s.title}</h1>
+              <figcaption className="glass absolute  left-[30px] right-[30px] top-[30px] w-1/2 p-[30px]">
+                <h2 className="mb-5 font-bold capitalize leading-[45px] ">
+                  {s.title}
+                </h2>
+                <Link
+                  to={s.link}
+                  className="max-w-[150px] rounded-md bg-[--red] px-6 py-4 text-[--white] shadow-2xl"
+                >
+                  Read more
+                </Link>
               </figcaption>
             </figure>
           </li>
