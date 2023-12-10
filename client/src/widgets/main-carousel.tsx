@@ -1,8 +1,9 @@
 import { ArrowIco } from "@app/assets/icons";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ApiService from "@app/service/api.service.ts";
 import Spinner from "@shared/ui/spinner.tsx";
 import { Link } from "react-router-dom";
+import { LanguageContext } from "@context/language.context.tsx";
 
 interface Image {
   name: string;
@@ -19,6 +20,8 @@ interface CarouselItem {
 }
 
 function MainCarousel() {
+  const { t } = useContext(LanguageContext);
+
   const [slides, setSlides] = useState<CarouselItem[] | never[]>([]);
   const [pos, setPos] = useState(0);
   const [disabled, setDisabled] = useState(false);
@@ -46,10 +49,10 @@ function MainCarousel() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       onNextSlide();
-    }, 5000);
+    }, 10000);
 
     return () => clearTimeout(timeout);
-  }, [pos]);
+  }, [pos, slides]);
 
   // ignore multiple clicks on button
   useEffect(() => {
@@ -92,15 +95,15 @@ function MainCarousel() {
                 alt=""
                 className="h-full w-full object-cover"
               />
-              <figcaption className="glass absolute  left-[30px] right-[30px] top-[30px] w-1/2 p-[30px]">
+              <figcaption className="glass absolute left-[30px] right-[30px] top-[30px] w-1/2 animate-fadeInX p-[30px]">
                 <h2 className="mb-5 font-bold capitalize leading-[45px] ">
-                  {s.title}
+                  {t?.carousel[s.title as never]}
                 </h2>
                 <Link
                   to={s.link}
-                  className="max-w-[150px] rounded-md bg-[--red] px-6 py-4 text-[--white] shadow-2xl"
+                  className="max-w-[150px] rounded-md bg-[--red] px-6 py-4 text-[--white] shadow-2xl transition hover:bg-[--red-dark]"
                 >
-                  Read more
+                  {t?.common["learn more"]}
                 </Link>
               </figcaption>
             </figure>

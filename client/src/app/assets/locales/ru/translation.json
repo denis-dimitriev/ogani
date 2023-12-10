@@ -3,7 +3,8 @@
     "meet": "Привет",
     "native language": "Русский",
     "invert language": "Română",
-    "enter": "Войти"
+    "enter": "Войти",
+    "learn more": "Узнать больше"
   },
   "header": {
     "free shipping for all order of 1000 lei": "Бесплатная доставка при заказе от 1000 лей"
@@ -43,5 +44,13 @@
       "user has been created successfully": "Пользователь успешно создан",
       "This email does not exist": "Этот адрес эл. почты не существует"
     }
+  },
+  "carousel": {
+    "rare tomato varieties from turkey": "Редкие Сорта Томатов Из Турции",
+    "sweet carrots from a local farmer": "Сладкая Морковь От Местного Фермера",
+    "christmas discount on fruit 15%": "Рождественская Скидка На Фрукты 15%",
+    "how to quickly prepare tomato salad": "Как Быстро Приготовить Салат Из Помидоров?",
+    "fresh vegetables from eastern countries": "Свежие Овощи Из Восточных Стран",
+    "slider_6": ""
   }
 }

@@ -3,7 +3,8 @@
     "meet": "Salut",
     "native language": "Română",
     "invert language": "Русский",
-    "enter": "Intrare"
+    "enter": "Intrare",
+    "learn more": "Află mai multe"
   },
   "header": {
     "free shipping for all order of 1000 lei": "Livrare gratuita pentru toate comenzile de la 1000 lei"
@@ -43,5 +44,13 @@
       "user has been created successfully": "Utilizatorul a fost creat cu succes",
       "this email does not exist": "Acest e-mail nu există"
     }
+  },
+  "carousel": {
+    "rare tomato varieties from turkey": "Soiuri Rare De Roșii Din Turcia",
+    "sweet carrots from a local farmer": "Morcovi Dulci De La Un Fermier Local",
+    "christmas discount on fruit 15%": "Reducere De Craciun La Fructe 15%",
+    "how to quickly prepare tomato salad": "Cum Se Prepară Rapid Salata De Roșii?",
+    "fresh vegetables from eastern countries": "Legume Proaspete Din Țările Din Est",
+    "slider_6": ""
   }
 }
