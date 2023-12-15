@@ -43,4 +43,6 @@
                             + (var(--col-gap) * 2)
                             + var(--padding-container));
 
+    --col-md-width: calc(var(--max-width-container) / 3);
+
 }

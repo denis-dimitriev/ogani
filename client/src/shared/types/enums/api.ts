@@ -7,4 +7,6 @@ export enum API {
   USER_LOGOUT = "/api/users/logout",
   MAIN_CAROUSEL_GET = "api/carousel",
   MAIN_CAROUSEL_UPLOAD = "api/carousel/upload",
+  BANNER_GET = "api/banner",
+  BANNER_UPLOAD = "api/banner/upload",
 }

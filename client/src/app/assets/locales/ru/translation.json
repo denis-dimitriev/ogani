@@ -9,7 +9,7 @@
   "header": {
     "free shipping for all order of 1000 lei": "Бесплатная доставка при заказе от 1000 лей"
   },
-  "menu" : {
+  "menu": {
     "main": "Главная",
     "shop": "Маркет",
     "blog": "Блог",
@@ -52,5 +52,25 @@
     "how to quickly prepare tomato salad": "Как Быстро Приготовить Салат Из Помидоров?",
     "fresh vegetables from eastern countries": "Свежие Овощи Из Восточных Стран",
     "slider_6": ""
+  },
+  "categories": {
+    "categories": "Категории",
+    "vegetables": "Овощи",
+    "fruits": "Фрукты",
+    "dairy products": "Молочные Продукты",
+    "salads": "Салаты",
+    "fish and seafood": "Рыба И Морепродукты",
+    "meat": "Мясо",
+    "eggs": "Яйца",
+    "oil and vinegars": "Масло И Уксусы",
+    "sauces and spices": "Соусы И Специи",
+    "nuts and seeds": "Орехи И Семена",
+    "bakery": "Выпечка"
+  },
+  "banner": {
+    "fresh fruits": "Свежие фрукты",
+    "fresh vegetables": "Свежие овощи",
+    "fresh bread": "Свежий хлеб",
+    "fish and seafood": "Рыба и морепродукты"
   }
 }

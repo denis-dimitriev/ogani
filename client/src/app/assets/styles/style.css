@@ -1,4 +1,5 @@
 @import "_vars.css";
+@import "animations.css";
 
 
 @layer components {
@@ -16,30 +17,47 @@
     h6 {
         margin: 0;
         color: var(--dark);
+        font-weight: 400;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 400;
+        margin-top: 0;
     }
 
     h1 {
-        font-size: 70px;
+        font-size: 48px;
+        line-height: 1;
+        font-weight: 700;
     }
 
     h2 {
         font-size: 36px;
+        line-height: 36px;
     }
 
     h3 {
         font-size: 30px;
+        line-height: 30px;
     }
 
     h4 {
         font-size: 24px;
+        line-height: 19px;
     }
 
     h5 {
-        font-size: 18px;
+        font-size: 20px;
+        line-height: 18px;
     }
 
     h6 {
-        font-size: 16px;
+        font-size: 18px;
+        line-height: 14px;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
     }
 
     img {
@@ -123,6 +141,11 @@
     .col-sm {
         width: var(--col-sm-width)
     }
+
+    .col-md {
+        width: var(--col-md-width)
+    }
+
     .col-lg {
         width: var(--col-lg-width);
     }
@@ -177,8 +200,57 @@
         background: rgba(255, 255, 255, 0.4);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(11.4px);
-        -webkit-backdrop-filter: blur(11.4px);
+        backdrop-filter: blur(11px);
+        -webkit-backdrop-filter: blur(11px);
         border: 1px solid rgba(255, 255, 255, 0.27);
+    }
+
+    .banner-thumb{
+        position: relative;
+        transition: .3s;
+        &:hover{
+            &::before{
+                left: 0;
+                right: 0;
+                opacity: 0;
+                transition: all 900ms linear;
+            }
+            &::after{
+                top: 0;
+                bottom: 0;
+                opacity: 0;
+                transition: all 900ms linear;
+            }
+        }
+        &::before{
+            background:rgba(255, 255, 255, 0.3);
+            bottom: 0;
+            content: "";
+            left: 50%;
+            position: absolute;
+            right: 51%;
+            top: 0;
+            opacity: 1;
+            pointer-events: none;
+        }
+        &::after{
+            background:rgba(255, 255, 255, 0.6);
+            bottom: 50%;
+            content: "";
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            opacity: 1;
+            pointer-events: none;
+        }
+        & img{
+            transition: .3s;
+        }
+
+    }
+
+    .figcaption {
+        animation: figcaption 400ms ease-in;
     }
 }

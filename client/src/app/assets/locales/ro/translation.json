@@ -52,5 +52,25 @@
     "how to quickly prepare tomato salad": "Cum Se Prepară Rapid Salata De Roșii?",
     "fresh vegetables from eastern countries": "Legume Proaspete Din Țările Din Est",
     "slider_6": ""
+  },
+  "categories": {
+    "categories": "Categorii",
+    "vegetables": "Legume",
+    "fruits": "Fructe",
+    "dairy products": "Produse Lactate",
+    "salads": "Salate",
+    "fish and seafood": "Peste Si Fructe De Mare",
+    "meat": "Carne",
+    "eggs": "Ouă",
+    "oil and vinegars": "Ulei Și Oțet",
+    "sauces and spices": "Sosuri Si Condimente",
+    "nuts and seeds": "Nuci Si Seminte",
+    "bakery": "Brutărie"
+  },
+  "banner": {
+    "fresh fruits": "Fructe proaspete",
+    "fresh vegetables": "Legume proaspete",
+    "fresh bread": "Pâine proaspătă",
+    "fish and seafood": "Peste si fructe de mare"
   }
 }

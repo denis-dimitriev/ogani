@@ -1,28 +1,28 @@
 import { asyncHandler } from "../helpers/async-handler";
 import { NextFunction, Request, Response } from "express";
 import { STATUS_CODE } from "../types/enums/status-code";
-import { Carousel } from "../models/carousel.model";
 import AppError from "../helpers/appError";
 import { ImageFile } from "../types/common";
+import { Banner } from "../models/banner.model";
 
-export const getCarousel = asyncHandler(async function (
+export const getBanner = asyncHandler(async function (
   req: Request,
   res: Response,
   next: NextFunction,
 ) {
-  const carousel = await Carousel.find().select("-__v");
+  const banner = await Banner.find().select("-__v");
 
-  if (carousel) {
+  if (banner) {
     return res.status(STATUS_CODE.SUCCESS_OK).json({
       status: "success",
-      carousel,
+      banner,
     });
   } else {
     return next(new AppError("Not found", STATUS_CODE.NOT_FOUND));
   }
 });
 
-export const addCarousel = asyncHandler(async function (
+export const addBanner = asyncHandler(async function (
   req: Request,
   res: Response,
   next: NextFunction,
@@ -30,19 +30,16 @@ export const addCarousel = asyncHandler(async function (
   const { title, link } = req.body;
   const { filename } = req.file as ImageFile;
 
-  const slide = await Carousel.create({
+  const item = await Banner.create({
     title,
     link,
-    image: {
-      name: filename,
-      path: `http://localhost:8000/api/images/${filename}`,
-    },
+    thumbnail: `http://localhost:8000/api/images/banner/${filename}`,
   });
 
-  if (slide) {
+  if (item) {
     return res.status(STATUS_CODE.SUCCESS_OK).json({
       status: "success",
-      message: "New slide created successfully",
+      message: "New item created successfully",
     });
   } else {
     return next(

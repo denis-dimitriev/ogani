@@ -24,6 +24,10 @@ class ApiService {
   static async getMainCarousel() {
     return await axios.get(API.MAIN_CAROUSEL_GET);
   }
+
+  static async getBanner() {
+    return await axios.get(API.BANNER_GET);
+  }
 }
 
 export default ApiService;
