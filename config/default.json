@@ -3,7 +3,8 @@
     "port": 8000
   },
   "db": {
-    "mongoUri": "mongodb://localhost:27017/ogani"
+    "mongoUri": "mongodb://localhost:27017/ogani",
+    "mongoCloud": "mongodb+srv://ogani:1988@cluster0.xst8kh5.mongodb.net/?retryWrites=true&w=majority"
   },
   "jwt": {
     "secret": "ogani secret"

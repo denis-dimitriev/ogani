@@ -7,6 +7,8 @@ import { LINKS } from "@shared/types/enums/links.ts";
 import Protected from "@pages/protected.tsx";
 import { UserProfile } from "@pages/user-profile/user-profile.auth.ts";
 import Guest from "@pages/guest.tsx";
+import { Market } from "@pages/market/market.async.ts";
+import { Product } from "@pages/product/product.async.ts";
 
 export const appRoute = createBrowserRouter([
   {
@@ -16,6 +18,14 @@ export const appRoute = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: LINKS.MARKET,
+        element: <Market />,
+      },
+      {
+        path: LINKS.MARKET_CATEGORY,
+        element: <Product />,
       },
       {
         element: <Protected />,

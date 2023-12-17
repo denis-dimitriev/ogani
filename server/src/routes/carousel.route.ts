@@ -5,7 +5,7 @@ import * as carouselController from "../controllers/carousel.controller";
 
 const router = Router();
 
-const pathToStorage = "server/src/public/images";
+const pathToStorage = "server/src/public/images/carousel";
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {

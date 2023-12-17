@@ -10,14 +10,14 @@ function CategoriesMenu() {
 
   return (
     <div className="h-full w-full rounded border border-[--light] shadow">
-      <ul className="flexflex-col">
+      <ul className="flex flex-col">
         {categories.map((category) => (
           <li
             key={category}
-            className="mb-1 flex transition-all hover:bg-[--light]"
+            className=" flex transition-all hover:bg-[--light]"
           >
             <Link
-              to={category}
+              to={`/market/${category.replaceAll(" ", "-")}`}
               className="w-full pl-[30px] pr-[20px] text-[14px]
               font-medium leading-9 text-[--gray] hover:text-[--gray-light]"
             >

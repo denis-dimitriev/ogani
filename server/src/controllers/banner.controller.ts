@@ -15,6 +15,7 @@ export const getBanner = asyncHandler(async function (
   if (banner) {
     return res.status(STATUS_CODE.SUCCESS_OK).json({
       status: "success",
+      message: `Found ${banner.length + 1} items`,
       banner,
     });
   } else {

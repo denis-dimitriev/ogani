@@ -6,5 +6,7 @@ export enum LINKS {
   BLOG = "/blog",
   CONTACTS = "/contacts",
   USER = "/user",
-  USER_PROFILE = "/user:id",
+  USER_PROFILE = "/user/:id",
+  MARKET = "/market",
+  MARKET_CATEGORY = "/market/:category",
 }

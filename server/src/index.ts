@@ -3,7 +3,7 @@ import config from "config";
 import mongoose from "mongoose";
 
 const PORT = config.get("server.port") as number;
-const DB = config.get("db.mongoUri") as string;
+const DB = config.get("db.mongoCloud") as string;
 
 async function connect() {
   await mongoose.connect(DB);

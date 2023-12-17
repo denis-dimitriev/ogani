@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowIco } from "@app/assets/icons";
 import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.tsx";
+import { LINKS } from "@shared/types/enums/links.ts";
 
 function MainNav() {
   const { t } = useContext(LanguageContext);
@@ -10,10 +11,10 @@ function MainNav() {
     <nav className="text-[14px] font-[700] uppercase tracking-wide text-[--gray]">
       <ul className="flex items-center gap-8">
         <li className="transition hover:text-[--gray-light]">
-          <Link to="#">{t?.menu.main}</Link>
+          <Link to={LINKS.HOME}>{t?.menu.main}</Link>
         </li>
         <li className="transition hover:text-[--teal]">
-          <Link to="#">{t?.menu.shop}</Link>
+          <Link to={LINKS.MARKET}>{t?.menu.shop}</Link>
         </li>
 
         <li
@@ -48,10 +49,10 @@ function MainNav() {
         </li>
 
         <li className="transition hover:text-[--gray-light]">
-          <Link to="#">{t?.menu.blog}</Link>
+          <Link to={LINKS.BLOG}>{t?.menu.blog}</Link>
         </li>
         <li className="transition hover:text-[--gray-light]">
-          <Link to="#">{t?.menu.contacts}</Link>
+          <Link to={LINKS.CONTACTS}>{t?.menu.contacts}</Link>
         </li>
       </ul>
     </nav>

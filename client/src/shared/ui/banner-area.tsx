@@ -1,9 +1,10 @@
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import BannerCard from "@shared/ui/banner-card.tsx";
 import apiService from "@app/service/api.service.ts";
 import Spinner from "@shared/ui/spinner.tsx";
+import { Status } from "../../../../server/src/types/common.ts";
 
-interface IBanner {
+interface Banner {
   _id: string;
   title: string;
   thumbnail: string;
@@ -12,21 +13,27 @@ interface IBanner {
   updatedAt?: string;
 }
 
+interface Response {
+  status: Status;
+  message: string;
+  banner: Banner[];
+}
+
 function BannerArea() {
-  const [banner, setBanner] = useState<IBanner[] | null>(null);
+  const [banner, setBanner] = useState<Banner[]>([]);
 
   useEffect(() => {
     apiService
       .getBanner()
       .then((res) => {
-        if (res.data) {
+        if (res.data as Response) {
           setBanner(res.data.banner);
         }
       })
       .catch((err) => console.error(err));
   }, []);
 
-  if (!banner) {
+  if (banner.length == 0) {
     return <Spinner />;
   }
 
@@ -38,21 +45,21 @@ function BannerArea() {
   return (
     <Fragment>
       <ul className="flex h-full justify-between">
-        <li className="col-sm shadow-lg">
+        <li className="col-sm">
           <BannerCard
             title={first.title}
             thumbnail={first.thumbnail}
             link={first.link}
           />
         </li>
-        <li className="col-lg shadow-lg">
+        <li className="col-lg">
           <BannerCard
             title={second.title}
-            thumbnail={second.thumbnail}
+            thumbnail={second?.thumbnail}
             link={second.link}
           />
         </li>
-        <li className="col-sm flex h-full flex-col gap-2.5 shadow-lg">
+        <li className="col-sm flex h-full flex-col gap-2.5">
           <BannerCard
             title={third.title}
             thumbnail={third.thumbnail}

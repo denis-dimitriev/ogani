@@ -10,4 +10,5 @@ export enum CATEGORIES {
   SAUCES_AND_SPICES = "sauces and spices",
   NUTS_AND_SEEDS = "nuts and seeds",
   BAKERY = "bakery",
+  OTHERS = "others",
 }

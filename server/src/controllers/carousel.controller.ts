@@ -35,7 +35,7 @@ export const addCarousel = asyncHandler(async function (
     link,
     image: {
       name: filename,
-      path: `http://localhost:8000/api/images/${filename}`,
+      path: `http://localhost:8000/api/images/carousel/${filename}`,
     },
   });
 
