@@ -1,5 +1,5 @@
 import { ArrowIco } from "@app/assets/icons";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import ApiService from "@app/service/api.service.ts";
 import Spinner from "@shared/ui/spinner.tsx";
 import { Link } from "react-router-dom";
@@ -26,6 +26,7 @@ function MainCarousel() {
   const [pos, setPos] = useState(0);
   const [disabled, setDisabled] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function onNextSlide() {
     const maxLimitPos = (slides.length - 1) * 100;
     setPos((prevState) => {
@@ -36,6 +37,8 @@ function MainCarousel() {
     });
   }
 
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function onPrevSlide() {
     const maxLimitPos = (slides.length - 1) * 100;
     setPos((prevState) => {
@@ -46,20 +49,20 @@ function MainCarousel() {
     });
   }
 
-  useMemo(() => {
+  useLayoutEffect(() => {
     const timeout = setTimeout(() => {
       onNextSlide();
     }, 10000);
 
     return () => clearTimeout(timeout);
-  }, [pos, slides]);
+  }, [onNextSlide, onPrevSlide]);
 
   // ignore multiple clicks on button
   useMemo(() => {
     setDisabled(true);
     const timeout = setTimeout(() => {
       setDisabled(false);
-    }, 500);
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, [pos]);

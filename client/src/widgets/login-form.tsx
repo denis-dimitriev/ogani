@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import InputForm from "@shared/ui/input-form.tsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "@context/auth.context.ts";
 import { LanguageContext } from "@context/language.context.tsx";
 import SignInStore from "@app/store/signin.store.ts";
@@ -9,6 +9,7 @@ import { observer } from "mobx-react-lite";
 import Alert from "@shared/ui/alert.tsx";
 import UserStore from "@app/store/user.store.ts";
 import AlertStore from "@app/store/alert.store.ts";
+import { LINKS } from "@shared/types/enums/links.ts";
 
 const LoginForm = observer(() => {
   const { t } = useContext(LanguageContext);
@@ -17,6 +18,8 @@ const LoginForm = observer(() => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [clearFields, setClearFields] = useState(false);
+
+  const navigate = useNavigate()
 
   function onEmailHandler(e: ChangeEvent<HTMLInputElement>) {
     SignInStore.onEmailInput(e.target.value);
@@ -58,6 +61,12 @@ const LoginForm = observer(() => {
         setClearFields(true);
         setLoading(false);
       });
+
+    if (UserStore.getUser().role === "customer") {
+      setTimeout(() => {
+        navigate(LINKS.HOME)
+      }, 1000)
+    }
   }
 
   return (
