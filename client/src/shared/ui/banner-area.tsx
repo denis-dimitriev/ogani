@@ -9,6 +9,10 @@ interface Banner {
   title: string;
   thumbnail: string;
   link: string;
+  category: {
+    _id: string,
+    name: string
+  }
   createdAt?: string;
   updatedAt?: string;
 }
@@ -37,38 +41,40 @@ function BannerArea() {
     return <Spinner />;
   }
 
-  const first = banner[0];
-  const second = banner[1];
-  const third = banner[2];
-  const fourth = banner[3];
+  const fruits = banner.find(el => el.category.name === 'fruits')!
+  const vegetables = banner.find(el => el.category.name === 'vegetables')!
+  const seafood = banner.find(el => el.category.name === 'fish and seafood')!
+  const bakery = banner.find(el => el.category.name === 'bakery')!
+
+
 
   return (
     <Fragment>
       <ul className="flex h-full justify-between">
         <li className="col-sm">
           <BannerCard
-            title={first.title}
-            thumbnail={first.thumbnail}
-            link={first.link}
+            title={fruits.title}
+            thumbnail={fruits.thumbnail}
+            link={fruits.link}
           />
         </li>
         <li className="col-lg">
           <BannerCard
-            title={second.title}
-            thumbnail={second?.thumbnail}
-            link={second.link}
+            title={vegetables.title}
+            thumbnail={vegetables.thumbnail}
+            link={vegetables.link}
           />
         </li>
-        <li className="col-sm flex h-full flex-col gap-2.5">
+        <li className="col-sm flex h-full flex-col gap-4">
           <BannerCard
-            title={third.title}
-            thumbnail={third.thumbnail}
-            link={third.link}
+            title={bakery.title}
+            thumbnail={bakery.thumbnail}
+            link={bakery.link}
           />
           <BannerCard
-            title={fourth.title}
-            thumbnail={fourth.thumbnail}
-            link={fourth.link}
+            title={seafood.title}
+            thumbnail={seafood.thumbnail}
+            link={seafood.link}
           />
         </li>
       </ul>

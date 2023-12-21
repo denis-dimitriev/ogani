@@ -4,6 +4,7 @@ import { STATUS_CODE } from "../types/enums/status-code";
 import AppError from "../helpers/appError";
 import { ImageFile } from "../types/common";
 import { Banner } from "../models/banner.model";
+import { Categories } from "../models/category.model";
 
 export const getBanner = asyncHandler(async function (
   req: Request,
@@ -28,23 +29,28 @@ export const addBanner = asyncHandler(async function (
   res: Response,
   next: NextFunction,
 ) {
-  const { title, link } = req.body;
+  const { title, link, category } = req.body;
   const { filename } = req.file as ImageFile;
 
-  const item = await Banner.create({
-    title,
-    link,
-    thumbnail: `http://localhost:8000/api/images/banner/${filename}`,
-  });
+  const categoryParent  = await Categories.findOne({name: category})
 
-  if (item) {
-    return res.status(STATUS_CODE.SUCCESS_OK).json({
-      status: "success",
-      message: "New item created successfully",
+  if (category) {
+    const item = await Banner.create({
+      title,
+      link,
+      category: categoryParent,
+      thumbnail: `http://localhost:8000/api/images/banner/${filename}`,
     });
-  } else {
-    return next(
-      new AppError("Something went wrong", STATUS_CODE.INTERNAL_SERVER_ERROR),
-    );
+
+    if (item) {
+      return res.status(STATUS_CODE.SUCCESS_OK).json({
+        status: "success",
+        message: "New item created successfully",
+      });
+    } else {
+      return next(
+        new AppError("Something went wrong", STATUS_CODE.INTERNAL_SERVER_ERROR),
+      );
+    }
   }
 });

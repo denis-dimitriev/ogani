@@ -20,4 +20,4 @@ export const productSchema = new Schema<IProduct>(
   { versionKey: false }
 )
 
-export const Product = model('product', productSchema)
+export const Product = model('products', productSchema)
