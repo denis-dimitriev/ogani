@@ -1,7 +1,8 @@
 import { StarGoldIco, StarIco } from "@app/assets/icons";
+import { Rating } from "@shared/types/enums/product.types.ts";
 
 interface Props {
-  rating: 1 | 2 | 3 | 4 | 5;
+  rating: Rating;
 }
 
 function ProductRating({ rating }: Props) {
