@@ -127,27 +127,25 @@ const products = [
 ];
 
 function FeaturedProducts() {
-  const [slide, setSlide] = useState<number>(1);
+  const [pos, setPos] = useState<number>(0);
 
   function next() {
-    setSlide((prev) => {
-      if (prev == 3) {
-        return 3;
+    setPos((prev) => {
+      if (prev == -200) {
+        return -200;
       }
-      return prev + 1;
+      return prev - 100;
     });
   }
 
   function prev() {
-    setSlide((prev) => {
-      if (prev == 1) {
-        return 1;
+    setPos((prev) => {
+      if (prev == 0) {
+        return 0;
       }
-      return prev - 1;
+      return prev + 100;
     });
   }
-
-  console.log(slide);
 
   return (
     <Fragment>
@@ -163,8 +161,13 @@ function FeaturedProducts() {
         </div>
       </div>
       <div className="flex">
-        <ul className="flex gap-2.5 overflow-hidden transition duration-1000">
-          <li>
+        <ul className="flex overflow-hidden">
+          <li
+            className="px-2 transition duration-700"
+            style={{
+              transform: `translateX(${pos}%)`,
+            }}
+          >
             <ul>
               {products.slice(0, 4).map((p) => (
                 <li key={p._id}>
@@ -182,7 +185,12 @@ function FeaturedProducts() {
             </ul>
           </li>
 
-          <li>
+          <li
+            className="px-2 transition duration-700"
+            style={{
+              transform: `translateX(${pos}%)`,
+            }}
+          >
             <ul>
               {products.slice(4, 8).map((p) => (
                 <li key={p._id}>
@@ -200,7 +208,12 @@ function FeaturedProducts() {
             </ul>
           </li>
 
-          <li>
+          <li
+            className="px-2 transition duration-700"
+            style={{
+              transform: `translateX(${pos}%)`,
+            }}
+          >
             <ul>
               {products.slice(8, 12).map((p) => (
                 <li key={p._id}>

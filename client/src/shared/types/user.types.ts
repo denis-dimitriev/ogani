@@ -1,8 +1,8 @@
 interface GuestModel {
   username: string;
   role: Role;
-  cart: [];
-  favorites?: [];
+  cart: string[];
+  favorites?: string[];
 }
 interface PersonalInfo {
   name: string;
@@ -22,9 +22,9 @@ export interface IUser extends GuestModel {
   phoneNumber?: string;
   role: Role;
   personalInfo?: PersonalInfo;
-  cart: [];
+  cart: string[];
   orders?: [];
-  favorites?: [];
+  favorites?: string[];
   createdAt?: Date;
   updatedAt?: Date;
 }

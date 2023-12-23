@@ -94,6 +94,14 @@ class UserStore {
   static async fetchUser() {
     return await ApiService.getCurrentUser();
   }
+
+  addToCart(_id: string) {
+    this.user.cart.push(_id);
+  }
+
+  addToFavorites(_id: string) {
+    this.user.favorites?.push(_id);
+  }
 }
 
 export default new UserStore();
