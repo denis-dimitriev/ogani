@@ -4,7 +4,13 @@
     "native language": "Русский",
     "invert language": "Română",
     "enter": "Войти",
-    "learn more": "Узнать больше"
+    "learn more": "Узнать больше",
+    "featured": "Рекомендуемые"
+  },
+  "tips": {
+    "add to cart": "Добавить в корзину",
+    "add to favorites": "Добавить в избранное",
+    "quick view": "Быстрый просмотр"
   },
   "header": {
     "free shipping for all order of 1000 lei": "Бесплатная доставка при заказе от 1000 лей"
@@ -74,5 +80,9 @@
     "fresh bread": "Свежий хлеб",
     "fish and seafood": "Рыба и морепродукты",
     "shop now": "Купить сейчас"
+  },
+  "product": {
+    "discount": "Скидка",
+    "new": "Новинка"
   }
 }

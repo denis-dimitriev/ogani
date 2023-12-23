@@ -1,7 +1,8 @@
-import CardSm from "@shared/ui/card-sm.tsx";
+import ProductCardSm from "@shared/ui/product-card-sm.tsx";
 import { ArrowIco } from "@app/assets/icons";
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Rating } from "@shared/types/enums/product.types.ts";
+import { LanguageContext } from "@context/language.context.tsx";
 
 const products = [
   {
@@ -127,6 +128,8 @@ const products = [
 ];
 
 function FeaturedProducts() {
+  const { t } = useContext(LanguageContext);
+
   const [pos, setPos] = useState<number>(0);
 
   function next() {
@@ -150,7 +153,7 @@ function FeaturedProducts() {
   return (
     <Fragment>
       <div className="flex items-center justify-between">
-        <h5>Featured Products</h5>
+        <h5>{t?.common.featured}</h5>
         <div className="flex items-center justify-center">
           <button onClick={prev}>
             <ArrowIco className="rotate-[90deg] scale-125" />
@@ -171,7 +174,7 @@ function FeaturedProducts() {
             <ul>
               {products.slice(0, 4).map((p) => (
                 <li key={p._id}>
-                  <CardSm
+                  <ProductCardSm
                     _id={p._id}
                     title={p.title}
                     thumbnail={p.thumbnail}
@@ -194,7 +197,7 @@ function FeaturedProducts() {
             <ul>
               {products.slice(4, 8).map((p) => (
                 <li key={p._id}>
-                  <CardSm
+                  <ProductCardSm
                     _id={p._id}
                     title={p.title}
                     thumbnail={p.thumbnail}
@@ -217,7 +220,7 @@ function FeaturedProducts() {
             <ul>
               {products.slice(8, 12).map((p) => (
                 <li key={p._id}>
-                  <CardSm
+                  <ProductCardSm
                     _id={p._id}
                     title={p.title}
                     thumbnail={p.thumbnail}

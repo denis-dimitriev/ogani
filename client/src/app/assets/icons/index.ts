@@ -20,6 +20,7 @@ import TwitterIco from "./twitter.svg";
 import UserIco from "./user.svg";
 import StarIco from "./star.svg";
 import StarGoldIco from "./star-gold.svg";
+import HintIco from "./hint.svg";
 
 export {
   ArrowIco,
@@ -44,4 +45,5 @@ export {
   CloseIco,
   StarIco,
   StarGoldIco,
+  HintIco,
 };

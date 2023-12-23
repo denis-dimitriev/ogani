@@ -252,4 +252,9 @@
     .figcaption {
         animation: figcaption 400ms ease-in;
     }
+
+    .tips {
+        @apply rounded-xl bg-[--gray-dark] px-2 py-1 text-[13px] text-white
+        shadow-2xl whitespace-nowrap z-30
+    }
 }

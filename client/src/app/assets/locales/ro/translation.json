@@ -4,7 +4,13 @@
     "native language": "Română",
     "invert language": "Русский",
     "enter": "Intrare",
-    "learn more": "Află mai multe"
+    "learn more": "Află mai multe",
+    "featured": "Recomandate"
+  },
+  "tips": {
+    "add to cart": "Adaugă in coş",
+    "add to favorites": "Adauga la favorite",
+    "quick view": "Vizualizare rapidă"
   },
   "header": {
     "free shipping for all order of 1000 lei": "Livrare gratuita pentru toate comenzile de la 1000 lei"
@@ -74,5 +80,9 @@
     "fresh bread": "Pâine proaspătă",
     "fish and seafood": "Peste si fructe de mare",
     "shop now": "Cumpără acum"
+  },
+  "product": {
+    "discount": "Reducere",
+    "new": "Nou"
   }
 }

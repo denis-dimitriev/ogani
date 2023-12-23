@@ -2,6 +2,7 @@ import CategoriesMenu from "@widgets/categories-menu.tsx";
 import MainCarousel from "@widgets/main-carousel.tsx";
 import BannerArea from "@shared/ui/banner-area.tsx";
 import FeaturedProducts from "../../features/ui/featured-products.tsx";
+import ProductCard from "@shared/ui/product-card.tsx";
 
 function HomePage() {
   return (
@@ -25,6 +26,11 @@ function HomePage() {
         </div>
         <div className="col-xl">
           <h5>New Products</h5>
+          <div className="mt-5 flex w-full justify-between">
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </div>
         </div>
       </section>
     </div>
