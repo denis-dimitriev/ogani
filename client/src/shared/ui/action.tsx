@@ -31,7 +31,7 @@ function Action({ className, _id }: Props) {
     <div
       className={`${className}
          flex items-center justify-center gap-x-2 rounded-3xl
-        border border-[--gray] bg-white px-4 py-1 shadow-2xl`}
+        border border-[--gray] bg-white px-3 py-1 shadow-2xl`}
     >
       <button
         className="relative rounded-full p-1 transition
