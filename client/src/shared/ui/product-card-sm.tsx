@@ -2,24 +2,26 @@ import ProductRating from "@shared/ui/product-rating.tsx";
 import Action from "@shared/ui/action.tsx";
 import { Rating } from "@shared/types/enums/product.types.ts";
 
-interface Props {
+export interface IProduct {
   _id: string;
   title: string;
   thumbnail: string;
+  image: string;
+  category: string;
+  description: string;
   price: number;
   rating: Rating;
   promoPrice: number;
   sale: number;
 }
 
-function ProductCardSm({
-  _id,
-  title,
-  thumbnail,
-  price,
-  promoPrice,
-  rating,
-}: Props) {
+interface Props {
+  product: IProduct;
+}
+
+function ProductCardSm({ product }: Props) {
+  const { title, image, thumbnail, price, promoPrice, rating } = product;
+
   const trimTitle = title.substring(0, 13).concat("...");
 
   return (
@@ -52,7 +54,7 @@ function ProductCardSm({
             <Action
               className="absolute bottom-0 left-[40px] translate-y-1/3 opacity-0 transition
                              duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
-              _id={_id}
+              product={product}
             />
           </div>
         </li>

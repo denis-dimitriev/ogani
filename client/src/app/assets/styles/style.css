@@ -7,6 +7,7 @@
     body {
         font-family: 'Work Sans', sans-serif;
         font-weight: 400;
+        box-sizing: border-box;
     }
 
     h1,
@@ -55,10 +56,6 @@
         line-height: 14px;
     }
 
-    p:last-child {
-        margin-bottom: 0;
-    }
-
     img {
         max-width: 100%;
         height: auto;
@@ -92,7 +89,7 @@
         width: 100%;
         min-width: 320px;
         min-height: 100vh;
-        overflow: hidden;
+        position: relative;
         display: flex;
         flex-direction: column;
         row-gap: 20px;
@@ -255,6 +252,18 @@
 
     .tips {
         @apply rounded-xl bg-[--gray-dark] px-2 py-1 text-[13px] text-white
-        shadow-2xl whitespace-nowrap z-30
+        shadow-2xl whitespace-nowrap z-30 flex items-center
+        gap-x-1 transition-opacity duration-300
+    }
+
+    .quick-view {
+        position: fixed;
+        overflow: hidden!important;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1999;
+        background: rgba(0, 0, 0, 0.6);
     }
 }

@@ -10,6 +10,7 @@
     "paths": {
       "@app/*": ["./app/*"],
       "@context/*": ["./context/*"],
+      "@features/*": ["./features/*"],
       "@shared/*": ["./shared/*"],
       "@pages/*": ["./pages/*"],
       "@widgets/*": ["./widgets/*"]

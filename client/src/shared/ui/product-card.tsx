@@ -3,23 +3,15 @@ import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.tsx";
 import Action from "@shared/ui/action.tsx";
 import Badge from "@shared/ui/badge.tsx";
+import { IProduct } from "@shared/ui/product-card-sm.tsx";
 
-interface Props {}
+interface Props {
+  product: IProduct;
+}
 
-const p = {
-  _id: "8",
-  title: "Varza din Moldova",
-  thumbnail:
-    "https://htmldemo.net/safira/safira/assets/img/product/product22.jpg",
-  image: "https://htmldemo.net/safira/safira/assets/img/product/product23.jpg",
-  price: 9.0,
-  category: "Vegetables",
-  promoPrice: 7.5,
-  rating: 3,
-  sale: 20,
-};
+function ProductCard({ product }: Props) {
+  const { title, thumbnail, category, image, price, promoPrice } = product;
 
-function ProductCard() {
   const { t } = useContext(LanguageContext);
 
   return (
@@ -28,10 +20,10 @@ function ProductCard() {
         <figure className="relative">
           <img
             className="absolute opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            src={p.thumbnail}
+            src={thumbnail}
             alt=""
           />
-          <img className="" src={p.image} alt="" />
+          <img className="" src={image} alt="" />
           <Badge className="absolute left-5 top-3 z-10">
             {t?.product.discount}
           </Badge>
@@ -42,21 +34,21 @@ function ProductCard() {
           <Action
             className="invisible absolute bottom-0 left-[50px] translate-y-1/3 opacity-0 transition
                        duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
-            _id={p._id}
+            product={product}
           />
         </figure>
         <figcaption className="text-center">
-          <p>{p.title}</p>
-          <small>{p.category}</small>
+          <p>{title}</p>
+          <small>{category}</small>
           <div className="flex items-center justify-center gap-x-2">
             <p>
               <span className="font-semibold text-[--red-dark]">
-                {p.promoPrice}
+                {promoPrice}
                 <span className="text-sm">lei</span>
               </span>
             </p>
             <p className="line-through">
-              {p.price}
+              {price}
               <span className="text-sm">lei</span>
             </p>
           </div>

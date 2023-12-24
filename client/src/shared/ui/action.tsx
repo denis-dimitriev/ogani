@@ -7,24 +7,32 @@ import {
 import { HTMLProps, useContext, useState } from "react";
 import UserStore from "@app/store/user.store.ts";
 import { LanguageContext } from "@context/language.context.tsx";
+import { QuickViewContext } from "@context/quick-view.context.ts";
+import { IProduct } from "@shared/ui/product-card-sm.tsx";
 
 interface Props extends HTMLProps<HTMLDivElement> {
-  _id: string;
+  product: IProduct;
 }
 
-function Action({ className, _id }: Props) {
+function Action({ className, product }: Props) {
   const { t } = useContext(LanguageContext);
+  const { setView, setProduct } = useContext(QuickViewContext);
 
   const [cartTip, setCartTip] = useState(false);
   const [favoriteTip, setFavoriteTip] = useState(false);
   const [viewTip, setViewTip] = useState(false);
 
   function onAddToCartHandler() {
-    UserStore.addToCart(_id);
+    UserStore.addToCart(product._id);
   }
 
   function onAddToFavoritesHandler() {
-    UserStore.addToFavorites(_id);
+    UserStore.addToFavorites(product._id);
+  }
+
+  function onQuickViewHandler() {
+    setView(true);
+    setProduct(product);
   }
 
   return (
@@ -40,11 +48,10 @@ function Action({ className, _id }: Props) {
         onMouseEnter={() => setCartTip(true)}
         onMouseLeave={() => setCartTip(false)}
       >
-        <ShoppingCartIco className="scale-[0.8]" />
+        <ShoppingCartIco className="scale-[0.6]" />
 
         <span
-          className={`tips absolute left-[-200%] top-[-120%] flex items-center 
-             gap-x-1 transition-opacity duration-300
+          className={`tips absolute left-[-200%] top-[-120%]
             ${cartTip ? "visible opacity-100" : "invisible opacity-0"}`}
         >
           <HintIco className="h-[20px] w-[20px]" />
@@ -58,10 +65,9 @@ function Action({ className, _id }: Props) {
         onMouseEnter={() => setFavoriteTip(true)}
         onMouseLeave={() => setFavoriteTip(false)}
       >
-        <FavoritesIco className="scale-[0.8]" />
+        <FavoritesIco className="scale-[0.6]" />
         <span
-          className={`tips  absolute left-[-200%] top-[-120%] flex items-center 
-            transition-opacity duration-300
+          className={`tips absolute left-[-200%] top-[-120%]
             ${favoriteTip ? "visible opacity-100" : "invisible opacity-0"}`}
         >
           <HintIco className="h-[20px] w-[20px]" />
@@ -72,14 +78,13 @@ function Action({ className, _id }: Props) {
       <button
         className="relative rounded-full p-1 transition duration-300
                    hover:bg-[--red] hover:fill-white hover:stroke-white"
-        onClick={onAddToFavoritesHandler}
+        onClick={onQuickViewHandler}
         onMouseEnter={() => setViewTip(true)}
         onMouseLeave={() => setViewTip(false)}
       >
-        <SearchIco className="scale-[0.8]" />
+        <SearchIco className="scale-[0.6]" />
         <span
-          className={`tips absolute left-[-200%] top-[-120%] flex items-center
-           transition-opacity duration-300
+          className={`tips absolute left-[-200%] top-[-120%]
             ${viewTip ? "visible opacity-100" : "invisible opacity-0"}`}
         >
           <HintIco className="h-[20px] w-[20px]" />

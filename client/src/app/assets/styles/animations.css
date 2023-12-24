@@ -1,8 +1,8 @@
-@keyframes figcaption  {
-   from {
-       transform: translateX(-50px);
-       opacity: 0;
-   }
+@keyframes figcaption {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
     to {
         transform: translateX(0);
         opacity: 1;

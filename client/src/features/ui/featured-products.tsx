@@ -1,15 +1,23 @@
-import ProductCardSm from "@shared/ui/product-card-sm.tsx";
+import ProductCardSm, { IProduct } from "@shared/ui/product-card-sm.tsx";
 import { ArrowIco } from "@app/assets/icons";
 import { Fragment, useContext, useState } from "react";
-import { Rating } from "@shared/types/enums/product.types.ts";
 import { LanguageContext } from "@context/language.context.tsx";
 
-const products = [
+const products: IProduct[] = [
   {
     _id: "1",
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 3,
@@ -20,6 +28,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 4,
@@ -30,6 +47,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 5,
@@ -40,6 +66,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 3,
@@ -50,6 +85,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 5,
@@ -60,6 +104,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 5,
@@ -70,6 +123,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 4,
@@ -80,6 +142,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 3,
@@ -90,6 +161,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 3,
@@ -100,6 +180,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 3,
@@ -110,6 +199,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 5,
@@ -120,6 +218,15 @@ const products = [
     title: "Varza din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
+    image: "",
+    category: "Vegetables",
+    description:
+      " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
+      "Commodi cupiditate iusto obcaecati quibusdam similique? Adipisci amet " +
+      "cupiditate debitis doloremque eaque est facere id ipsum, itaque laborum natus neque quaerat " +
+      "quo sapiente voluptatem. Asperiores doloremque eos est ex " +
+      "excepturi illum ipsa optio possimus quia, quis ut veritatis! " +
+      "Excepturi laborum molestias optio.",
     price: 9.0,
     promoPrice: 7.5,
     rating: 3,
@@ -174,15 +281,7 @@ function FeaturedProducts() {
             <ul>
               {products.slice(0, 4).map((p) => (
                 <li key={p._id}>
-                  <ProductCardSm
-                    _id={p._id}
-                    title={p.title}
-                    thumbnail={p.thumbnail}
-                    price={p.price}
-                    rating={p.rating as Rating}
-                    promoPrice={p.promoPrice}
-                    sale={p.sale}
-                  />
+                  <ProductCardSm product={p} />
                 </li>
               ))}
             </ul>
@@ -197,15 +296,7 @@ function FeaturedProducts() {
             <ul>
               {products.slice(4, 8).map((p) => (
                 <li key={p._id}>
-                  <ProductCardSm
-                    _id={p._id}
-                    title={p.title}
-                    thumbnail={p.thumbnail}
-                    price={p.price}
-                    rating={p.rating as Rating}
-                    promoPrice={p.promoPrice}
-                    sale={p.sale}
-                  />
+                  <ProductCardSm product={p} />
                 </li>
               ))}
             </ul>
@@ -220,15 +311,7 @@ function FeaturedProducts() {
             <ul>
               {products.slice(8, 12).map((p) => (
                 <li key={p._id}>
-                  <ProductCardSm
-                    _id={p._id}
-                    title={p.title}
-                    thumbnail={p.thumbnail}
-                    price={p.price}
-                    rating={p.rating as Rating}
-                    promoPrice={p.promoPrice}
-                    sale={p.sale}
-                  />
+                  <ProductCardSm product={p} />
                 </li>
               ))}
             </ul>
