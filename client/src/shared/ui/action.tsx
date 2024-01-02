@@ -1,8 +1,8 @@
 import {
   FavoritesIco,
   HintIco,
-  SearchIco,
   ShoppingCartIco,
+  VisualIco,
 } from "@app/assets/icons";
 import { HTMLProps, useContext, useState } from "react";
 import UserStore from "@app/store/user.store.ts";
@@ -51,7 +51,7 @@ function Action({ className, product }: Props) {
         <ShoppingCartIco className="scale-[0.6]" />
 
         <span
-          className={`tips absolute left-[-200%] top-[-120%]
+          className={`tips fixed left-0 top-[-35px]
             ${cartTip ? "visible opacity-100" : "invisible opacity-0"}`}
         >
           <HintIco className="h-[20px] w-[20px]" />
@@ -67,7 +67,7 @@ function Action({ className, product }: Props) {
       >
         <FavoritesIco className="scale-[0.6]" />
         <span
-          className={`tips absolute left-[-200%] top-[-120%]
+          className={`tips fixed left-0 top-[-35px]
             ${favoriteTip ? "visible opacity-100" : "invisible opacity-0"}`}
         >
           <HintIco className="h-[20px] w-[20px]" />
@@ -82,9 +82,9 @@ function Action({ className, product }: Props) {
         onMouseEnter={() => setViewTip(true)}
         onMouseLeave={() => setViewTip(false)}
       >
-        <SearchIco className="scale-[0.6]" />
+        <VisualIco className="scale-[0.6]" />
         <span
-          className={`tips absolute left-[-200%] top-[-120%]
+          className={`tips fixed left-0 top-[-35px]
             ${viewTip ? "visible opacity-100" : "invisible opacity-0"}`}
         >
           <HintIco className="h-[20px] w-[20px]" />

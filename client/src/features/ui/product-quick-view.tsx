@@ -50,7 +50,7 @@ function ProductQuickView() {
         <div className="relative flex gap-x-5">
           <figure className="flex w-1/2 flex-col">
             <img
-              className=""
+              className="h-full w-full"
               src={product?.image || product?.thumbnail}
               alt=""
             />

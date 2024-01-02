@@ -5,7 +5,8 @@
     "invert language": "Русский",
     "enter": "Intrare",
     "learn more": "Află mai multe",
-    "featured": "Recomandate"
+    "featured": "Recomandate",
+    "hot deals": "Oferte fierbinți"
   },
   "tips": {
     "add to cart": "Adaugă in coş",
@@ -78,8 +79,9 @@
     "fresh fruits": "Fructe proaspete",
     "fresh vegetables": "Legume proaspete",
     "fresh bread": "Pâine proaspătă",
-    "fish and seafood": "Peste si fructe de mare",
-    "shop now": "Cumpără acum"
+    "fish and seafood": "Fructe de mare",
+    "shop now": "Cumpără acum",
+    "sale up to 50%": "Reducere pana la 50%"
   },
   "product": {
     "discount": "Reducere",

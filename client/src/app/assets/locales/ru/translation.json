@@ -5,7 +5,8 @@
     "invert language": "Română",
     "enter": "Войти",
     "learn more": "Узнать больше",
-    "featured": "Рекомендуемые"
+    "featured": "Рекомендуемые",
+    "hot deals": "Горячие предложения"
   },
   "tips": {
     "add to cart": "Добавить в корзину",
@@ -78,8 +79,9 @@
     "fresh fruits": "Свежие фрукты",
     "fresh vegetables": "Свежие овощи",
     "fresh bread": "Свежий хлеб",
-    "fish and seafood": "Рыба и морепродукты",
-    "shop now": "Купить сейчас"
+    "fish and seafood": "Морепродукты",
+    "shop now": "Купить сейчас",
+    "sale up to 50%": "Распродажа до 50%"
   },
   "product": {
     "discount": "Скидка",
