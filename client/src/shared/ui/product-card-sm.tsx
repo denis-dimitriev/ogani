@@ -29,7 +29,12 @@ function ProductCardSm({ product }: Props) {
       <ul className="flex flex-col">
         <li>
           <div className="group relative flex cursor-pointer items-center gap-x-2 text-[--darkest]">
-            <figure className="w-[90px]">
+            <figure className="relative w-[90px]">
+              <img
+                className="absolute opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                src={image}
+                alt=""
+              />
               <img src={thumbnail} alt="" />
             </figure>
             <figcaption className="relative flex flex-col gap-1.5">
@@ -52,7 +57,7 @@ function ProductCardSm({ product }: Props) {
             </figcaption>
 
             <Action
-              className="absolute bottom-0 left-[40px] translate-y-1/3 opacity-0 transition
+              className="absolute bottom-2 right-0 z-50 translate-y-1/3 opacity-0 transition
                              duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
               product={product}
             />
