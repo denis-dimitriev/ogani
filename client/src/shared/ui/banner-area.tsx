@@ -1,10 +1,9 @@
 import { Fragment, useContext, useEffect, useState } from "react";
-import BannerCard from "@shared/ui/banner-card.tsx";
 import apiService from "@app/service/api.service.ts";
 import Spinner from "@shared/ui/spinner.tsx";
 import { Status } from "../../../../server/src/types/common.ts";
-import BadgeShop from "@shared/ui/badge-shop.tsx";
 import { LanguageContext } from "@context/language.context.tsx";
+import BannerCard from "@shared/ui/banner-card.tsx";
 
 interface Banner {
   _id: string;
@@ -55,49 +54,30 @@ function BannerArea() {
       <ul className="flex h-full justify-between">
         <li className="col-sm">
           <BannerCard
-            title={t?.banner[`${fruits.title}` as never]}
+            title={t?.banner["fresh fruits" as never]}
             thumbnail={fruits.thumbnail}
             link={fruits.link}
-          >
-            <BadgeShop
-              className="mt-1 text-[13px] font-semibold uppercase text-[--gray]"
-              withIco
-            />
-          </BannerCard>
+          />
         </li>
         <li className="col-lg">
           <BannerCard
-            title={t?.banner[`${vegetables.title}` as never]}
+            title={t?.banner["fresh vegetables" as never]}
             thumbnail={vegetables.thumbnail}
             link={vegetables.link}
-          >
-            <BadgeShop
-              className="mt-1 text-[13px] font-semibold uppercase text-[--gray]"
-              withIco
-            />
-          </BannerCard>
+          />
         </li>
         <li className="col-sm flex h-full flex-col gap-4">
           <BannerCard
-            title={t?.banner[`${bakery.title}` as never]}
+            title={t?.banner[bakery.title as never]}
             thumbnail={bakery.thumbnail}
             link={bakery.link}
-          >
-            <BadgeShop
-              className="mt-1 text-[13px] font-semibold uppercase text-[--gray]"
-              withIco
-            />
-          </BannerCard>
+          />
+
           <BannerCard
-            title={t?.banner[`${seafood.title}` as never]}
+            title={t?.banner[seafood.title as never]}
             thumbnail={seafood.thumbnail}
             link={seafood.link}
-          >
-            <BadgeShop
-              className="mt-1 text-[13px] font-semibold uppercase text-[--gray]"
-              withIco
-            />
-          </BannerCard>
+          />
         </li>
       </ul>
     </Fragment>

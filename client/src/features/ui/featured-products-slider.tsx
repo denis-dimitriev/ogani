@@ -1,7 +1,8 @@
 import ProductCardSm, { IProduct } from "@shared/ui/product-card-sm.tsx";
 import { ArrowIco } from "@app/assets/icons";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.tsx";
+import { useSlider } from "@shared/helpers/slider.hook.ts";
 
 const products: IProduct[] = [
   {
@@ -236,26 +237,7 @@ const products: IProduct[] = [
 
 function FeaturedProductsSlider() {
   const { t } = useContext(LanguageContext);
-
-  const [pos, setPos] = useState<number>(0);
-
-  function next() {
-    setPos((prev) => {
-      if (prev == -200) {
-        return -200;
-      }
-      return prev - 100;
-    });
-  }
-
-  function prev() {
-    setPos((prev) => {
-      if (prev == 0) {
-        return 0;
-      }
-      return prev + 100;
-    });
-  }
+  const { pos, next, prev } = useSlider(products.slice(0, 3));
 
   return (
     <article>
@@ -273,7 +255,7 @@ function FeaturedProductsSlider() {
       <div className="flex">
         <ul className="flex overflow-hidden">
           <li
-            className="px-2 transition duration-700"
+            className="px-2 transition duration-500"
             style={{
               transform: `translateX(${pos}%)`,
             }}
@@ -288,7 +270,7 @@ function FeaturedProductsSlider() {
           </li>
 
           <li
-            className="px-2 transition duration-700"
+            className="px-2 transition duration-500"
             style={{
               transform: `translateX(${pos}%)`,
             }}
@@ -303,7 +285,7 @@ function FeaturedProductsSlider() {
           </li>
 
           <li
-            className="px-2 transition duration-700"
+            className="px-2 transition duration-500"
             style={{
               transform: `translateX(${pos}%)`,
             }}

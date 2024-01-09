@@ -1,38 +1,22 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { ArrowIco } from "@app/assets/icons";
 import ProductCard from "@shared/ui/product-card.tsx";
 import { IProduct } from "@shared/ui/product-card-sm.tsx";
+import { LanguageContext } from "@context/language.context.tsx";
+import { useSlider } from "@shared/helpers/slider.hook.ts";
 
 interface Props {
-  title?: string;
   products: IProduct[];
 }
 
-function HotDealsSlider({ title, products }: Props) {
-  const [pos, setPos] = useState<number>(0);
-
-  function next() {
-    setPos((prev) => {
-      if (prev === -(products.length - 1) * 100) {
-        return -(products.length - 1) * 100;
-      }
-      return prev - 100;
-    });
-  }
-
-  function prev() {
-    setPos((prev) => {
-      if (prev === 0) {
-        return 0;
-      }
-      return prev + 100;
-    });
-  }
+function HotDealsSlider({ products }: Props) {
+  const { t } = useContext(LanguageContext);
+  const { pos, next, prev } = useSlider(products);
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h5>{title}</h5>
+        <h5>{t?.common["hot deals"]}</h5>
         <div className="flex items-center justify-center">
           <button onClick={prev}>
             <ArrowIco className="rotate-[90deg] scale-125" />

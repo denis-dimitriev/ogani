@@ -66,12 +66,12 @@
     "fruits": "Fructe",
     "dairy products": "Produse Lactate",
     "salads": "Salate",
-    "fish and seafood": "Peste Si Fructe De Mare",
+    "fish and seafood": "Peste și Fructe De Mare",
     "meat": "Carne",
     "eggs": "Ouă",
-    "oil and vinegars": "Ulei Și Oțet",
-    "sauces and spices": "Sosuri Si Condimente",
-    "nuts and seeds": "Nuci Si Seminte",
+    "oil and vinegars": "Ulei și Oțet",
+    "sauces and spices": "Sosuri și Condimente",
+    "nuts and seeds": "Nuci și Seminte",
     "bakery": "Brutărie",
     "others": "Altele"
   },
@@ -79,9 +79,10 @@
     "fresh fruits": "Fructe proaspete",
     "fresh vegetables": "Legume proaspete",
     "fresh bread": "Pâine proaspătă",
+    "fresh meat": "Carne proaspătă",
     "fish and seafood": "Fructe de mare",
     "shop now": "Cumpără acum",
-    "sale up to 50%": "Reducere pana la 50%"
+    "save up to": "Economiți până la"
   },
   "product": {
     "discount": "Reducere",

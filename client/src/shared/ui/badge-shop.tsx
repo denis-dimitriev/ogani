@@ -11,8 +11,7 @@ const BadgeShop = ({ className, withIco = false }: Props) => {
 
   return (
     <span
-      className={`${className} inline-flex items-center gap-x-1 rounded-3xl
-        px-3 py-1`}
+      className={`${className} inline-flex items-center gap-x-1 rounded-3xl`}
     >
       {t?.banner["shop now" as never]}
       {withIco && <AlTArrowIco />}

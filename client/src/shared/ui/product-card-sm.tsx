@@ -1,6 +1,7 @@
 import ProductRating from "@shared/ui/product-rating.tsx";
 import Action from "@shared/ui/action.tsx";
 import { Rating } from "@shared/types/enums/product.types.ts";
+import { Link } from "react-router-dom";
 
 export interface IProduct {
   _id: string;
@@ -20,7 +21,8 @@ interface Props {
 }
 
 function ProductCardSm({ product }: Props) {
-  const { title, image, thumbnail, price, promoPrice, rating } = product;
+  const { _id, title, image, thumbnail, category, price, promoPrice, rating } =
+    product;
 
   const trimTitle = title.substring(0, 13).concat("...");
 
@@ -30,12 +32,16 @@ function ProductCardSm({ product }: Props) {
         <li>
           <div className="group relative flex cursor-pointer items-center gap-x-2 text-[--darkest]">
             <figure className="relative w-[90px]">
-              <img
-                className="absolute opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                src={image}
-                alt=""
-              />
-              <img src={thumbnail} alt="" />
+              <Link to={`/market/${category.toLowerCase()}/${_id}`}>
+                <img
+                  className="absolute opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  src={image}
+                  alt=""
+                />
+              </Link>
+              <Link to={`/market/${category}/${_id}`}>
+                <img src={thumbnail} alt="" />
+              </Link>
             </figure>
             <figcaption className="relative flex flex-col gap-1.5">
               <p className="text-[16px]">{trimTitle}</p>

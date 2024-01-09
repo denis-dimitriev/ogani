@@ -33,7 +33,7 @@ function LanguageSelector() {
       )}
 
       <div
-        className="invisible absolute left-0 right-0 top-[30px] z-[99] translate-y-1/2
+        className="invisible absolute left-0 right-0 top-[27px] z-[99] translate-y-1/2
         rounded bg-[--darkest] text-[--white] shadow-lg transition
         duration-300 group-hover:visible  group-hover:translate-y-0"
       >
