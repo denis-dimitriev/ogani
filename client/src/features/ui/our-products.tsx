@@ -1,7 +1,6 @@
-import { IProduct } from "@shared/ui/product-card-sm.tsx";
-import ProductCard from "@shared/ui/product-card.tsx";
-import { ArrowIco } from "@app/assets/icons";
+import ProductCardSm, { IProduct } from "@shared/ui/product-card-sm.tsx";
 import { useSlider } from "@shared/helpers/slider.hook.ts";
+import SectionHeader from "@shared/ui/section-header.tsx";
 
 const products: IProduct[] = [
   {
@@ -235,52 +234,22 @@ const products: IProduct[] = [
 ];
 
 function NewProducts() {
-  const { pos, prev, next } = useSlider(products.slice(0, 4));
+  const { pos, prev, next } = useSlider(products.length / 2);
   return (
-    <div className="h-auto">
-      <div className="flex items-center justify-between">
-        <h5>New Products</h5>
-        <div className="flex items-center justify-center">
-          <button onClick={prev}>
-            <ArrowIco className="rotate-[90deg] scale-125" />
-          </button>
-          <button onClick={next}>
-            <ArrowIco className="rotate-[-90deg] scale-125" />
-          </button>
-        </div>
-      </div>
-      <ul className="mt-5 flex flex-wrap gap-y-[20px] overflow-hidden">
-        <li>
-          <ul className="flex overflow-hidden">
-            {products.slice(0, 6).map((p) => (
-              <li
-                key={p._id}
-                className="pr-2 transition duration-500"
-                style={{
-                  transform: `translateX(${pos}%)`,
-                }}
-              >
-                <ProductCard product={p} />
-              </li>
-            ))}
-          </ul>
-        </li>
-
-        <li>
-          <ul className="flex overflow-hidden">
-            {products.slice(0, 6).map((p) => (
-              <li
-                key={p._id}
-                className="transition duration-500"
-                style={{
-                  transform: `translateX(${pos}%)`,
-                }}
-              >
-                <ProductCard product={p} />
-              </li>
-            ))}
-          </ul>
-        </li>
+    <div className="flex flex-col gap-4">
+      <SectionHeader title={"Most Viewed"} prev={prev} next={next} />
+      <ul className="flex overflow-hidden">
+        {products.map((p) => (
+          <li
+            key={p._id}
+            className="w-[384px] transition duration-500"
+            style={{
+              transform: `translateX(${pos}%)`,
+            }}
+          >
+            <ProductCardSm product={p} />
+          </li>
+        ))}
       </ul>
     </div>
   );

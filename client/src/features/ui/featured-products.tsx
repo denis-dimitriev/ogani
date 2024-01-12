@@ -1,20 +1,8 @@
-import CategoriesMenu from "@widgets/categories-menu.tsx";
-import MainCarousel from "@widgets/main-carousel.tsx";
-import BannerArea from "@shared/ui/banner-area.tsx";
-import FeaturedProducts from "@features/ui/featured-products.tsx";
-import { Fragment, useContext } from "react";
-import ProductQuickView from "@features/ui/product-quick-view.tsx";
-import { QuickViewContext } from "@context/quick-view.context.ts";
-import { IProduct } from "@shared/ui/product-card-sm.tsx";
+import ProductCardSm, { IProduct } from "@shared/ui/product-card-sm.tsx";
+import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.tsx";
-import HotDeals from "@features/ui/hot-deals.tsx";
-import musli_berries from "app/assets/img/muesli-with-berries.png";
-import meat from "app/assets/img/meat.png";
-import daury_products from "app/assets/img/dairy-products.png";
-import BadgeShop from "@shared/ui/badge-shop.tsx";
-import NewProducts from "@features/ui/new-products.tsx";
-import BannerCardSm from "@shared/ui/banner-card-sm.tsx";
-import OurProducts from "@features/ui/our-products.tsx";
+import { useSlider } from "@shared/helpers/slider.hook.ts";
+import SectionHeader from "@shared/ui/section-header.tsx";
 
 const products: IProduct[] = [
   {
@@ -247,79 +235,65 @@ const products: IProduct[] = [
   },
 ];
 
-function HomePage() {
-  const { view } = useContext(QuickViewContext);
+function FeaturedProducts() {
   const { t } = useContext(LanguageContext);
+  const { pos, next, prev } = useSlider(products.slice(0, 3).length - 1);
 
   return (
-    <Fragment>
-      <div className="container flex flex-col gap-[50px]">
-        <section className="flex h-[450px] gap-[24px]">
-          <div className="col-sm h-full">
-            <CategoriesMenu />
-          </div>
-          <div className="col-xl h-full">
-            <MainCarousel />
-          </div>
-        </section>
+    <div className="flex flex-col gap-4">
+      <SectionHeader
+        title={t?.common.featured as string}
+        prev={prev}
+        next={next}
+      />
+      <ul className="flex overflow-hidden">
+        <li
+          className="transition duration-500"
+          style={{
+            transform: `translateX(${pos}%)`,
+          }}
+        >
+          <ul className="flex flex-col gap-y-[30px]">
+            {products.slice(0, 4).map((p) => (
+              <li key={p._id}>
+                <ProductCardSm product={p} />
+              </li>
+            ))}
+          </ul>
+        </li>
 
-        <section className="h-[450px] w-full">
-          <BannerArea />
-        </section>
+        <li
+          className="transition duration-500"
+          style={{
+            transform: `translateX(${pos}%)`,
+          }}
+        >
+          <ul className="flex flex-col gap-y-[30px]">
+            {products.slice(4, 8).map((p) => (
+              <li key={p._id}>
+                <ProductCardSm product={p} />
+              </li>
+            ))}
+          </ul>
+        </li>
 
-        <section className="flex h-auto w-full gap-[24px]">
-          <div className="col-sm flex  flex-col gap-[50px]">
-            <FeaturedProducts />
-
-            <article className="flex h-[450px] w-full cursor-pointer justify-between bg-blue-100/40">
-              <figure className="banner-thumb relative flex h-full w-full items-end">
-                <img className="object-contain" src={musli_berries} alt="" />
-                <figcaption className="absolute left-5 top-4">
-                  <h4 className="font-thin leading-8">
-                    {t?.banner["save up to"]}&nbsp;
-                    <span className="font-bold">50%</span>
-                  </h4>
-                  <BadgeShop
-                    className="mt-3 bg-[--red] px-2 py-1
-                   text-[13px] font-thin uppercase text-white"
-                  />
-                </figcaption>
-              </figure>
-            </article>
-          </div>
-
-          <div className="col-xl">
-            <NewProducts />
-
-            <div className="mt-6 flex gap-[24px]">
-              <BannerCardSm
-                thumbnail={meat}
-                title={t?.banner["fresh meat"] as string}
-                link={""}
-              />
-
-              <BannerCardSm
-                thumbnail={daury_products}
-                title={t?.categories["dairy products"] as string}
-                link={""}
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="flex h-auto w-full gap-[24px]">
-          <div className="col-sm h-[450px]">
-            <HotDeals products={products} />
-          </div>
-
-          <div className="col-xl h-[450px]">
-            <OurProducts />
-          </div>
-        </section>
-      </div>
-      {view && <ProductQuickView />}
-    </Fragment>
+        <li
+          className="transition duration-500"
+          style={{
+            transform: `translateX(${pos}%)`,
+          }}
+        >
+          <ul className="flex flex-col gap-y-[30px]">
+            {products.slice(8, 12).map((p) => (
+              <li key={p._id}>
+                <ProductCardSm product={p} />
+              </li>
+            ))}
+          </ul>
+        </li>
+      </ul>
+    </div>
   );
 }
 
-export default HomePage;
+export default FeaturedProducts;

@@ -1,8 +1,7 @@
-import ProductCardSm, { IProduct } from "@shared/ui/product-card-sm.tsx";
-import { ArrowIco } from "@app/assets/icons";
-import { useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { IProduct } from "@shared/ui/product-card-sm.tsx";
+import ProductCard from "@shared/ui/product-card.tsx";
 import { useSlider } from "@shared/helpers/slider.hook.ts";
+import SectionHeader from "@shared/ui/section-header.tsx";
 
 const products: IProduct[] = [
   {
@@ -235,73 +234,47 @@ const products: IProduct[] = [
   },
 ];
 
-function FeaturedProductsSlider() {
-  const { t } = useContext(LanguageContext);
-  const { pos, next, prev } = useSlider(products.slice(0, 3));
-
+function NewProducts() {
+  const { pos, prev, next } = useSlider(products.length / 4);
   return (
-    <article>
-      <div className="flex items-center justify-between">
-        <h5>{t?.common.featured}</h5>
-        <div className="flex items-center justify-center">
-          <button onClick={prev}>
-            <ArrowIco className="rotate-[90deg] scale-125" />
-          </button>
-          <button onClick={next}>
-            <ArrowIco className="rotate-[-90deg] scale-125" />
-          </button>
-        </div>
-      </div>
-      <div className="flex">
-        <ul className="flex overflow-hidden">
-          <li
-            className="px-2 transition duration-500"
-            style={{
-              transform: `translateX(${pos}%)`,
-            }}
-          >
-            <ul>
-              {products.slice(0, 4).map((p) => (
-                <li key={p._id}>
-                  <ProductCardSm product={p} />
-                </li>
-              ))}
-            </ul>
-          </li>
+    <div className="flex flex-col gap-4">
+      <SectionHeader title={"New Products"} prev={prev} next={next} />
 
-          <li
-            className="px-2 transition duration-500"
-            style={{
-              transform: `translateX(${pos}%)`,
-            }}
-          >
-            <ul>
-              {products.slice(4, 8).map((p) => (
-                <li key={p._id}>
-                  <ProductCardSm product={p} />
-                </li>
-              ))}
-            </ul>
-          </li>
+      <ul className="flex flex-col gap-y-[20px]">
+        <li>
+          <ul className="flex overflow-hidden">
+            {products.slice(0, 6).map((p) => (
+              <li
+                key={p._id}
+                className="pr-[15px] transition duration-500"
+                style={{
+                  transform: `translateX(${pos}%)`,
+                }}
+              >
+                <ProductCard product={p} />
+              </li>
+            ))}
+          </ul>
+        </li>
 
-          <li
-            className="px-2 transition duration-500"
-            style={{
-              transform: `translateX(${pos}%)`,
-            }}
-          >
-            <ul>
-              {products.slice(8, 12).map((p) => (
-                <li key={p._id}>
-                  <ProductCardSm product={p} />
-                </li>
-              ))}
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </article>
+        <li>
+          <ul className="flex overflow-hidden">
+            {products.slice(6, 12).map((p) => (
+              <li
+                key={p._id}
+                className="pr-[15px] transition duration-500"
+                style={{
+                  transform: `translateX(${pos}%)`,
+                }}
+              >
+                <ProductCard product={p} />
+              </li>
+            ))}
+          </ul>
+        </li>
+      </ul>
+    </div>
   );
 }
 
-export default FeaturedProductsSlider;
+export default NewProducts;

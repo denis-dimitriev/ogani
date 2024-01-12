@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { IProduct } from "@shared/ui/product-card-sm.tsx";
 
-export function useSlider(arr: IProduct[]) {
+export function useSlider(arrLength: number) {
   const [pos, setPos] = useState<number>(0);
 
   function next() {
     setPos((prev) => {
-      if (prev === -(arr.length - 1) * 100) {
-        return -(arr.length - 1) * 100;
+      if (prev === -(arrLength * 100)) {
+        return -(arrLength * 100);
       }
       return prev - 100;
     });

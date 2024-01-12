@@ -9,9 +9,9 @@ interface Props {
   products: IProduct[];
 }
 
-function HotDealsSlider({ products }: Props) {
+function HotDeals({ products }: Props) {
   const { t } = useContext(LanguageContext);
-  const { pos, next, prev } = useSlider(products);
+  const { pos, next, prev } = useSlider(products.length - 1);
 
   return (
     <div className="flex flex-col gap-4">
@@ -64,4 +64,4 @@ function HotDealsSlider({ products }: Props) {
   );
 }
 
-export default HotDealsSlider;
+export default HotDeals;

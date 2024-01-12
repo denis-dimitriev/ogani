@@ -16,17 +16,17 @@ function ProductCard({ product }: Props) {
 
   return (
     <article className="group relative flex w-[256px] min-w-[190px] flex-col items-center">
-      <figure className="relative w-full">
-        <Link to={`/market/${category.toLowerCase()}/${_id}`}>
+      <figure className="relative flex flex-col">
+        <Link
+          to={`/market/${category.toLowerCase()}/${_id}`}
+          className="relative"
+        >
           <img
             className="absolute w-full opacity-0 transition-opacity duration-500
                        group-hover:opacity-100"
             src={thumbnail}
             alt=""
           />
-        </Link>
-
-        <Link to={`/market/${category}/${_id}`}>
           <img className="w-full" src={image} alt="" />
         </Link>
 
@@ -35,14 +35,7 @@ function ProductCard({ product }: Props) {
         </Badge>
         <Badge className="absolute right-5 top-3 z-10">{t?.product.new}</Badge>
 
-        <Action
-          className="invisible absolute left-[50px] top-[60%] translate-y-1/3
-             opacity-0 transition duration-300 group-hover:visible
-             group-hover:translate-y-0 group-hover:opacity-100"
-          product={product}
-        />
-
-        <figcaption className="text-center">
+        <figcaption className="relative flex flex-col items-center justify-center">
           <p>{title}</p>
           <small>{category}</small>
           <div className="flex items-center justify-center gap-x-2">
@@ -57,6 +50,13 @@ function ProductCard({ product }: Props) {
               <span className="text-sm">lei</span>
             </p>
           </div>
+
+          <Action
+            className="invisible absolute top-[-50px] translate-y-1/3
+             opacity-0 transition duration-300
+             group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+            product={product}
+          />
         </figcaption>
       </figure>
     </article>
