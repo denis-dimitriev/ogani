@@ -8,7 +8,7 @@ export function breakPhrase(
   }
   return str.split(" ").map((el) => (
     <Fragment key={el}>
-      {el} {el.length > 4 && <br />}
+      {el} {el.length > 3 && <br />}
     </Fragment>
   ));
 }

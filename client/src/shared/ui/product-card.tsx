@@ -15,8 +15,8 @@ function ProductCard({ product }: Props) {
   const { t } = useContext(LanguageContext);
 
   return (
-    <article className="group relative flex w-[256px] min-w-[190px] flex-col items-center">
-      <figure className="relative flex flex-col">
+    <article className="group relative flex w-[258px] min-w-[190px] flex-col items-center">
+      <figure className="relative flex w-full flex-col">
         <Link
           to={`/market/${category.toLowerCase()}/${_id}`}
           className="relative"

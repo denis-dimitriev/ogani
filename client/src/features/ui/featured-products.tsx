@@ -253,7 +253,7 @@ function FeaturedProducts() {
             transform: `translateX(${pos}%)`,
           }}
         >
-          <ul className="flex flex-col gap-y-[30px]">
+          <ul className="flex flex-col gap-y-[50px]">
             {products.slice(0, 4).map((p) => (
               <li key={p._id}>
                 <ProductCardSm product={p} />
@@ -268,7 +268,7 @@ function FeaturedProducts() {
             transform: `translateX(${pos}%)`,
           }}
         >
-          <ul className="flex flex-col gap-y-[30px]">
+          <ul className="flex flex-col gap-y-[50px]">
             {products.slice(4, 8).map((p) => (
               <li key={p._id}>
                 <ProductCardSm product={p} />
@@ -283,7 +283,7 @@ function FeaturedProducts() {
             transform: `translateX(${pos}%)`,
           }}
         >
-          <ul className="flex flex-col gap-y-[30px]">
+          <ul className="flex flex-col gap-y-[50px]">
             {products.slice(8, 12).map((p) => (
               <li key={p._id}>
                 <ProductCardSm product={p} />

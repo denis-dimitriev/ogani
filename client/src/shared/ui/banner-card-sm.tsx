@@ -21,7 +21,7 @@ function BannerCardSm({ title, thumbnail, link = "#" }: Props) {
       onClick={onClickHandler}
     >
       <figure className="banner-thumb relative flex w-full items-center justify-end">
-        <img className="object-contain" src={thumbnail} alt="" />
+        <img className="object-cover" src={thumbnail} alt="" />
         <figcaption className="absolute left-4">
           <h4 className="font-thin leading-6">{breakPhrase(title)}</h4>
           <BadgeShop

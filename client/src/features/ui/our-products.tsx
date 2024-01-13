@@ -234,22 +234,42 @@ const products: IProduct[] = [
 ];
 
 function NewProducts() {
-  const { pos, prev, next } = useSlider(products.length / 2);
+  const { pos, prev, next } = useSlider(products.length / 3);
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex max-h-[450px] flex-col gap-4">
       <SectionHeader title={"Most Viewed"} prev={prev} next={next} />
-      <ul className="flex overflow-hidden">
-        {products.map((p) => (
-          <li
-            key={p._id}
-            className="w-[384px] transition duration-500"
-            style={{
-              transform: `translateX(${pos}%)`,
-            }}
-          >
-            <ProductCardSm product={p} />
-          </li>
-        ))}
+      <ul className="overflow-hidden">
+        <li>
+          <ul className="flex pb-1">
+            {products.slice(0, 6).map((p) => (
+              <li
+                key={p._id}
+                className="min-w-[50%] pr-5 transition duration-500"
+                style={{
+                  transform: `translateX(${pos}%)`,
+                }}
+              >
+                <ProductCardSm product={p} />
+              </li>
+            ))}
+          </ul>
+        </li>
+
+        <li>
+          <ul className="flex pt-1">
+            {products.slice(6, 12).map((p) => (
+              <li
+                key={p._id}
+                className="min-w-[50%] pr-5 transition duration-500"
+                style={{
+                  transform: `translateX(${pos}%)`,
+                }}
+              >
+                <ProductCardSm product={p} />
+              </li>
+            ))}
+          </ul>
+        </li>
       </ul>
     </div>
   );

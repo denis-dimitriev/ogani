@@ -11,10 +11,13 @@ import HotDeals from "@features/ui/hot-deals.tsx";
 import musli_berries from "app/assets/img/muesli-with-berries.png";
 import meat from "app/assets/img/meat.png";
 import daury_products from "app/assets/img/dairy-products.png";
+import sos_condim from "app/assets/img/sos&condiments.png";
+import nuts from "app/assets/img/nuts.png";
 import BadgeShop from "@shared/ui/badge-shop.tsx";
 import NewProducts from "@features/ui/new-products.tsx";
 import BannerCardSm from "@shared/ui/banner-card-sm.tsx";
 import OurProducts from "@features/ui/our-products.tsx";
+import BlogsSection from "@widgets/blogs-section.tsx";
 
 const products: IProduct[] = [
   {
@@ -268,7 +271,7 @@ function HomePage() {
         </section>
 
         <section className="flex h-auto w-full gap-[24px]">
-          <div className="col-sm flex  flex-col gap-[50px]">
+          <div className="col-sm flex  flex-col justify-between">
             <FeaturedProducts />
 
             <article className="flex h-[450px] w-full cursor-pointer justify-between bg-blue-100/40">
@@ -288,10 +291,10 @@ function HomePage() {
             </article>
           </div>
 
-          <div className="col-xl">
+          <div className="col-xl flex flex-col justify-between">
             <NewProducts />
 
-            <div className="mt-6 flex gap-[24px]">
+            <div className="mt-[40px] flex h-[150px]">
               <BannerCardSm
                 thumbnail={meat}
                 title={t?.banner["fresh meat"] as string}
@@ -304,17 +307,35 @@ function HomePage() {
                 link={""}
               />
             </div>
+
+            <div className="mt-6 flex h-[150px] gap-[24px]">
+              <BannerCardSm
+                thumbnail={sos_condim}
+                title={t?.categories["sauces and spices"] as string}
+                link={""}
+              />
+
+              <BannerCardSm
+                thumbnail={nuts}
+                title={t?.categories["nuts and seeds"] as string}
+                link={""}
+              />
+            </div>
           </div>
         </section>
 
-        <section className="flex h-auto w-full gap-[24px]">
-          <div className="col-sm h-[450px]">
+        <section className="flex h-[450px] w-full gap-[24px]">
+          <div className="col-sm">
             <HotDeals products={products} />
           </div>
 
-          <div className="col-xl h-[450px]">
+          <div className="col-xl">
             <OurProducts />
           </div>
+        </section>
+
+        <section className="h-[450px] w-full">
+          <BlogsSection />
         </section>
       </div>
       {view && <ProductQuickView />}

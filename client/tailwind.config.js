@@ -10,8 +10,8 @@ export default {
     },
     extend: {
       animation: {
-        fadeInY: "fadeInY 500ms ease-in",
-        fadeInX: "fadeInX 500ms ease-in",
+        fadeInY: "fadeInY 300ms ease-in",
+        fadeInX: "fadeInX 300ms ease-in",
       },
       keyframes: {
         fadeInY: {

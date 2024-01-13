@@ -28,8 +28,8 @@ function ProductCardSm({ product }: Props) {
     title.length > 20 ? title.substring(0, 15).concat("...") : title;
 
   return (
-    <article className="rounded border border-[--light] shadow">
-      <figure className="group relative flex items-start justify-center gap-x-2 text-[--darkest]">
+    <article className="h-full rounded border border-[--light] shadow">
+      <figure className="group relative flex h-full items-start justify-center gap-x-2 text-[--darkest]">
         <div className="relative min-w-[90px]">
           <Link to={`/market/${category.toLowerCase()}/${_id}`}>
             <img
@@ -43,7 +43,7 @@ function ProductCardSm({ product }: Props) {
             <img className="flex-1" src={thumbnail} alt="" />
           </Link>
         </div>
-        <figcaption className="flex min-w-[166px] flex-col gap-1.5">
+        <figcaption className="relative flex h-full min-w-[166px] flex-col gap-1.5">
           <p className="text-[16px]">{trimTitle}</p>
           <div className="flex">
             <ProductRating rating={rating} />
@@ -62,7 +62,7 @@ function ProductCardSm({ product }: Props) {
           </div>
 
           <Action
-            className="absolute bottom-2 z-50 translate-y-1/3 opacity-0 transition
+            className="absolute top-1/2 z-50 translate-y-1/3 opacity-0 transition
                     duration-300 group-hover:visible group-hover:translate-y-0
                     group-hover:opacity-100"
             product={product}

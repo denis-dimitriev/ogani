@@ -36,8 +36,8 @@ function ProductQuickView() {
   return (
     <div className="quick-view flex items-center justify-center">
       <div
-        className="relative h-[500px] w-[900px] animate-fadeInY
-       rounded-sm bg-white p-[30px] shadow-2xl tablet:w-[90%]"
+        className="relative h-[500px] w-[900px] animate-fadeInY rounded-sm
+       bg-white p-[30px] shadow-2xl tablet:w-[90%]"
       >
         <button
           className="group absolute right-3 top-2 rounded-full border
