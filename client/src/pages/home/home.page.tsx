@@ -2,7 +2,7 @@ import CategoriesMenu from "@widgets/categories-menu.tsx";
 import MainCarousel from "@widgets/main-carousel.tsx";
 import BannerArea from "@shared/ui/banner-area.tsx";
 import FeaturedProducts from "@features/ui/featured-products.tsx";
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useEffect } from "react";
 import ProductQuickView from "@features/ui/product-quick-view.tsx";
 import { QuickViewContext } from "@context/quick-view.context.ts";
 import { IProduct } from "@shared/ui/product-card-sm.tsx";

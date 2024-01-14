@@ -1,7 +1,9 @@
+import { IShoppingCart } from "@shared/types/shopping-cart.types.ts";
+
 interface GuestModel {
   username: string;
   role: Role;
-  cart: string[];
+  cart: IShoppingCart[];
   favorites?: string[];
 }
 interface PersonalInfo {
@@ -22,7 +24,7 @@ export interface IUser extends GuestModel {
   phoneNumber?: string;
   role: Role;
   personalInfo?: PersonalInfo;
-  cart: string[];
+  cart: IShoppingCart[];
   orders?: [];
   favorites?: string[];
   createdAt?: Date;

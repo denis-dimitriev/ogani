@@ -52,8 +52,8 @@ function ProductCard({ product }: Props) {
           </div>
 
           <Action
-            className="invisible absolute top-[-50px] translate-y-1/3
-             opacity-0 transition duration-300
+            className="invisible absolute  top-[-50px]
+             translate-y-1/3 opacity-0 transition duration-300
              group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
             product={product}
           />
