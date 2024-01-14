@@ -18,6 +18,7 @@ import NewProducts from "@features/ui/new-products.tsx";
 import BannerCardSm from "@shared/ui/banner-card-sm.tsx";
 import OurProducts from "@features/ui/our-products.tsx";
 import BlogsSection from "@widgets/blogs-section.tsx";
+import ReviewsSlider from "@features/ui/reviews-slider.tsx";
 
 const products: IProduct[] = [
   {
@@ -294,7 +295,7 @@ function HomePage() {
           <div className="col-xl flex flex-col justify-between">
             <NewProducts />
 
-            <div className="mt-[40px] flex h-[150px]">
+            <div className="mt-[40px] flex h-[150px] gap-[24px]">
               <BannerCardSm
                 thumbnail={meat}
                 title={t?.banner["fresh meat"] as string}
@@ -324,11 +325,20 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="flex h-[450px] w-full gap-[24px]">
+        <section className="flex h-[450px] w-full items-start gap-[24px]">
           <div className="col-sm">
             <HotDeals products={products} />
           </div>
 
+          <div className="col-xl">
+            <OurProducts />
+          </div>
+        </section>
+
+        <section className="flex h-[450px]  w-full items-start gap-[24px]">
+          <div className="col-sm h-full">
+            <ReviewsSlider />
+          </div>
           <div className="col-xl">
             <OurProducts />
           </div>
