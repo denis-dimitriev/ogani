@@ -1,15 +1,15 @@
 import {
+  DeleteIco,
   FavoritesIco,
   HintIco,
   ShoppingCartIco,
   VisualIco,
 } from "@app/assets/icons";
-import { ChangeEvent, Fragment, HTMLProps, useContext, useState } from "react";
+import { Fragment, HTMLProps, useContext, useEffect, useState } from "react";
 import UserStore from "@app/store/user.store.ts";
 import { LanguageContext } from "@context/language.context.tsx";
 import { QuickViewContext } from "@context/quick-view.context.ts";
 import { IProduct } from "@shared/ui/product-card-sm.tsx";
-import { isEmpty } from "@shared/helpers/common.helper.ts";
 import { observer } from "mobx-react-lite";
 
 interface Props extends HTMLProps<HTMLDivElement> {
@@ -19,45 +19,43 @@ interface Props extends HTMLProps<HTMLDivElement> {
 const Action = observer(function ({ className, product }: Props) {
   const { t } = useContext(LanguageContext);
   const { setView, setProduct } = useContext(QuickViewContext);
-  const [inputActive, setInputActive] = useState(false);
-  const [qty, setQTY] = useState(0.5);
+  const [cartTip, setCartTip] = useState(false);
+  const [favoriteTip, setFavoriteTip] = useState(false);
+  const [viewTip, setViewTip] = useState(false);
 
-  function onInputHandler(e: ChangeEvent<HTMLInputElement>) {
-    if (isEmpty(e.target.value)) {
-      setQTY(0);
-    } else if (isNaN(+e.target.value)) {
-      setQTY(0);
-    } else if (+e.target.value >= 10) {
-      setQTY(10);
+  const [inputActive, setInputActive] = useState(false);
+  const [qty, setQTY] = useState(0);
+
+  const itemVolume = product.unit === "kg" ? 0.5 : 1;
+
+  useEffect(() => {
+    if (product.unit === "kg") {
+      setQTY(0.5);
     } else {
-      setQTY(+e.target.value);
+      setQTY(1);
     }
-  }
+  }, [product]);
 
   function onIncHandler() {
     setQTY((prev) => {
-      UserStore.addToCart(product._id, prev);
       if (prev >= 10) {
         return 10;
       }
-      return prev + 0.5;
+      return prev + itemVolume;
     });
+    UserStore.addToCart(product._id, qty);
   }
 
   function onDecHandler() {
     setQTY((prev) => {
-      UserStore.addToCart(product._id, prev);
-      if (prev === 0) {
+      if (prev === itemVolume) {
         setInputActive(false);
-        return 0;
+        return itemVolume;
       }
-      return prev - 0.5;
+      return prev - itemVolume;
     });
+    UserStore.addToCart(product._id, qty);
   }
-
-  const [cartTip, setCartTip] = useState(false);
-  const [favoriteTip, setFavoriteTip] = useState(false);
-  const [viewTip, setViewTip] = useState(false);
 
   function onCartClickHandler() {
     setInputActive(true);
@@ -82,14 +80,14 @@ const Action = observer(function ({ className, product }: Props) {
       {inputActive ? (
         <div className="inline-flex text-[24px] leading-none">
           <button className="h-[30px] w-[30px]" onClick={onDecHandler}>
-            -
+            {qty <= 0.5 ? <DeleteIco /> : <span>-</span>}
           </button>
           <input
             type="text"
             inputMode="decimal"
-            value={`${qty}kg`}
-            className="w-[65px] px-2 text-center text-[20px] font-thin"
-            onInput={onInputHandler}
+            readOnly
+            value={`${qty}${product.unit}`}
+            className="w-[65px] text-center text-[20px] font-thin"
           />
           <button className="h-[30px] w-[30px]" onClick={onIncHandler}>
             +

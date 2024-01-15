@@ -2,7 +2,7 @@ import CategoriesMenu from "@widgets/categories-menu.tsx";
 import MainCarousel from "@widgets/main-carousel.tsx";
 import BannerArea from "@shared/ui/banner-area.tsx";
 import FeaturedProducts from "@features/ui/featured-products.tsx";
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useContext } from "react";
 import ProductQuickView from "@features/ui/product-quick-view.tsx";
 import { QuickViewContext } from "@context/quick-view.context.ts";
 import { IProduct } from "@shared/ui/product-card-sm.tsx";
@@ -17,8 +17,8 @@ import BadgeShop from "@shared/ui/badge-shop.tsx";
 import NewProducts from "@features/ui/new-products.tsx";
 import BannerCardSm from "@shared/ui/banner-card-sm.tsx";
 import OurProducts from "@features/ui/our-products.tsx";
-import BlogsSection from "@widgets/blogs-section.tsx";
 import ReviewsSlider from "@features/ui/reviews-slider.tsx";
+import BlogsSection from "@widgets/blogs-section.tsx";
 
 const products: IProduct[] = [
   {
@@ -39,6 +39,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "2",
@@ -58,6 +59,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 4,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "3",
@@ -77,6 +79,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 5,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "4",
@@ -96,6 +99,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "5",
@@ -115,6 +119,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 5,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "6",
@@ -134,13 +139,14 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 5,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "7",
-    title: "Varza din Moldova",
+    title: "Lapte din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image: "https://www.casutamea.md/uploaded/620cce55a6091.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -153,13 +159,15 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 4,
     sale: 20,
+    unit: "pcs",
   },
   {
     _id: "8",
-    title: "Varza din Moldova",
+    title: "Chefir CAsuta mea",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image:
+      "https://lapmol.md/images/site/cache/4f/4d/4f4dfce9c75e986fd341a83e18465ef1.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -172,6 +180,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "pcs",
   },
   {
     _id: "9",
@@ -191,13 +200,15 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "10",
-    title: "Varza din Moldova",
+    title: "Smantana dulce",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image:
+      "https://lapmol.md/images/site/cache/f4/dc/f4dc4962b7a07b21f33c605991767226.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -210,13 +221,15 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "pcs",
   },
   {
     _id: "11",
-    title: "Varza din Moldova",
+    title: "Smantana Casuta mea",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image:
+      "https://lapmol.md/images/site/cache/93/d0/93d0d15f73637a9d9819019d835320a4.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -229,13 +242,14 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 5,
     sale: 20,
+    unit: "pcs",
   },
   {
     _id: "12",
-    title: "Varza din Moldova",
+    title: "Smantana Casuta mea",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image: "https://casutamea.md/uploaded/620cd04ee401b.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -248,6 +262,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "pcs",
   },
 ];
 
@@ -272,7 +287,7 @@ function HomePage() {
         </section>
 
         <section className="flex h-auto w-full gap-[24px]">
-          <div className="col-sm flex  flex-col justify-between">
+          <div className="col-sm flex  flex-col gap-[50px]">
             <FeaturedProducts />
 
             <article className="flex h-[450px] w-full cursor-pointer justify-between bg-blue-100/40">
@@ -348,6 +363,7 @@ function HomePage() {
           <BlogsSection />
         </section>
       </div>
+
       {view && <ProductQuickView />}
     </Fragment>
   );

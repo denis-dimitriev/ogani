@@ -2,6 +2,7 @@ import ProductRating from "@shared/ui/product-rating.tsx";
 import Action from "@shared/ui/action.tsx";
 import { Rating } from "@shared/types/enums/product.types.ts";
 import { Link } from "react-router-dom";
+import { Unit } from "@shared/types/product.types.ts";
 
 export interface IProduct {
   _id: string;
@@ -14,6 +15,7 @@ export interface IProduct {
   rating: Rating;
   promoPrice: number;
   sale: number;
+  unit: Unit;
 }
 
 interface Props {

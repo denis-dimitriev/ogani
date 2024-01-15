@@ -102,7 +102,6 @@ class UserStore {
         if (p.product_id === _id) {
           p.qty = qty;
         }
-        return p;
       });
     } else {
       this.user.cart.push({ product_id: _id, qty });

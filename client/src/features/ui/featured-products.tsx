@@ -23,6 +23,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "2",
@@ -42,6 +43,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 4,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "3",
@@ -61,6 +63,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 5,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "4",
@@ -80,6 +83,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "5",
@@ -99,6 +103,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 5,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "6",
@@ -118,13 +123,14 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 5,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "7",
-    title: "Varza din Moldova",
+    title: "Lapte din Moldova",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image: "https://www.casutamea.md/uploaded/620cce55a6091.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -137,13 +143,15 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 4,
     sale: 20,
+    unit: "pcs",
   },
   {
     _id: "8",
-    title: "Varza din Moldova",
+    title: "Chefir CAsuta mea",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image:
+      "https://lapmol.md/images/site/cache/4f/4d/4f4dfce9c75e986fd341a83e18465ef1.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -156,6 +164,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "pcs",
   },
   {
     _id: "9",
@@ -175,13 +184,15 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "kg",
   },
   {
     _id: "10",
-    title: "Varza din Moldova",
+    title: "Smantana dulce",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image:
+      "https://lapmol.md/images/site/cache/f4/dc/f4dc4962b7a07b21f33c605991767226.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -194,13 +205,15 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "pcs",
   },
   {
     _id: "11",
-    title: "Varza din Moldova",
+    title: "Smantana Casuta mea",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image:
+      "https://lapmol.md/images/site/cache/93/d0/93d0d15f73637a9d9819019d835320a4.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -213,13 +226,14 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 5,
     sale: 20,
+    unit: "pcs",
   },
   {
     _id: "12",
-    title: "Varza din Moldova",
+    title: "Smantana Casuta mea",
     thumbnail:
       "https://htmldemo.net/safira/safira/assets/img/product/product8.jpg",
-    image: "https://htmldemo.net/safira/safira/assets/img/product/product1.jpg",
+    image: "https://casutamea.md/uploaded/620cd04ee401b.png",
     category: "Vegetables",
     description:
       " Lorem ipsum dolor sit amet, consectetur adipisicing elit. " +
@@ -232,6 +246,7 @@ const products: IProduct[] = [
     promoPrice: 7.5,
     rating: 3,
     sale: 20,
+    unit: "pcs",
   },
 ];
 

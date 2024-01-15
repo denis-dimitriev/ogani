@@ -1,3 +1,3 @@
-export type Unit = "kg" | "l" | "pcs";
+export type Unit = "kg" | "pcs";
 
 export interface IProduct {}

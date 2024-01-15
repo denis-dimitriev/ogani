@@ -22,6 +22,7 @@ import StarIco from "./star.svg";
 import StarGoldIco from "./star-gold.svg";
 import HintIco from "./hint.svg";
 import VisualIco from "./visualization.svg";
+import DeleteIco from "./delete.svg";
 
 export {
   ArrowIco,
@@ -48,4 +49,5 @@ export {
   StarGoldIco,
   HintIco,
   VisualIco,
+  DeleteIco,
 };
