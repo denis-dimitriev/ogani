@@ -95,20 +95,7 @@ class UserStore {
     return await ApiService.getCurrentUser();
   }
 
-  addToCart(_id: string, qty: number) {
-    const index = this.user.cart.findIndex((p) => p.product_id === _id);
-    if (index !== -1) {
-      this.user.cart.forEach((p) => {
-        if (p.product_id === _id) {
-          p.qty = qty;
-        }
-      });
-    } else {
-      this.user.cart.push({ product_id: _id, qty });
-    }
-
-    console.log(toJS(this.user.cart));
-  }
+  addToCart() {}
 
   addToFavorites(_id: string) {
     this.user.favorites?.push(_id);

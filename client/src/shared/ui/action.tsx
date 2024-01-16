@@ -5,12 +5,13 @@ import {
   ShoppingCartIco,
   VisualIco,
 } from "@app/assets/icons";
-import { Fragment, HTMLProps, useContext, useEffect, useState } from "react";
+import { Fragment, HTMLProps, useContext, useState } from "react";
 import UserStore from "@app/store/user.store.ts";
 import { LanguageContext } from "@context/language.context.tsx";
 import { QuickViewContext } from "@context/quick-view.context.ts";
-import { IProduct } from "@shared/ui/product-card-sm.tsx";
 import { observer } from "mobx-react-lite";
+import ShoppingCartStore from "@app/store/shopping-cart.store.ts";
+import { IProduct } from "@shared/types/product.types.ts";
 
 interface Props extends HTMLProps<HTMLDivElement> {
   product: IProduct;
@@ -18,48 +19,37 @@ interface Props extends HTMLProps<HTMLDivElement> {
 
 const Action = observer(function ({ className, product }: Props) {
   const { t } = useContext(LanguageContext);
+
   const { setView, setProduct } = useContext(QuickViewContext);
   const [cartTip, setCartTip] = useState(false);
   const [favoriteTip, setFavoriteTip] = useState(false);
   const [viewTip, setViewTip] = useState(false);
 
   const [inputActive, setInputActive] = useState(false);
-  const [qty, setQTY] = useState(0);
 
-  const itemVolume = product.unit === "kg" ? 0.5 : 1;
+  const unitQty = product.unit === "kg" ? 0.5 : 1;
 
-  useEffect(() => {
-    if (product.unit === "kg") {
-      setQTY(0.5);
-    } else {
-      setQTY(1);
-    }
-  }, [product]);
+  const cartItem = ShoppingCartStore.getCart().find(
+    (p) => p._id === product._id,
+  );
 
-  function onIncHandler() {
-    setQTY((prev) => {
-      if (prev >= 10) {
-        return 10;
-      }
-      return prev + itemVolume;
-    });
-    UserStore.addToCart(product._id, qty);
-  }
+  const onIncHandler = () => ShoppingCartStore.addToCart(product);
 
   function onDecHandler() {
-    setQTY((prev) => {
-      if (prev === itemVolume) {
-        setInputActive(false);
-        return itemVolume;
-      }
-      return prev - itemVolume;
-    });
-    UserStore.addToCart(product._id, qty);
+    ShoppingCartStore.removeFromCart(product);
+
+    const cartItem = ShoppingCartStore.getCart().find(
+      (p) => p._id === product._id,
+    );
+
+    if (cartItem === undefined) {
+      setInputActive(false);
+    }
   }
 
   function onCartClickHandler() {
     setInputActive(true);
-    UserStore.addToCart(product._id, qty);
+    ShoppingCartStore.addToCart(product);
   }
 
   function onAddToFavoritesHandler() {
@@ -80,13 +70,17 @@ const Action = observer(function ({ className, product }: Props) {
       {inputActive ? (
         <div className="inline-flex text-[24px] leading-none">
           <button className="h-[30px] w-[30px]" onClick={onDecHandler}>
-            {qty <= 0.5 ? <DeleteIco /> : <span>-</span>}
+            {cartItem && cartItem.qty <= unitQty ? (
+              <DeleteIco className="fill-[--red] stroke-[--red]" />
+            ) : (
+              <span>-</span>
+            )}
           </button>
           <input
             type="text"
             inputMode="decimal"
             readOnly
-            value={`${qty}${product.unit}`}
+            value={`${cartItem?.qty}${cartItem?.unit}`}
             className="w-[65px] text-center text-[20px] font-thin"
           />
           <button className="h-[30px] w-[30px]" onClick={onIncHandler}>
