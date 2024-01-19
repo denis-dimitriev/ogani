@@ -1,26 +1,22 @@
 import { makeAutoObservable, toJS } from "mobx";
 import { IProduct } from "@shared/types/product.types.ts";
 
-interface CartItem extends IProduct {
+export interface ShoppingCartItem extends IProduct {
   qty: number;
   totalPrice: number;
 }
 
 class ShoppingCartStore {
-  private cart: CartItem[] = [];
+  private cart: ShoppingCartItem[] = [];
 
   totalSum = 0;
-  readonly maxLimitQty = 10;
+  readonly maxLimitQty = 10; // 10kg or 10pcs
 
   constructor() {
     makeAutoObservable(this);
-
-    if (this.cart) {
-      // calculate total sum
-    }
   }
 
-  getCart(): CartItem[] {
+  getCart(): ShoppingCartItem[] {
     return toJS(this.cart);
   }
 
@@ -49,7 +45,9 @@ class ShoppingCartStore {
       });
     }
 
-    console.log(toJS(this.cart));
+    this.totalSum = this.cart.reduce((acc, curr) => {
+      return acc + curr.totalPrice;
+    }, 0);
   }
 
   removeFromCart(product: IProduct) {
@@ -71,7 +69,9 @@ class ShoppingCartStore {
       this.cart = this.cart.filter((p) => p.qty !== 0);
     }
 
-    console.log(toJS(this.cart));
+    this.totalSum = this.cart.reduce((acc, curr) => {
+      return acc + curr.totalPrice;
+    }, 0);
   }
 }
 

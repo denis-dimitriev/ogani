@@ -95,8 +95,6 @@ class UserStore {
     return await ApiService.getCurrentUser();
   }
 
-  addToCart() {}
-
   addToFavorites(_id: string) {
     this.user.favorites?.push(_id);
   }
