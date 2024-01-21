@@ -112,6 +112,11 @@
     .header-menu {
         width: 100%;
         height: calc(100% - var(--header-top-height) - var(--header-bottom-height));
+
+        & svg {
+            width: 30px;
+            height: 30px;
+        }
     }
 
     .header-bottom {
@@ -265,5 +270,9 @@
         height: 100%;
         z-index: 1999;
         background: rgba(0, 0, 0, 0.6);
+    }
+
+    .around-shadow {
+        box-shadow: -4px -4px 45px -5px rgba(0,0,0,0.57);
     }
 }

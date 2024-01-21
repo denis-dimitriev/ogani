@@ -5,7 +5,6 @@ import FeaturedProducts from "@features/ui/featured-products.tsx";
 import { Fragment, useContext } from "react";
 import ProductQuickView from "@features/ui/product-quick-view.tsx";
 import { QuickViewContext } from "@context/quick-view.context.ts";
-import { IProduct } from "@shared/ui/product-card-sm.tsx";
 import { LanguageContext } from "@context/language.context.tsx";
 import HotDeals from "@features/ui/hot-deals.tsx";
 import musli_berries from "app/assets/img/muesli-with-berries.png";
@@ -19,6 +18,7 @@ import BannerCardSm from "@shared/ui/banner-card-sm.tsx";
 import OurProducts from "@features/ui/our-products.tsx";
 import ReviewsSlider from "@features/ui/reviews-slider.tsx";
 import BlogsSection from "@widgets/blogs-section.tsx";
+import { IProduct } from "@shared/types/product.types.ts";
 
 const products: IProduct[] = [
   {

@@ -65,7 +65,7 @@ const Action = observer(function ({ className, product }: Props) {
     <div
       className={`${className}
          flex items-center justify-center gap-x-2 rounded-3xl
-        border border-[--gray] bg-white px-3 py-1 shadow-2xl`}
+        border border-[--gray] bg-white px-3 py-1 around-shadow`}
     >
       {inputActive ? (
         <div className="inline-flex text-[24px] leading-none">

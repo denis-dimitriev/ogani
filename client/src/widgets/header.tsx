@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { CustomerSupportIco, LoginIco, MailIco } from "@app//assets/icons";
 import LanguageSelector from "@shared/ui/language-selector.tsx";
 import MainNav from "@widgets/main-nav.tsx";
-import Favorites from "@shared/ui/favorites.tsx";
-import ShoppingCart from "@shared/ui/shopping-cart.tsx";
+import FavoritesCounter from "@shared/ui/favorites-counter.tsx";
+import ShoppingCartCounter from "@shared/ui/shopping-cart-counter.tsx";
 import CategoriesToggleButton from "@widgets/ui/categories-toggle-button.tsx";
 import SearchForm from "@widgets/search-form.tsx";
 import UserAccount from "@widgets/user-account.tsx";
@@ -57,9 +57,9 @@ const Header = observer(function () {
           <div className="col-lg">
             <MainNav />
           </div>
-          <div className="col-sm flex items-center justify-end gap-[10px]">
-            <Favorites />
-            <ShoppingCart />
+          <div className="col-sm flex items-center justify-end gap-x-[30px]">
+            <FavoritesCounter />
+            <ShoppingCartCounter />
             <UserAccount />
           </div>
         </div>

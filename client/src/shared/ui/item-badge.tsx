@@ -1,10 +1,16 @@
-function ItemBadge() {
+import { HTMLProps } from "react";
+
+interface Props extends HTMLProps<HTMLSpanElement>{
+  count: number
+}
+
+function ItemBadge({ count, className }: Props) {
   return (
     <span
-      className="h-[18px] w-[18px] rounded-full bg-[--gray-lighter]
-    text-center text-[12px] text-[--gray-dark]"
+      className={`${className} h-[20px] w-[20px] rounded-full bg-[--red]
+        text-center text-[14px] text-[--white]`}
     >
-      2
+      {count}
     </span>
   );
 }

@@ -15,19 +15,19 @@ function ProductCard({ product }: Props) {
   const { t } = useContext(LanguageContext);
 
   return (
-    <article className="group relative flex w-[258px] min-w-[190px] flex-col items-center">
+    <article className="group relative flex w-[258px] flex-col items-center">
       <figure className="relative flex w-full flex-col">
         <Link
           to={`/market/${category.toLowerCase()}/${_id}`}
-          className="relative"
+          className="relative h-[258px] w-[258px]"
         >
           <img
-            className="absolute w-full opacity-0 transition-opacity duration-500
+            className="absolute h-full w-full object-contain opacity-0 transition-opacity duration-500
                        group-hover:opacity-100"
             src={thumbnail}
             alt=""
           />
-          <img className="w-full" src={image} alt="" />
+          <img className="h-full w-full object-contain" src={image} alt="" />
         </Link>
 
         <Badge className="absolute left-5 top-3 z-10">
@@ -52,7 +52,7 @@ function ProductCard({ product }: Props) {
           </div>
 
           <Action
-            className="invisible absolute  top-[-50px]
+            className="invisible absolute top-[-50px]
              translate-y-1/3 opacity-0 transition duration-300
              group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
             product={product}
