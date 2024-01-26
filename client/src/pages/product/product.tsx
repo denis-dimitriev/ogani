@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 
 function Product() {
   const { category } = useParams();

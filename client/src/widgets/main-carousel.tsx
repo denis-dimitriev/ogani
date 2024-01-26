@@ -1,9 +1,15 @@
 import { ArrowIco } from "@app/assets/icons";
-import { useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
+import {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
 import ApiService from "@app/service/api.service.ts";
 import Spinner from "@shared/ui/spinner.tsx";
 import { Link } from "react-router-dom";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 
 interface Image {
   name: string;
@@ -36,7 +42,6 @@ function MainCarousel() {
       return prevState - 100;
     });
   }
-
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function onPrevSlide() {

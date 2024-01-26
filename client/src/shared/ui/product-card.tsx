@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import Action from "@shared/ui/action.tsx";
 import Badge from "@shared/ui/badge.tsx";
 import { IProduct } from "@shared/ui/product-card-sm.tsx";

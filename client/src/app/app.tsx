@@ -4,7 +4,7 @@ import Layout from "layout/layout";
 import Header from "@widgets/header";
 import Footer from "@widgets/footer";
 import { useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import Spinner from "@shared/ui/spinner.tsx";
 import { observer } from "mobx-react-lite";
 

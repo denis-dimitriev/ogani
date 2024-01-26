@@ -1,6 +1,6 @@
 import ProductCardSm, { IProduct } from "@shared/ui/product-card-sm.tsx";
 import { useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import { useSlider } from "@shared/helpers/slider.hook.ts";
 import SectionHeader from "@shared/ui/section-header.tsx";
 

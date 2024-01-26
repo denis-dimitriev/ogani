@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import InputForm from "@shared/ui/input-form.tsx";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "@context/auth.context.ts";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import SignInStore from "@app/store/signin.store.ts";
 import SubmitButton from "@shared/ui/submit-button.tsx";
 import { observer } from "mobx-react-lite";
@@ -19,7 +19,7 @@ const LoginForm = observer(() => {
   const [success, setSuccess] = useState("");
   const [clearFields, setClearFields] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function onEmailHandler(e: ChangeEvent<HTMLInputElement>) {
     SignInStore.onEmailInput(e.target.value);
@@ -64,8 +64,8 @@ const LoginForm = observer(() => {
 
     if (UserStore.getUser().role === "customer") {
       setTimeout(() => {
-        navigate(LINKS.HOME)
-      }, 1000)
+        navigate(LINKS.HOME);
+      }, 1000);
     }
   }
 

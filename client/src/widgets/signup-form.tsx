@@ -3,7 +3,7 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { AuthContext } from "@context/auth.context.ts";
 import SignupStore from "@app/store/signup.store.ts";
 import { observer } from "mobx-react-lite";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import SubmitButton from "@shared/ui/submit-button.tsx";
 import Alert from "@shared/ui/alert.tsx";
 import UserStore from "@app/store/user.store.ts";

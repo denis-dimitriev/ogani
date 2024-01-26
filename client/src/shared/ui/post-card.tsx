@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { AlTArrowIco } from "@app/assets/icons";
 import { useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 
 function PostCard() {
   const { t } = useContext(LanguageContext);

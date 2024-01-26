@@ -4,7 +4,7 @@ import {
   loadROJson,
   loadRUJson,
 } from "@shared/helpers/translation.helper.ts";
-import { LanguageContext, LanguageType } from "@context/language.context.tsx";
+import { LanguageContext, LanguageType } from "@context/language.context.ts";
 import { Ogani } from "@shared/types/common.types.ts";
 
 interface Props {

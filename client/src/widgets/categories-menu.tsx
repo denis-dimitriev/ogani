@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { CATEGORIES } from "@shared/types/enums/categories.ts";
 import { useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 
 const categories = Object.values(CATEGORIES);
 

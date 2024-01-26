@@ -1,14 +1,14 @@
 import { createContext, SetStateAction, Dispatch } from "react";
-import { IProduct } from "@shared/ui/product-card-sm.tsx";
+import { IProduct } from "@shared/types/product.types.ts";
 
-interface IContext {
+type Context = {
   view: boolean;
   setView: Dispatch<SetStateAction<boolean>>;
   product: IProduct | null;
   setProduct: Dispatch<SetStateAction<IProduct | null>>;
-}
+};
 
-export const QuickViewContext = createContext<IContext>({
+export const QuickViewContext = createContext<Context>({
   view: false,
   setView: () => false,
   product: null,

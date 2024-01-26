@@ -7,7 +7,7 @@ import {
 } from "@app/assets/icons";
 import { Fragment, HTMLProps, useContext, useState } from "react";
 import UserStore from "@app/store/user.store.ts";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import { QuickViewContext } from "@context/quick-view.context.ts";
 import { observer } from "mobx-react-lite";
 import ShoppingCartStore from "@app/store/shopping-cart.store.ts";
@@ -64,8 +64,8 @@ const Action = observer(function ({ className, product }: Props) {
   return (
     <div
       className={`${className}
-         flex items-center justify-center gap-x-2 rounded-3xl
-        border border-[--gray] bg-white px-3 py-1 around-shadow`}
+         around-shadow flex items-center justify-center gap-x-2
+        rounded-3xl border border-[--gray] bg-white px-3 py-1`}
     >
       {inputActive ? (
         <div className="inline-flex text-[24px] leading-none">

@@ -2,7 +2,7 @@ import { Fragment, useContext, useEffect, useState } from "react";
 import apiService from "@app/service/api.service.ts";
 import Spinner from "@shared/ui/spinner.tsx";
 import { Status } from "../../../../server/src/types/common.ts";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import BannerCard from "@shared/ui/banner-card.tsx";
 
 interface Banner {

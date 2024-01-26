@@ -7,6 +7,7 @@ import Backdrop from "@shared/ui/backdrop.tsx";
 import Spinner from "@shared/ui/spinner.tsx";
 import { AuthProvider } from "@app/providers/auth.provider.tsx";
 import { QuickViewProvider } from "@app/providers/quick-view.provider.tsx";
+import { HeaderScrollProvider } from "@app/providers/header-scroll.provider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense
@@ -17,11 +18,13 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     }
   >
     <TranslateProvider>
-      <AuthProvider>
-        <QuickViewProvider>
-          <RouterProvider router={appRoute} />
-        </QuickViewProvider>
-      </AuthProvider>
+      <HeaderScrollProvider>
+        <AuthProvider>
+          <QuickViewProvider>
+            <RouterProvider router={appRoute} />
+          </QuickViewProvider>
+        </AuthProvider>
+      </HeaderScrollProvider>
     </TranslateProvider>
   </Suspense>,
 );

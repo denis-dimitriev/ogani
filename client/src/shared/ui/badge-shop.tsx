@@ -1,5 +1,5 @@
 import { HTMLProps, useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import { AlTArrowIco } from "@app/assets/icons";
 
 interface Props extends HTMLProps<HTMLSpanElement> {

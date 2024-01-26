@@ -2,7 +2,7 @@ import mdFlag from "@app/assets/img/md-flag.png";
 import ruFlag from "@app/assets/img/ru-flag.png";
 import { ArrowIco } from "@app/assets/icons";
 import { useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 
 function LanguageSelector() {
   const { language, setLanguage } = useContext(LanguageContext);
@@ -37,7 +37,7 @@ function LanguageSelector() {
         rounded bg-[--darkest] text-[--white] shadow-lg transition
         duration-300 group-hover:visible  group-hover:translate-y-0"
       >
-        <ul className="p-2">
+        <ul className="py-2 text-center">
           {language !== "ro" ? (
             <li>
               <button

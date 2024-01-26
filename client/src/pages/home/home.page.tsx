@@ -5,7 +5,7 @@ import FeaturedProducts from "@features/ui/featured-products.tsx";
 import { Fragment, useContext } from "react";
 import ProductQuickView from "@features/ui/product-quick-view.tsx";
 import { QuickViewContext } from "@context/quick-view.context.ts";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import HotDeals from "@features/ui/hot-deals.tsx";
 import musli_berries from "app/assets/img/muesli-with-berries.png";
 import meat from "app/assets/img/meat.png";

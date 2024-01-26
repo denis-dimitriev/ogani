@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 import Logo from "@shared/ui/logo";
 import { Link } from "react-router-dom";
 import { CustomerSupportIco, LoginIco, MailIco } from "@app//assets/icons";
@@ -13,6 +13,7 @@ import UserAccount from "@widgets/user-account.tsx";
 import { LINKS } from "@shared/types/enums/links.ts";
 import UserStore from "@app/store/user.store.ts";
 import { observer } from "mobx-react-lite";
+import HeaderFixed from "@widgets/header-fixed.tsx";
 
 const Header = observer(function () {
   const { t } = useContext(LanguageContext);
@@ -85,6 +86,9 @@ const Header = observer(function () {
           </div>
         </div>
       </div>
+
+      {/* SCROLL */}
+      <HeaderFixed />
     </header>
   );
 });

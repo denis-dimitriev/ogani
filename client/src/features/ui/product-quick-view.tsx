@@ -2,7 +2,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import { QuickViewContext } from "@context/quick-view.context.ts";
 import { ArrowIco, CloseIco } from "@app/assets/icons";
 import { isEmpty } from "@shared/helpers/common.helper.ts";
-import { LanguageContext } from "@context/language.context.tsx";
+import { LanguageContext } from "@context/language.context.ts";
 
 function ProductQuickView() {
   const { product, setView } = useContext(QuickViewContext);
@@ -36,7 +36,7 @@ function ProductQuickView() {
   return (
     <div className="quick-view flex items-center justify-center">
       <div
-        className="animate-fadeQView relative h-[500px] w-[900px] rounded-sm
+        className="relative h-[500px] w-[900px] animate-fadeQView rounded-sm
        bg-white p-[30px] shadow-2xl tablet:w-[90%]"
       >
         <button
