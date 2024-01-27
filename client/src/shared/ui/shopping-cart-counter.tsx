@@ -9,7 +9,7 @@ const ShoppingCartCounter = observer(function () {
 
   return (
     <Link to="/shopping-cart" className="relative block">
-      <ShoppingCartIco className="fill-black stroke-black" />
+      <ShoppingCartIco />
       <ItemBadge className="absolute right-[-15px] top-[-10px]" count={count} />
     </Link>
   );

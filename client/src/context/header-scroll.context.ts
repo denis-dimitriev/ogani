@@ -1,9 +1,9 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
-type Context = {
+interface Context {
   hidden: boolean;
   setHidden: Dispatch<SetStateAction<boolean>>;
-};
+}
 
 export const HeaderScrollContext = createContext<Context>({
   hidden: false,

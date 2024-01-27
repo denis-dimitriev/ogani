@@ -277,6 +277,6 @@
     }
 
     .bg-gradient {
-        background: linear-gradient(0.25turn, var(--red), white, var(--teal));
+        background: linear-gradient(0.25turn, var(--red), white, var(--lime));
     }
 }

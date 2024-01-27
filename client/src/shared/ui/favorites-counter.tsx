@@ -6,7 +6,7 @@ import { observer } from "mobx-react-lite";
 const FavoritesCounter = observer(function () {
   return (
     <Link to="/favorites" className="relative block">
-      <FavoritesIco className="fill-black stroke-black" />
+      <FavoritesIco />
       <ItemBadge className="absolute right-[-15px] top-[-10px]" count={1} />
     </Link>
   );

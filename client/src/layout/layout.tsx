@@ -12,7 +12,6 @@ function Layout({ children }: Props) {
     (event: WheelEvent) => {
       const windowsHeight = window.innerHeight;
       const layoutHeight = document.getElementById("layout")?.offsetHeight;
-      console.log(event.deltaMode);
       if (layoutHeight! > windowsHeight) {
         event.deltaY > 0 ? setHidden(true) : setHidden(false);
       }
@@ -28,7 +27,7 @@ function Layout({ children }: Props) {
       "wheel",
       (e: WheelEvent) => {
         if (layout.offsetHeight > windowsHeight) {
-          timeout = setTimeout(() => handleScroll(e), 100);
+          timeout = setTimeout(() => handleScroll(e), 300);
         }
       },
       { passive: true },

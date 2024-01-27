@@ -5,6 +5,10 @@ import { Carousel } from "../models/carousel.model";
 import AppError from "../helpers/appError";
 import { ImageFile } from "../types/common";
 
+//  https://ucarecdn.com/:uuid/
+
+import { uploadFile } from "@uploadcare/upload-client";
+
 export const getCarousel = asyncHandler(async function (
   req: Request,
   res: Response,

@@ -1,15 +1,15 @@
 import { createContext } from "react";
 
-interface IContext {
+interface Context {
   hasAccount: boolean;
   userWantRegister: () => void;
   userWantLogin: () => void;
 }
 
-const initial: IContext = {
+const initial: Context = {
   hasAccount: false,
   userWantLogin: () => {},
   userWantRegister: () => {},
 };
 
-export const AuthContext = createContext<IContext>(initial);
+export const AuthContext = createContext<Context>(initial);

@@ -12,7 +12,8 @@ const storage = multer.diskStorage({
     callback(null, pathToStorage);
   },
   filename: (req, file, callback) => {
-    callback(null, `slider_${Date.now()}.${path.extname(file.originalname)}`);
+    const filename = `slider_${Date.now()}${path.extname(file.originalname)}`;
+    callback(null, filename);
   },
 });
 
