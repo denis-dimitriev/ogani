@@ -2,7 +2,7 @@ import CategoriesMenu from "@widgets/categories-menu.tsx";
 import MainCarousel from "@widgets/main-carousel.tsx";
 import BannerArea from "@shared/ui/banner-area.tsx";
 import FeaturedProducts from "@features/ui/featured-products.tsx";
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import ProductQuickView from "@features/ui/product-quick-view.tsx";
 import { QuickViewContext } from "@context/quick-view.context.ts";
 import { LanguageContext } from "@context/language.context.ts";
@@ -18,9 +18,10 @@ import BannerCardSm from "@shared/ui/banner-card-sm.tsx";
 import OurProducts from "@features/ui/our-products.tsx";
 import ReviewsSlider from "@features/ui/reviews-slider.tsx";
 import BlogsSection from "@widgets/blogs-section.tsx";
-import { IProduct } from "@shared/types/product.types.ts";
+import apiService from "@app/service/api.service.ts";
+import ProductCard from "@shared/ui/product-card.tsx";
 
-const products: IProduct[] = [
+/*const products: IProduct[] = [
   {
     _id: "1",
     title: "Varza din Moldova",
@@ -264,11 +265,24 @@ const products: IProduct[] = [
     sale: 20,
     unit: "pcs",
   },
-];
+];*/
 
 function HomePage() {
   const { view } = useContext(QuickViewContext);
   const { t } = useContext(LanguageContext);
+
+  const [items, setItems] = useState();
+
+  useEffect(() => {
+    apiService
+      .getProducts()
+      .then((res) => {
+        if (res.data) {
+          setItems(res.data.products);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <Fragment>
@@ -307,6 +321,13 @@ function HomePage() {
             </article>
           </div>
 
+          <div className="flex gap-x-[40px]">
+            {items && <ProductCard product={items[0]} />}
+            {items && <ProductCard product={items[0]} />}
+            {items && <ProductCard product={items[0]} />}
+          </div>
+
+          {/*
           <div className="col-xl flex flex-col justify-between">
             <NewProducts />
 
@@ -356,7 +377,7 @@ function HomePage() {
           </div>
           <div className="col-xl">
             <OurProducts />
-          </div>
+          </div>*/}
         </section>
 
         <section className="h-[450px] w-full">

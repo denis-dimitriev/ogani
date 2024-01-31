@@ -28,6 +28,10 @@ class ApiService {
   static async getBanner() {
     return await axios.get(API.BANNER_GET);
   }
+
+  static async getProducts() {
+    return await axios.get(API.PRODUCTS_GET);
+  }
 }
 
 export default ApiService;

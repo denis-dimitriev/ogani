@@ -9,4 +9,7 @@ export enum API {
   MAIN_CAROUSEL_UPLOAD = "api/carousel/upload",
   BANNER_GET = "api/banner",
   BANNER_UPLOAD = "api/banner/upload",
+  PRODUCTS_GET = "api/products",
+  PRODUCT_GET = "api/products/:id",
+  PRODUCT_UPLOAD = "api/products/create",
 }

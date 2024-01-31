@@ -3,11 +3,6 @@ import { NextFunction, Request, Response } from "express";
 import { STATUS_CODE } from "../types/enums/status-code";
 import { Carousel } from "../models/carousel.model";
 import AppError from "../helpers/appError";
-import { ImageFile } from "../types/common";
-
-//  https://ucarecdn.com/:uuid/
-
-import { uploadFile } from "@uploadcare/upload-client";
 
 export const getCarousel = asyncHandler(async function (
   req: Request,
@@ -32,15 +27,10 @@ export const addCarousel = asyncHandler(async function (
   next: NextFunction,
 ) {
   const { title, link } = req.body;
-  const { filename } = req.file as ImageFile;
 
   const slide = await Carousel.create({
     title,
     link,
-    image: {
-      name: filename,
-      path: `http://localhost:8000/api/images/carousel/${filename}`,
-    },
   });
 
   if (slide) {

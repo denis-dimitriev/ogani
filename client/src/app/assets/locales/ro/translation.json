@@ -86,6 +86,14 @@
   },
   "product": {
     "discount": "Reducere",
-    "new": "Nou"
+    "new": "Nou",
+    "in stock": "Disponibil în stoc",
+    "info": "Detalii despre produs",
+    "description": "Descriere",
+    "terms": "Termen de valabilitate",
+    "manufacturer": "Producător",
+    "unit": "Unit. de măsură",
+    "kg": "kg",
+    "pcs": "buc"
   }
 }

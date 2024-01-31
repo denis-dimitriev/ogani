@@ -11,10 +11,10 @@ import { LanguageContext } from "@context/language.context.ts";
 import { QuickViewContext } from "@context/quick-view.context.ts";
 import { observer } from "mobx-react-lite";
 import ShoppingCartStore from "@app/store/shopping-cart.store.ts";
-import { IProduct } from "@shared/types/product.types.ts";
+import { ProductType } from "@shared/types/product.types.ts";
 
 interface Props extends HTMLProps<HTMLDivElement> {
-  product: IProduct;
+  product: ProductType;
 }
 
 const Action = observer(function ({ className, product }: Props) {
@@ -64,8 +64,8 @@ const Action = observer(function ({ className, product }: Props) {
   return (
     <div
       className={`${className}
-         around-shadow flex items-center justify-center gap-x-2
-        rounded-3xl border border-[--gray] bg-white px-3 py-1`}
+         flex items-center justify-center gap-x-2 rounded-3xl
+        border border-[--gray] bg-white px-3 py-1 shadow-lg shadow-[--red]`}
     >
       {inputActive ? (
         <div className="inline-flex text-[24px] leading-none">

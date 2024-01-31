@@ -1,7 +1,7 @@
 import { makeAutoObservable, toJS } from "mobx";
-import { IProduct } from "@shared/types/product.types.ts";
+import { ProductType } from "@shared/types/product.types.ts";
 
-export interface ShoppingCartItem extends IProduct {
+export interface ShoppingCartItem extends ProductType {
   qty: number;
   totalPrice: number;
 }
@@ -20,7 +20,7 @@ class ShoppingCartStore {
     return toJS(this.cart);
   }
 
-  addToCart(product: IProduct) {
+  addToCart(product: ProductType) {
     const existsProduct = this.cart.find((p) => p._id === product._id);
 
     const unitQty = product.unit === "kg" ? 0.5 : 1;
@@ -50,7 +50,7 @@ class ShoppingCartStore {
     }, 0);
   }
 
-  removeFromCart(product: IProduct) {
+  removeFromCart(product: ProductType) {
     const unitQty = product.unit === "kg" ? 0.5 : 1;
 
     this.cart.forEach((p) => {

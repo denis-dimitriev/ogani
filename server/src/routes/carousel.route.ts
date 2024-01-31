@@ -1,25 +1,9 @@
 import { Router } from "express";
-import * as path from "path";
-import multer from "multer";
 import * as carouselController from "../controllers/carousel.controller";
 
 const router = Router();
 
-const pathToStorage = "server/src/public/images/carousel";
-
-const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, pathToStorage);
-  },
-  filename: (req, file, callback) => {
-    const filename = `slider_${Date.now()}${path.extname(file.originalname)}`;
-    callback(null, filename);
-  },
-});
-
-const upload = multer({ storage });
-
 router.get("/", carouselController.getCarousel);
-router.post("/upload", upload.single("image"), carouselController.addCarousel);
+router.post("/upload", carouselController.addCarousel);
 
 export { router as carouselRouter };

@@ -2,7 +2,6 @@ import { asyncHandler } from "../helpers/async-handler";
 import { NextFunction, Request, Response } from "express";
 import { STATUS_CODE } from "../types/enums/status-code";
 import AppError from "../helpers/appError";
-import { ImageFile } from "../types/common";
 import { Banner } from "../models/banner.model";
 import { Categories } from "../models/category.model";
 
@@ -30,16 +29,14 @@ export const addBanner = asyncHandler(async function (
   next: NextFunction,
 ) {
   const { title, link, category } = req.body;
-  const { filename } = req.file as ImageFile;
 
-  const categoryParent  = await Categories.findOne({name: category})
+  const categoryParent = await Categories.findOne({ name: category });
 
   if (category) {
     const item = await Banner.create({
       title,
       link,
       category: categoryParent,
-      thumbnail: `http://localhost:8000/api/images/banner/${filename}`,
     });
 
     if (item) {

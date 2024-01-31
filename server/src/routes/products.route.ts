@@ -1,17 +1,16 @@
-import { Router } from 'express'
-import * as productController from '../controllers/product.controller'
+import { Router } from "express";
+import * as productController from "../controllers/product.controller";
 
-const router = Router()
+const router = Router();
+
+router.route("/").get(productController.getProducts);
+
+router.route("/create").post(productController.createProduct);
 
 router
-  .route('/')
-  .get(productController.getProducts)
-  .post(productController.createProduct)
-
-router
-  .route('/:id')
+  .route("/:id")
   .get(productController.getProduct)
   .patch(productController.updateProduct)
-  .delete(productController.deleteProduct)
+  .delete(productController.deleteProduct);
 
-export { router as productsRouter }
+export { router as productsRouter };

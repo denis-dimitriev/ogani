@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
+import expressUpload from "express-fileupload";
 import { productsRouter } from "./routes/products.route";
 import { userRouter } from "./routes/users.route";
 import { categoriesRouter } from "./routes/categories.route";
@@ -11,6 +12,7 @@ import { bannerRouter } from "./routes/banner.route";
 
 const app = express();
 app.use(cors());
+app.use(expressUpload());
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(cookieParser());

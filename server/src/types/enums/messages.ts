@@ -16,4 +16,5 @@ export enum MESSAGES {
   USER_SUCCESS_SIGN = "User has been signed",
   RESOURCE_HAS_FOUND = "Resource has been found successfully",
   SOMETHING_WENT_WRONG = "Something went wrong",
+  SUCCESSFULLY_CREATED = "Successfully created",
 }

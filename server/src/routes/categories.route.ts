@@ -1,17 +1,16 @@
-import { Router } from 'express'
-import * as categoryController from '../controllers/category.controller'
+import { Router } from "express";
+import * as categoryController from "../controllers/category.controller";
 
-const router = Router()
+const router = Router();
+
+router.route("/").get(categoryController.getCategories);
+
+router.route("/create").post(categoryController.createCategories);
 
 router
-  .route('/')
-  .get(categoryController.getCategories)
-  .post(categoryController.createCategories)
-
-router
-  .route('/:id')
+  .route("/:id")
   .get(categoryController.getCategory)
   .patch(categoryController.updateCategories)
-  .delete(categoryController.deleteCategories)
+  .delete(categoryController.deleteCategories);
 
-export { router as categoriesRouter }
+export { router as categoriesRouter };

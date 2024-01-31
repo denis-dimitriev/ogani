@@ -1,9 +1,25 @@
-export const getCategories = async () => {}
+import { asyncHandler } from "../helpers/async-handler";
+import { Response, Request, NextFunction } from "express";
+import { Categories } from "../models/category.model";
 
-export const getCategory = async () => {}
+export const createCategories = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {},
+);
 
-export const updateCategories = async () => {}
+export const getCategories = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const categories = await Categories.find();
+  },
+);
 
-export const createCategories = async () => {}
+export const getCategory = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {},
+);
 
-export const deleteCategories = async () => {}
+export const updateCategories = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {},
+);
+
+export const deleteCategories = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {},
+);

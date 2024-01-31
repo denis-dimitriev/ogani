@@ -1,0 +1,34 @@
+{
+  "name": {
+    "ru": "Мытая морковь",
+    "ro": "Morcov spalat"
+  },
+  "category": "Vegetables",
+  "images": [
+    "https://ucarecdn.com/fce077c8-a889-48dc-ac3b-8a9015927330/carrot.png",
+    "https://ucarecdn.com/7b758b23-016e-4baa-a6e8-a70dc3f4d929/carrot2.png"
+  ],
+  "price": 7.29,
+  "info": {
+    "description": {
+      "ru": "Красивая морковка с юга Молдовы",
+      "ro": "Morcov frumos din sudul Moldovei"
+    },
+    "terms": {
+      "ru": "3-6 месяцев",
+      "ro": "3-6 luni"
+    },
+    "manufacturer": {
+      "ru": "Молдова",
+      "ro": "Moldova"
+    }
+  },
+  "promo": {
+    "price": 0,
+    "sale": 0,
+    "start": "",
+    "end": ""
+  },
+  "unit": "kg",
+  "stock": 1000
+}
