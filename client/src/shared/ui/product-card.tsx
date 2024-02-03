@@ -18,21 +18,21 @@ function ProductCard({ product }: Props) {
   return (
     <article
       className="group relative flex max-w-[258px] flex-col items-center
-             rounded-md border border-[--gray-lighter] shadow-md"
+             rounded-md border border-[--gray-lighter] shadow"
     >
-      <figure className="relative flex w-full flex-col">
+      <figure className="relative flex w-full flex-col pb-3">
         <Link
           to={`/market/${category.name.toLowerCase()}/${_id}`}
-          className="relative  bg-blue-100/40"
+          className="relative  bg-blue-100/20"
         >
           <img
-            className="absolute h-full w-full object-contain opacity-0 transition-opacity
+            className="absolute h-[256px] w-[256px] object-contain opacity-0 transition-opacity
             duration-500 group-hover:opacity-100"
             src={sketch}
             alt=""
           />
           <img
-            className="h-full w-full object-contain opacity-100 transition-opacity
+            className="h-[256px] w-[256px] object-contain opacity-100 transition-opacity
                        duration-500 group-hover:opacity-0"
             src={thumbnail}
             alt=""
@@ -47,7 +47,7 @@ function ProductCard({ product }: Props) {
 
         <Badge className="absolute right-5 top-3 z-10">{t?.product.new}</Badge>
 
-        <figcaption className="relative flex flex-col items-center justify-center">
+        <figcaption className="relative mt-3 flex flex-col items-center justify-center">
           <p>{language === "ro" ? name.ro : name.ru}</p>
           <small>{t?.categories[category.name.toLowerCase() as never]}</small>
           <small>

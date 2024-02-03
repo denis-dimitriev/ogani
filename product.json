@@ -1,26 +1,26 @@
 {
   "name": {
-    "ru": "Мытая морковь",
-    "ro": "Morcov spalat"
+    "ru": "Перец California красный",
+    "ro": "Ardei California rosu"
   },
   "category": "Vegetables",
   "images": [
-    "https://ucarecdn.com/fce077c8-a889-48dc-ac3b-8a9015927330/carrot.png",
-    "https://ucarecdn.com/7b758b23-016e-4baa-a6e8-a70dc3f4d929/carrot2.png"
+    "https://ucarecdn.com/3996d635-e290-4dc1-8b5f-70c9f8cee5db/pepper1.png",
+    "https://ucarecdn.com/97b5e8bb-3f29-4f68-9db9-26f92e6c011f/pepper2.png"
   ],
-  "price": 7.29,
+  "price": 57.90,
   "info": {
     "description": {
-      "ru": "Красивая морковка с юга Молдовы",
-      "ro": "Morcov frumos din sudul Moldovei"
+      "ru": "Сладкий перец",
+      "ro": "Ardei dulce"
     },
     "terms": {
-      "ru": "3-6 месяцев",
-      "ro": "3-6 luni"
+      "ru": "14 дней",
+      "ro": "14 zile"
     },
     "manufacturer": {
-      "ru": "Молдова",
-      "ro": "Moldova"
+      "ru": "Венгрия",
+      "ro": "Ungaria"
     }
   },
   "promo": {
@@ -30,5 +30,5 @@
     "end": ""
   },
   "unit": "kg",
-  "stock": 1000
+  "stock": 150
 }

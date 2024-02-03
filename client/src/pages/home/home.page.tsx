@@ -321,11 +321,13 @@ function HomePage() {
             </article>
           </div>
 
-          <div className="flex gap-x-[40px]">
-            {items && <ProductCard product={items[0]} />}
-            {items && <ProductCard product={items[0]} />}
-            {items && <ProductCard product={items[0]} />}
-          </div>
+          <ul className="flex flex-wrap justify-between">
+            {items?.map((p) => (
+              <li>
+                <ProductCard key={p._id} product={p} />
+              </li>
+            ))}
+          </ul>
 
           {/*
           <div className="col-xl flex flex-col justify-between">
