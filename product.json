@@ -1,34 +1,818 @@
-{
-  "name": {
-    "ru": "Перец California красный",
-    "ro": "Ardei California rosu"
-  },
-  "category": "Vegetables",
-  "images": [
-    "https://ucarecdn.com/3996d635-e290-4dc1-8b5f-70c9f8cee5db/pepper1.png",
-    "https://ucarecdn.com/97b5e8bb-3f29-4f68-9db9-26f92e6c011f/pepper2.png"
-  ],
-  "price": 57.90,
-  "info": {
-    "description": {
-      "ru": "Сладкий перец",
-      "ro": "Ardei dulce"
+[
+  {
+    "name": {
+      "ru": "Капуста краснокочанная",
+      "ro": "Varza rosie"
     },
-    "terms": {
-      "ru": "14 дней",
-      "ro": "14 zile"
+    "category": "Vegetables",
+    "images": [
+      "https://ucarecdn.com/5c40c3a0-014d-4687-a9e0-421f7a054dfe/gabagered1.png",
+      "https://ucarecdn.com/51724448-4f4d-4263-b555-5c2c2961aa15/gabagered2.png"
+    ],
+    "price": 14.50,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "25 дней",
+        "ro": "25 zile"
+      },
+      "manufacturer": {
+        "ru": "Украина",
+        "ro": "Ucraina"
+      }
     },
-    "manufacturer": {
-      "ru": "Венгрия",
-      "ro": "Ungaria"
-    }
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 2
   },
-  "promo": {
-    "price": 0,
-    "sale": 0,
-    "start": "",
-    "end": ""
+  {
+    "name": {
+      "ru": "Кольраби",
+      "ro": "Gulii"
+    },
+    "category": "Vegetables",
+    "images": [
+      "https://ucarecdn.com/1b96b979-9adb-460a-abe8-3518cff04a71/kohlrabi1.png",
+      "https://ucarecdn.com/d21b0a5f-a084-4116-a76e-a3fe3b604d37/kohlrabi2.png"
+    ],
+    "price": 55.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "45 дней",
+        "ro": "45 zile"
+      },
+      "manufacturer": {
+        "ru": "Германия",
+        "ro": "Germania"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 2
   },
-  "unit": "kg",
-  "stock": 150
-}
+  {
+    "name": {
+      "ru": "Лук белый",
+      "ro": "Ceapa alba"
+    },
+    "category": "Vegetables",
+    "images": [
+      "https://ucarecdn.com/3f6220e7-fa10-4301-8b7f-6257cd8216ad/whiteonions1.png",
+      "https://ucarecdn.com/b4e7568d-4c75-481f-b831-1c6a98b1d6ec/whiteonions2.png"
+    ],
+    "price": 49.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Германия",
+        "ro": "Germania"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 20
+  },
+  {
+    "name": {
+      "ru": "Тыква",
+      "ro": "Dovleac"
+    },
+    "category": "Vegetables",
+    "images": [
+      "https://ucarecdn.com/49220713-be12-4b9e-8791-6f2845579df3/pumpkin1.png",
+      "https://ucarecdn.com/bffb7829-0794-4b64-a166-3dc05f37e423/pumpkin2.png"
+    ],
+    "price": 9.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "45 дней",
+        "ro": "45 zile"
+      },
+      "manufacturer": {
+        "ru": "Молдова",
+        "ro": "Moldova"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 10
+  },
+  {
+    "name": {
+      "ru": "Перец Чили красный",
+      "ro": "Ardei iute roșu"
+    },
+    "category": "Vegetables",
+    "images": [
+      "https://ucarecdn.com/5ced0b0f-8c0b-4a05-9a62-e1b9e9fb3797/redchilipeppers1.png",
+      "https://ucarecdn.com/bb19aa76-716c-4b7e-9a25-7136f0ce29d1/redchilipeppers2.png"
+    ],
+    "price": 79.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "14 дней",
+        "ro": "14 zile"
+      },
+      "manufacturer": {
+        "ru": "Молдова",
+        "ro": "Moldova"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 5
+  },
+  {
+    "name": {
+      "ru": "Огурец Фабио",
+      "ro": "Castravete Fabio"
+    },
+    "category": "Vegetables",
+    "images": [
+      "https://ucarecdn.com/83da2c7f-55b0-4a38-b34b-307ede8ea998/fabiocucumber1.png",
+      "https://ucarecdn.com/4db62103-c544-4b8c-b761-3f4e1c317735/fabiocucumber2.png"
+    ],
+    "price": 95.00,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "14 дней",
+        "ro": "14 zile"
+      },
+      "manufacturer": {
+        "ru": "Испания",
+        "ro": "Spania"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 7
+  },
+  {
+    "name": {
+      "ru": "Банан",
+      "ro": "Banane"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/9f06a769-5658-4a3d-b1d7-af5581a1ffa3/philippinbanana1.png",
+      "https://ucarecdn.com/4b34f578-9333-488a-b08b-f8c9f60887f2/philippinbanana2.png"
+    ],
+    "price": 30.00,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "10 дней",
+        "ro": "10 zile"
+      },
+      "manufacturer": {
+        "ru": "Филиппины",
+        "ro": "Filipine"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 7
+  },
+  {
+    "name": {
+      "ru": "Мандарин",
+      "ro": "Mandarin"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/3226635e-612d-4915-a6f4-739efef30c3b/philippinemandarin1.png",
+      "https://ucarecdn.com/fd545bb7-947a-4e5e-85aa-235cc9921e71/philippinemandarin2.png"
+    ],
+    "price": 25.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Филиппины",
+        "ro": "Filipine"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 7
+  },
+  {
+    "name": {
+      "ru": "Авокадо",
+      "ro": "Avocado"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/35d98bbc-ebea-4fc5-b9ce-0a3ceff7c36d/greenavocado1.png",
+      "https://ucarecdn.com/e7a52608-d69e-4b97-beb7-5ce36fe37519/greenavocado2.png"
+    ],
+    "price": 98.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Филиппины",
+        "ro": "Filipine"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 7
+  },
+  {
+    "name": {
+      "ru": "Апельсин",
+      "ro": "Portocale"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/8176d450-624f-46de-be45-991123a95b29/freshorange1.png",
+      "https://ucarecdn.com/dc6a6a5b-0ad7-4253-8d9a-7af4abe958ae/freshorange2.png"
+    ],
+    "price": 22.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Филиппины",
+        "ro": "Filipine"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 7
+  },
+  {
+    "name": {
+      "ru": "Клементин",
+      "ro": "Clementina"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/8b47ce57-0a2d-4bc6-be5e-8ca95f3beea7/Clementina1.png",
+      "https://ucarecdn.com/00675f74-0e39-4d5a-8fe9-79bd71e28033/Clementina2.png"
+    ],
+    "price": 27.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Турция",
+        "ro": "Turcia"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 10
+  },
+  {
+    "name": {
+      "ru": "Киви",
+      "ro": "Kiwi"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/4e733762-763e-4fda-9338-3c584daa55f9/freshkiwi1.png",
+      "https://ucarecdn.com/1d1ae287-a77a-49ff-aa98-1aa1fe97be11/freshkiwi2.png"
+    ],
+    "price": 35.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Турция",
+        "ro": "Turcia"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 10
+  },
+  {
+    "name": {
+      "ru": "Гранат",
+      "ro": "Rodie"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/41285794-1a02-4484-a603-785485d0c56b/pomegranate1.png",
+      "https://ucarecdn.com/3bbccf06-5d23-4cc6-96de-0541b3bfc408/pomegranate2.png"
+    ],
+    "price": 34.50,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Турция",
+        "ro": "Turcia"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 15
+  },
+  {
+    "name": {
+      "ru": "Помело",
+      "ro": "Pomelo"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/41aba369-615e-47c4-a178-5ef6a01e1222/pomelo1.png",
+      "https://ucarecdn.com/bf19116a-a05a-4ae0-b802-bbbc57ea6841/pomelo2.png"
+    ],
+    "price": 39.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "45 дней",
+        "ro": "45 zile"
+      },
+      "manufacturer": {
+        "ru": "Турция",
+        "ro": "Turcia"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 15
+  },
+  {
+    "name": {
+      "ru": "Маракуйя",
+      "ro": "Maracuya (fructul pasiunii)"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/af63c602-4246-4ca1-a552-52394b0ba454/passionfruit2.png",
+      "https://ucarecdn.com/5bdcc301-4c8a-47ef-bfbe-e305a82759ef/passionfruit1.png"
+    ],
+    "price": 250.00,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "45 дней",
+        "ro": "45 zile"
+      },
+      "manufacturer": {
+        "ru": "Турция",
+        "ro": "Turcia"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 15
+  },
+  {
+    "name": {
+      "ru": "Папайя зеленая",
+      "ro": "Papaya verde"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/d9c29f9f-8e4b-4cfe-bcce-539c5218f2da/papayafruit1.png",
+      "https://ucarecdn.com/d9c29f9f-8e4b-4cfe-bcce-539c5218f2da/papayafruit1.png"
+    ],
+    "price": 189.00,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Турция",
+        "ro": "Turcia"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 15
+  },
+  {
+    "name": {
+      "ru": "Клубника",
+      "ro": "Căpșună"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/544325ec-54de-4a00-9976-35877884e8c1/berries1.png",
+      "https://ucarecdn.com/726a1c88-873b-453b-abd6-484f01884ef7/berries2.png"
+    ],
+    "price": 154.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "10 дней",
+        "ro": "10 zile"
+      },
+      "manufacturer": {
+        "ru": "Турция",
+        "ro": "Turcia"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 15
+  },
+  {
+    "name": {
+      "ru": "Ананас Бэби",
+      "ro": "Ananas Baby"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/eab3dc18-c1a7-441b-a23e-b7860eb9136d/pineapple1.png",
+      "https://ucarecdn.com/293856d7-5211-4f60-a8d7-58ac6acf99a9/pineapple2.png"
+    ],
+    "price": 154.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Китай",
+        "ro": "China "
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 15
+  },
+  {
+    "name": {
+      "ru": "Дыня Cantalupi",
+      "ro": "Pepene galben Cantalupi"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/3d8a0b49-3072-4825-804b-0bf8b2e5dc13/Cantalupi1.png",
+      "https://ucarecdn.com/a5dd7dce-f802-4479-a0ad-0c684c9f81a8/Cantalupi2.png"
+    ],
+    "price": 57.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "15 дней",
+        "ro": "15 zile"
+      },
+      "manufacturer": {
+        "ru": "Китай",
+        "ro": "China "
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 15
+  },
+  {
+    "name": {
+      "ru": "Кокос",
+      "ro": "Nuca de cocos"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/37ab47fe-b1d4-49e5-92a2-f43ad3628a43/coconut1.png",
+      "https://ucarecdn.com/e100a798-285e-4424-85b5-6051b6c69d8b/coconut2.png"
+    ],
+    "price": 37.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "21 дней",
+        "ro": "21 zile"
+      },
+      "manufacturer": {
+        "ru": "Китай",
+        "ro": "China "
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 15
+  },
+  {
+    "name": {
+      "ru": "Хурма Хаки",
+      "ro": "Hurma Kaki"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/27047e90-b98c-4774-8fec-6ef4162f9a06/persimmons1.png",
+      "https://ucarecdn.com/ff81bf8f-c1cf-4e2b-ac6e-d4367a059b0d/persimmons2.png"
+    ],
+    "price": 41.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "10 дней",
+        "ro": "10 zile"
+      },
+      "manufacturer": {
+        "ru": "Китай",
+        "ro": "China "
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 5
+  },
+  {
+    "name": {
+      "ru": "Яблоки Golden",
+      "ro": "Mere Golden"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/1d6d6324-9bfa-4d0f-bbbf-0a2b002f9f48/meregolden1.png",
+      "https://ucarecdn.com/158e8daa-847e-46ac-b3ad-fb83b09bdc41/meregolden2.png"
+    ],
+    "price": 11.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Молдова",
+        "ro": "Moldova"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 5
+  },
+  {
+    "name": {
+      "ru": "Яблоки Gala",
+      "ro": "Mere Gala"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/6c764a5c-9d43-46ce-b379-66871806a05c/MereGala1.png",
+      "https://ucarecdn.com/c974ab1c-144a-416a-9495-6f00d179deca/MereGala2.png"
+    ],
+    "price": 12.90,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Молдова",
+        "ro": "Moldova"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 5
+  },
+  {
+    "name": {
+      "ru": "Mere Jonagold",
+      "ro": "Mere Jonagold"
+    },
+    "category": "Fruits",
+    "images": [
+      "https://ucarecdn.com/d8b1593d-4431-4227-b7eb-c12d23d54014/MereJonagold1.png",
+      "https://ucarecdn.com/2ad77c3d-cf2f-4180-b8c5-7367f526a472/MereJonagold2.png"
+    ],
+    "price": 14.50,
+    "info": {
+      "description": {
+        "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
+        "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+      },
+      "terms": {
+        "ru": "30 дней",
+        "ro": "30 zile"
+      },
+      "manufacturer": {
+        "ru": "Молдова",
+        "ro": "Moldova"
+      }
+    },
+    "promo": {
+      "price": 0,
+      "sale": 0,
+      "start": "",
+      "end": ""
+    },
+    "unit": "kg",
+    "stock": 5
+  },
+]
