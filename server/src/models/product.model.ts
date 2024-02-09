@@ -7,6 +7,7 @@ export type ProductType = {
     ro: string;
   };
   category: Schema.Types.ObjectId;
+  subCategory: string;
   thumbnail: string;
   sketch: string;
   images: string[];
@@ -57,6 +58,7 @@ export const productSchema = new Schema<ProductType>(
       ref: "Category",
       required: true,
     },
+    subCategory: String,
     thumbnail: {
       type: String,
     },

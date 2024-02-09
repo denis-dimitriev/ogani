@@ -32,6 +32,10 @@ class ApiService {
   static async getProducts() {
     return await axios.get(API.PRODUCTS_GET);
   }
+
+  static async getProductsByCategory(category: string) {
+    return await axios.get(API.PRODUCTS_BY_CATEGORY_GET.concat(`/${category}`));
+  }
 }
 
 export default ApiService;

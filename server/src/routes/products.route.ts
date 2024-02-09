@@ -13,4 +13,8 @@ router
   .patch(productController.updateProduct)
   .delete(productController.deleteProduct);
 
+router
+  .route("/by_category/:category")
+  .get(productController.getProductsByCategory);
+
 export { router as productsRouter };

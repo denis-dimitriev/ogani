@@ -11,6 +11,7 @@ export const createProduct = asyncHandler(
     const {
       name,
       category,
+      subCategory,
       thumbnail,
       sketch,
       images,
@@ -22,11 +23,14 @@ export const createProduct = asyncHandler(
       stock,
     } = req.body as ProductType;
 
-    const foundCategory = await Categories.findOne({ name: category });
+    const foundCategory = await Categories.findOne({
+      name: category,
+    }).collation({ locale: "en_US", strength: 1 });
 
     const newProduct = await Products.create({
       name,
       category: foundCategory,
+      subCategory,
       thumbnail,
       sketch,
       images,
@@ -55,20 +59,27 @@ export const createProduct = asyncHandler(
   },
 );
 
-export const getProducts = async (req: Request, res: Response) => {
-  try {
+export const getProducts = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {
     const products = await Products.find().populate("category").select("-__v");
-    res.status(200).json({
-      status: "success",
-      products,
-    });
-  } catch (e) {
-    res.status(400).json({
-      status: "fail",
-      message: "Cannot get products",
-    });
-  }
-};
+
+    if (products) {
+      return res.status(STATUS_CODE.SUCCESS_OK).json({
+        status: STATUS_CODE.SUCCESS_OK,
+        message: MESSAGES.RESOURCE_HAS_FOUND,
+        length: products.length,
+        products: products,
+      });
+    } else {
+      return next(
+        new AppError(
+          MESSAGES.SOMETHING_WENT_WRONG,
+          STATUS_CODE.INTERNAL_SERVER_ERROR,
+        ),
+      );
+    }
+  },
+);
 
 export const getProduct = async (req: Request, res: Response) => {
   const _id = req.params.id;
@@ -116,3 +127,37 @@ export const deleteProduct = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const getProductsByCategory = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const category = req.params.category as string;
+
+    const foundCategory = await Categories.findOne({
+      name: category,
+    }).collation({ locale: "en_US", strength: 1 });
+
+    if (foundCategory) {
+      const products = await Products.find({
+        $or: [{ category: foundCategory }],
+      }).populate("category");
+
+      if (products) {
+        return res.status(STATUS_CODE.SUCCESS_OK).json({
+          status: STATUS_CODE.SUCCESS_OK,
+          message: MESSAGES.RESOURCE_HAS_FOUND,
+          length: products.length,
+          products,
+        });
+      } else {
+        return next(
+          new AppError(
+            MESSAGES.SOMETHING_WENT_WRONG,
+            STATUS_CODE.INTERNAL_SERVER_ERROR,
+          ),
+        );
+      }
+    } else {
+      return next(new AppError("Category didnt exists", STATUS_CODE.NOT_FOUND));
+    }
+  },
+);
