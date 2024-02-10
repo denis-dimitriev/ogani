@@ -1,15 +1,16 @@
 {
   "name": {
-    "ru": "Дорада королевская 300-400г",
-    "ro": "Dorada regala 300-400g"
+    "ru": "Грудинка свиная хрящ обезжиренная",
+    "ro": "Piept de porc degresat"
   },
-  "category": "fish and seafood",
-  "subCategory": "frozen",
+  "category": "meat",
+  "subCategory": "fresh",
+  "type": "pork",
   "images": [
-    "https://ucarecdn.com/24a6ee33-c68d-4f47-82cf-4ffca8c9a615/dorado1.png",
-    "https://ucarecdn.com/e08a2072-8c1c-4e25-b518-f831d3e97c74/dorado2.png"
+    "https://ucarecdn.com/6bb250a6-cfe0-47fe-aa8b-a3853b3137b3/porkfillet_1.png",
+    "https://ucarecdn.com/aed8033c-5dcc-4bf9-9f02-423e99fdac8f/porkfillet_2.png"
   ],
-  "price": 173.90,
+  "price": 112.90,
   "info": {
     "description": {
       "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
@@ -20,8 +21,8 @@
       "ro": "pana la 6 luni"
     },
     "manufacturer": {
-      "ru": "Украина",
-      "ro": "Ucraina"
+      "ru": "Молдова",
+      "ro": "Moldova"
     }
   },
   "promo": {
@@ -30,6 +31,7 @@
     "start": "",
     "end": ""
   },
-  "unit": "kg",
+  "unit": "pcs",
   "stock": 5
 }
+
