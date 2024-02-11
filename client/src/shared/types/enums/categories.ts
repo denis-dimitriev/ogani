@@ -6,6 +6,7 @@ export enum CATEGORIES {
   FISH_AND_SEAFOOD = "fish and seafood",
   MEAT = "meat",
   EGGS = "eggs",
+  SALAMI_AND_CHEESE = "salami and cheese",
   OIL_AND_VINEGARS = "oil and vinegars",
   SAUCES_AND_SPICES = "sauces and spices",
   NUTS_AND_SEEDS = "nuts and seeds",

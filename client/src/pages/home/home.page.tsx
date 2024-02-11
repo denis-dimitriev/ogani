@@ -30,7 +30,7 @@ function HomePage() {
 
   useEffect(() => {
     apiService
-      .getProductsByCategory(CATEGORIES.MEAT)
+      .getProductsByCategory(CATEGORIES.SALAMI_AND_CHEESE)
       .then((res) => {
         if (res.data) {
           setItems(res.data.products);
