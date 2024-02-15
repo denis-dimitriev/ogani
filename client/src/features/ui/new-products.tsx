@@ -253,7 +253,7 @@ function NewProducts() {
   const { pos, prev, next } = useSlider(products.length / 4);
   return (
     <div className="flex flex-col gap-4">
-      <SectionHeader title={"New Products"} prev={prev} next={next} />
+      <SectionHeader title={"New Product"} prev={prev} next={next} />
 
       <ul className="flex flex-col gap-y-[20px]">
         <li>

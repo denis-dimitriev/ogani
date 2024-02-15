@@ -31,6 +31,8 @@ export type ProductType = {
   _id: string;
   name: Translation;
   category: CategoryType;
+  subCategory?: string;
+  type?: string;
   thumbnail: string;
   sketch: string;
   images: string[];

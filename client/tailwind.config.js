@@ -3,10 +3,18 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,css}"],
   theme: {
     screens: {
-      sm: { max: "320px" },
-      phone: { max: "480px" },
-      tablet: { max: "760px" },
-      laptop: { max: "960px" },
+      bp320: { max: "320px" },
+      bp375: { max: "375px" },
+      bp414: { max: "414px" },
+      bp568: { max: "568px" },
+      bp667: { max: "667px" },
+      bp736: { max: "736px" },
+      bp768: { max: "768px" },
+      bp812: { max: "812px" },
+      bp834: { max: "834px" },
+      bp992: { max: "992px" },
+      bp1024: { max: "1024px" },
+      bp1400: { max: "1400px" },
     },
     extend: {
       animation: {

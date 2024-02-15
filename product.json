@@ -1,24 +1,24 @@
 {
   "name": {
-    "ru": "Сыр Milk-Mark Российский",
-    "ro": "Cascaval Milk-Mark Rossiskii"
+    "ru": "Колбаса Codru Mezellini 90г",
+    "ro": "Salam Codru Mezellini felii 90g"
   },
   "category": "salami and cheese",
-  "subCategory": "cheese",
-  "type": "",
+  "subCategory": "salami",
+  "type": "boiled",
   "images": [
-    "https://ucarecdn.com/a55b22b9-358e-4d22-980b-fe83c20310a2/MilkMarkRossiskii1.png",
-    "https://ucarecdn.com/fd660559-1cec-4b5a-8ba1-21f4d161823e/cheesewhitebg.png"
+    "https://ucarecdn.com/33ff56d7-1f5f-4997-bfea-5e72df86d658/CodruMezellini901.png",
+    "https://ucarecdn.com/0f6b3e3a-6bc8-4125-aef8-825ea041a767/tastyslicedsausagebg.png"
   ],
-  "price": 199.90,
+  "price": 19.50,
   "info": {
     "description": {
       "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
       "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
     },
     "terms": {
-      "ru": "90 дней",
-      "ro": "90 zile"
+      "ru": "30 дней",
+      "ro": "30 zile"
     },
     "manufacturer": {
       "ru": "Молдова",
@@ -31,7 +31,7 @@
     "start": "",
     "end": ""
   },
-  "unit": "kg",
+  "unit": "pcs",
   "stock": 5
 }
 

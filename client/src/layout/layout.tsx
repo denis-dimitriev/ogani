@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useContext, useEffect } from "react";
+import { ReactNode, useContext, useEffect } from "react";
 import { HeaderScrollContext } from "@context/header-scroll.context.ts";
 
 interface Props {
@@ -6,37 +6,21 @@ interface Props {
 }
 
 function Layout({ children }: Props) {
-  const { hidden, setHidden } = useContext(HeaderScrollContext);
+  const { setHidden } = useContext(HeaderScrollContext);
 
-  const handleScroll = useCallback(
-    (event: WheelEvent) => {
-      const windowsHeight = window.innerHeight;
-      const layoutHeight = document.getElementById("layout")?.offsetHeight;
-      if (layoutHeight! > windowsHeight) {
-        event.deltaY > 0 ? setHidden(true) : setHidden(false);
-      }
-    },
-    [hidden],
-  );
+  function handleScroll() {
+    if (window.scrollY >= 200) {
+      setHidden(true);
+    } else if (window.scrollY < 200) {
+      setHidden(false);
+    }
+  }
 
   useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    const layout = document.getElementById("layout");
-    const windowsHeight = window.innerHeight;
-    layout?.addEventListener(
-      "wheel",
-      (e: WheelEvent) => {
-        if (layout.offsetHeight > windowsHeight) {
-          timeout = setTimeout(() => handleScroll(e), 300);
-        }
-      },
-      { passive: true },
-    );
-    return () => {
-      layout?.removeEventListener("wheel", handleScroll);
-      clearTimeout(timeout);
-    };
-  }, [handleScroll]);
+    document.addEventListener("scroll", handleScroll);
+
+    return () => document.removeEventListener("scroll", handleScroll);
+  });
 
   return (
     <div className="layout" id="layout">

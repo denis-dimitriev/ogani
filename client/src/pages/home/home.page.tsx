@@ -21,23 +21,11 @@ import BlogsSection from "@widgets/blogs-section.tsx";
 import apiService from "@app/service/api.service.ts";
 import ProductCard from "@shared/ui/product-card.tsx";
 import { CATEGORIES } from "@shared/types/enums/categories.ts";
+import { ProductType } from "@shared/types/product.types.ts";
 
 function HomePage() {
   const { view } = useContext(QuickViewContext);
   const { t } = useContext(LanguageContext);
-
-  const [items, setItems] = useState();
-
-  useEffect(() => {
-    apiService
-      .getProductsByCategory(CATEGORIES.SALAMI_AND_CHEESE)
-      .then((res) => {
-        if (res.data) {
-          setItems(res.data.products);
-        }
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
   return (
     <Fragment>
@@ -75,14 +63,6 @@ function HomePage() {
               </figure>
             </article>
           </div>
-
-          <ul className="flex flex-wrap justify-between">
-            {items?.map((p) => (
-              <li key={p._id}>
-                <ProductCard product={p} />
-              </li>
-            ))}
-          </ul>
 
           {/*
           <div className="col-xl flex flex-col justify-between">

@@ -2,6 +2,8 @@ import axios from "axios";
 import { API } from "@shared/types/enums/api.ts";
 import { LoginData, RegisterData } from "@shared/types/auth.types.ts";
 
+axios.defaults.baseURL = "/";
+
 class ApiService {
   constructor() {}
 
@@ -34,7 +36,7 @@ class ApiService {
   }
 
   static async getProductsByCategory(category: string) {
-    return await axios.get(API.PRODUCTS_BY_CATEGORY_GET.concat(`/${category}`));
+    return await axios.get(API.PRODUCTS_BY_CATEGORY_GET.concat(category));
   }
 }
 

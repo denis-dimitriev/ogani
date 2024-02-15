@@ -134,6 +134,8 @@ export const getProductsByCategory = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const category = req.params.category as string;
 
+    console.log(category);
+
     const foundCategory = await Categories.findOne({
       name: category,
     }).collation({ locale: "en_US", strength: 1 });

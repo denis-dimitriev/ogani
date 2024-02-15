@@ -175,4 +175,4 @@ productSchema.pre("save", function () {
   this.sketch = getOptimizedPreview(this.images[1].toString(), 256, 256);
 });
 
-export const Products = model("Product", productSchema);
+export const Products = model("Products", productSchema);

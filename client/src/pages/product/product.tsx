@@ -3,14 +3,13 @@ import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.ts";
 
 function Product() {
-  const { category } = useParams();
-  const currentCategory = category?.replaceAll("-", " ");
+  const { product } = useParams();
 
   const { t } = useContext(LanguageContext);
 
   return (
     <div className="container">
-      <h2>{t?.categories[currentCategory as never]}</h2>
+      <h2>Product page</h2>
     </div>
   );
 }
