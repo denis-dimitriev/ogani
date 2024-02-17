@@ -1,24 +1,24 @@
 {
   "name": {
-    "ru": "Колбаса Codru Mezellini 90г",
-    "ro": "Salam Codru Mezellini felii 90g"
+    "ru": "Яйца перепелиные ECOOU 20 шт",
+    "ro": "Ouă de prepeliță ECOOU 20 buc"
   },
-  "category": "salami and cheese",
-  "subCategory": "salami",
-  "type": "boiled",
+  "category": "eggs",
+  "subCategory": "quail eggs",
+  "type": "",
   "images": [
-    "https://ucarecdn.com/33ff56d7-1f5f-4997-bfea-5e72df86d658/CodruMezellini901.png",
-    "https://ucarecdn.com/0f6b3e3a-6bc8-4125-aef8-825ea041a767/tastyslicedsausagebg.png"
+    "https://ucarecdn.com/d3942f8c-6939-403e-9875-199a05b28207/eggsECOOU201.png",
+    "https://ucarecdn.com/e041275d-3d30-495f-bffc-45ee2c5c1c3c/eggpbg.png"
   ],
-  "price": 19.50,
+  "price": 35.90,
   "info": {
     "description": {
       "ru": "Мы любим животных и стараемся поддерживать тех из них, кому не посчастливилось",
       "ro": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
     },
     "terms": {
-      "ru": "30 дней",
-      "ro": "30 zile"
+      "ru": "28 дней",
+      "ro": "28 zile"
     },
     "manufacturer": {
       "ru": "Молдова",

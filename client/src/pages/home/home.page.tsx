@@ -31,7 +31,7 @@ function HomePage() {
     <Fragment>
       <div className="container flex flex-col gap-[50px]">
         <section className="flex h-[450px] gap-[24px]">
-          <div className="col-sm h-full">
+          <div className="col-sm relative h-full">
             <CategoriesMenu />
           </div>
           <div className="col-xl h-full">
