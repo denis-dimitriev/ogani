@@ -22,6 +22,9 @@ import apiService from "@app/service/api.service.ts";
 import ProductCard from "@shared/ui/product-card.tsx";
 import { CATEGORIES } from "@shared/types/enums/categories.ts";
 import { ProductType } from "@shared/types/product.types.ts";
+import { CategoriesMenuContext } from "@context/categories-menu.context.ts";
+import { useLocation } from "react-router-dom";
+import { LINKS } from "@shared/types/enums/links.ts";
 
 function HomePage() {
   const { view } = useContext(QuickViewContext);
@@ -29,12 +32,12 @@ function HomePage() {
 
   return (
     <Fragment>
-      <div className="container flex flex-col gap-[50px]">
+      <div className="container relative flex flex-col gap-[50px]">
         <section className="flex h-[450px] gap-[24px]">
-          <div className="col-sm relative h-full">
+          <div className="col-sm">
             <CategoriesMenu />
           </div>
-          <div className="col-xl h-full">
+          <div className="col-xl">
             <MainCarousel />
           </div>
         </section>
@@ -47,7 +50,7 @@ function HomePage() {
           <div className="col-sm flex  flex-col gap-[50px]">
             <FeaturedProducts />
 
-            <article className="flex h-[450px] w-full cursor-pointer justify-between bg-blue-100/40">
+            <article className="flex h-[450px] w-full cursor-pointer justify-between bg-[--light-blue]">
               <figure className="banner-thumb relative flex h-full w-full items-end">
                 <img className="object-contain" src={musli_berries} alt="" />
                 <figcaption className="absolute left-5 top-4">

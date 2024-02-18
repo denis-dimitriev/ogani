@@ -23,7 +23,7 @@ function BannerCard({ title = "", thumbnail = "", link = "#" }: Props) {
 
   return (
     <article
-      className="flex h-full w-full cursor-pointer justify-between bg-blue-100/40"
+      className="flex h-full w-full cursor-pointer justify-between bg-[--light-blue]"
       onClick={onClickHandler}
     >
       <figure className="banner-thumb relative flex w-full items-end justify-end">

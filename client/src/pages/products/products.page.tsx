@@ -7,6 +7,7 @@ import { ProductType } from "@shared/types/product.types.ts";
 import Spinner from "@shared/ui/spinner.tsx";
 import ProductQuickView from "@features/ui/product-quick-view.tsx";
 import { QuickViewContext } from "@context/quick-view.context.ts";
+import CategoriesMenu from "@widgets/categories-menu.tsx";
 
 type ServerResponse = {
   status: number;
@@ -15,7 +16,7 @@ type ServerResponse = {
   products: ProductType[];
 };
 
-function Products() {
+function ProductsPage() {
   const { category } = useParams();
   const currentCategory = category?.replaceAll("-", " ");
 
@@ -38,10 +39,12 @@ function Products() {
 
   return (
     <Fragment>
-      <div className="container">
+      <div className="container relative">
         <h2 className="py-[30px]">{t?.categories[currentCategory as never]}</h2>
         <div className="flex gap-x-[24px]">
-          <div className="col-sm"></div>
+          <div className="col-sm">
+            <CategoriesMenu />
+          </div>
 
           <div className="col-xl">
             <ul className="grid grid-cols-3 gap-[24px]">
@@ -59,4 +62,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default ProductsPage;

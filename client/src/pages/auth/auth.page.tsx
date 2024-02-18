@@ -7,7 +7,7 @@ import LoginForm from "@widgets/login-form.tsx";
 import SignupForm from "@widgets/signup-form.tsx";
 import { AuthContext } from "@context/auth.context.ts";
 
-function Auth() {
+function AuthPage() {
   const { hasAccount } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -34,4 +34,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default AuthPage;

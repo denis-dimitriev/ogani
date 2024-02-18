@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-const Market = () => {
+const MarketPage = () => {
   return (
     <div className="container">
       <h1>Market</h1>
@@ -9,4 +9,4 @@ const Market = () => {
   );
 };
 
-export default Market;
+export default MarketPage;

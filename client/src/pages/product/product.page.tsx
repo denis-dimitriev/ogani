@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.ts";
 
-function Product() {
+function ProductPage() {
   const { product } = useParams();
 
   const { t } = useContext(LanguageContext);
@@ -14,4 +14,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default ProductPage;

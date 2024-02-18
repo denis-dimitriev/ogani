@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../app";
-import { HomePage } from "@pages/home/home.async";
-import { NotFound } from "@pages/404/not-found.async";
-import { Auth } from "@pages/auth/auth.async.ts";
+import { HomePage } from "@pages/home/home.page.async.ts";
+import { NotFound } from "@pages/404/not-found.page.async.ts";
+import { Auth } from "@pages/auth/auth.page.async.ts";
 import { LINKS } from "@shared/types/enums/links.ts";
 import Protected from "@pages/protected.tsx";
-import { UserProfile } from "@pages/user-profile/user-profile.auth.ts";
+import { UserProfile } from "@pages/user-profile/user-profile.page.async.ts";
 import Guest from "@pages/guest.tsx";
-import { Market } from "@pages/market/market.async.ts";
-import Products from "@pages/products/products.tsx";
+import { Market } from "@pages/market/market.page.async.ts";
+import ProductsPage from "@pages/products/products.page.tsx";
 
 export const appRoute = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ export const appRoute = createBrowserRouter([
       },
       {
         path: LINKS.MARKET_CATEGORY,
-        element: <Products />,
+        element: <ProductsPage />,
       },
       {
         element: <Protected />,

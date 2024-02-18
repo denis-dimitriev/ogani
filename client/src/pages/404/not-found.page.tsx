@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function NotFound() {
+function NotFoundPage() {
   return (
     <div className="h-screen w-full bg-[--light]">
       <div className="flex items-center justify-center">
@@ -24,4 +24,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default NotFoundPage;

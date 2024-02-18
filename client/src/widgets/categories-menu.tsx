@@ -3,57 +3,62 @@ import { CATEGORIES } from "@shared/types/enums/categories.ts";
 import { useContext, useState } from "react";
 import { LanguageContext } from "@context/language.context.ts";
 import { MinusIco, PlusIco } from "@app/assets/icons";
-
-const categories = Object.values(CATEGORIES);
-
-const listHeight = categories.length * 41;
+import { CategoriesMenuContext } from "@context/categories-menu.context.ts";
 
 function CategoriesMenu() {
   const { t } = useContext(LanguageContext);
+  const { open } = useContext(CategoriesMenuContext);
 
   const [shortedMenu, setShortedMenu] = useState(true);
+
+  const categories = Object.values(CATEGORIES);
+  const listHeight = categories.length * 41;
 
   return (
     <div
       className={`${
-        shortedMenu ? "shadow" : "shadow-2xl"
-      } absolute z-10 h-auto w-full rounded border border-[--light] bg-white`}
+        shortedMenu ? "shadow" : "shadow-xl"
+      } absolute top-0 z-10 w-[256px] flex-col rounded border
+        border-[--light] bg-white transition-all duration-300`}
+      style={{
+        display: open ? "flex" : "none",
+        height: shortedMenu ? "450px" : `${listHeight}px`,
+      }}
     >
-      <ul
-        className="flex flex-col overflow-hidden transition-all duration-300"
-        style={{
-          height: shortedMenu ? "410px" : `${listHeight}px`,
-        }}
-      >
-        {categories.map((category) => (
-          <li
-            key={category}
-            className="flex px-[20px] py-[10px] transition hover:bg-[--light]"
-          >
-            <Link
-              to={`/market/${category.replaceAll(" ", "-")}`}
-              className="w-full text-[14px]
-              text-black hover:text-[--gray-light]"
+      <nav className="w-full overflow-hidden">
+        <ul className="flex flex-col">
+          {categories.map((category) => (
+            <li
+              key={category}
+              className="flex px-[20px] py-[10px] transition hover:bg-[--light]"
             >
-              {t?.categories[category]}
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <Link
+                to={`/market/${category.replaceAll(" ", "-")}`}
+                className="w-full text-[14px] text-black hover:text-[--gray-light]"
+              >
+                {t?.categories[category]}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-      <div className="">
-        <button
-          className="flex w-full items-center justify-center px-[20px] py-[10px] transition hover:bg-[--light]"
-          onClick={() => setShortedMenu(!shortedMenu)}
-        >
-          {shortedMenu ? (
+      <button
+        className="flex w-full items-center justify-center px-[20px] py-2 transition hover:bg-[--light]"
+        onClick={() => setShortedMenu(!shortedMenu)}
+      >
+        {shortedMenu ? (
+          <>
             <PlusIco className="scale-50" />
-          ) : (
+            {t?.categories["more"]}
+          </>
+        ) : (
+          <>
             <MinusIco className="scale-50" />
-          )}
-          {t?.categories["show all"]}
-        </button>
-      </div>
+            {t?.categories["fewer"]}
+          </>
+        )}
+      </button>
     </div>
   );
 }
