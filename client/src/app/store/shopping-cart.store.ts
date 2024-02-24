@@ -10,7 +10,7 @@ class ShoppingCartStore {
   private cart: ShoppingCartItem[] = [];
 
   totalSum = 0;
-  readonly maxLimitQty = 10; // 10kg or 10pcs
+  protected maxLimitQty!: number;
 
   constructor() {
     makeAutoObservable(this);
@@ -20,10 +20,32 @@ class ShoppingCartStore {
     return toJS(this.cart);
   }
 
-  addToCart(product: ProductType) {
+  addToCartFromView(product: ProductType, qty: number) {
+    const existsProduct = this.cart.find((p) => p._id === product._id);
+
+    if (existsProduct) {
+      this.cart.forEach((p) => {
+        if (p._id === existsProduct._id) {
+          p.qty = qty;
+          p.totalPrice = p.price * qty;
+        }
+      });
+    } else {
+      this.cart.push({
+        ...product,
+        qty,
+        totalPrice: product.price * qty,
+      });
+    }
+
+    this.onTotalSumCalc();
+  }
+
+  addToCartFromAction(product: ProductType) {
     const existsProduct = this.cart.find((p) => p._id === product._id);
 
     const unitQty = product.unit === "kg" ? 0.5 : 1;
+    this.maxLimitQty = product.stock > 10 ? 10 : product.stock;
 
     if (existsProduct) {
       this.cart.forEach((p) => {
@@ -45,9 +67,7 @@ class ShoppingCartStore {
       });
     }
 
-    this.totalSum = this.cart.reduce((acc, curr) => {
-      return acc + curr.totalPrice;
-    }, 0);
+    this.onTotalSumCalc();
   }
 
   removeFromCart(product: ProductType) {
@@ -69,8 +89,12 @@ class ShoppingCartStore {
       this.cart = this.cart.filter((p) => p.qty !== 0);
     }
 
+    this.onTotalSumCalc();
+  }
+
+  protected onTotalSumCalc() {
     this.totalSum = this.cart.reduce((acc, curr) => {
-      return acc + curr.totalPrice;
+      return +acc.toFixed(2) + curr.totalPrice;
     }, 0);
   }
 }

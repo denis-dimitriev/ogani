@@ -83,23 +83,24 @@ export const getProducts = asyncHandler(
   },
 );
 
-export const getProduct = async (req: Request, res: Response) => {
-  const _id = req.params.id;
+export const getProduct = asyncHandler(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const _id = req.params.id;
 
-  try {
     const product = await Products.findById(_id).populate("category").exec();
 
-    res.status(200).json({
-      status: "success",
-      data: product,
-    });
-  } catch (e) {
-    res.status(400).json({
-      status: "fail",
-      message: "Cannot get products",
-    });
-  }
-};
+    if (product) {
+      return res.status(STATUS_CODE.SUCCESS_OK).json({
+        status: "Ok",
+        message: "Success",
+        product,
+      });
+    } else {
+      return next(new AppError(MESSAGES.NOT_FOUND, STATUS_CODE.NOT_FOUND));
+    }
+  },
+);
+
 export const updateProduct = async (req: Request, res: Response) => {
   try {
     const products = await Products.find();

@@ -10,7 +10,7 @@ export enum API {
   BANNER_GET = "api/banner",
   BANNER_UPLOAD = "api/banner/upload",
   PRODUCTS_GET = "api/products",
-  PRODUCT_GET = "api/products/:id",
+  PRODUCT_GET = "api/products/",
   PRODUCTS_BY_CATEGORY_GET = "api/products/by_category/",
   PRODUCT_UPLOAD = "api/products/create",
 }

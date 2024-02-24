@@ -7,7 +7,7 @@ interface Props {
 
 export function QuickViewProvider({ children }: Props) {
   const [view, setView] = useState(false);
-  const [product, setProduct] = useState<{} | null>(null);
+  const [productID, setProductID] = useState<string>("");
 
   useLayoutEffect(() => {
     if (view) {
@@ -18,7 +18,9 @@ export function QuickViewProvider({ children }: Props) {
   }, [view]);
 
   return (
-    <QuickViewContext.Provider value={{ view, setView, product, setProduct }}>
+    <QuickViewContext.Provider
+      value={{ view, setView, productID, setProductID }}
+    >
       {children}
     </QuickViewContext.Provider>
   );

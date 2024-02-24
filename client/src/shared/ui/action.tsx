@@ -20,7 +20,7 @@ interface Props extends HTMLProps<HTMLDivElement> {
 const Action = observer(function ({ className, product }: Props) {
   const { t } = useContext(LanguageContext);
 
-  const { setView, setProduct } = useContext(QuickViewContext);
+  const { setView, setProductID } = useContext(QuickViewContext);
   const [cartTip, setCartTip] = useState(false);
   const [favoriteTip, setFavoriteTip] = useState(false);
   const [viewTip, setViewTip] = useState(false);
@@ -33,7 +33,7 @@ const Action = observer(function ({ className, product }: Props) {
     (p) => p._id === product._id,
   );
 
-  const onIncHandler = () => ShoppingCartStore.addToCart(product);
+  const onIncHandler = () => ShoppingCartStore.addToCartFromAction(product);
 
   function onDecHandler() {
     ShoppingCartStore.removeFromCart(product);
@@ -49,7 +49,7 @@ const Action = observer(function ({ className, product }: Props) {
 
   function onCartClickHandler() {
     setInputActive(true);
-    ShoppingCartStore.addToCart(product);
+    ShoppingCartStore.addToCartFromAction(product);
   }
 
   function onAddToFavoritesHandler() {
@@ -58,7 +58,7 @@ const Action = observer(function ({ className, product }: Props) {
 
   function onQuickViewHandler() {
     setView(true);
-    setProduct(product);
+    setProductID(product._id);
   }
 
   return (
