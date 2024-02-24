@@ -1,3 +1,3 @@
 import { lazy } from "react";
 
-export const Product = lazy(() => import("./products.page.tsx"));
+export const ProductsPage = lazy(() => import("./products.page.tsx"));

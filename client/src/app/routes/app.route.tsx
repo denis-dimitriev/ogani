@@ -7,8 +7,9 @@ import { LINKS } from "@shared/types/enums/links.ts";
 import Protected from "@pages/protected.tsx";
 import { UserProfile } from "@pages/user-profile/user-profile.page.async.ts";
 import Guest from "@pages/guest.tsx";
-import { Market } from "@pages/market/market.page.async.ts";
-import ProductsPage from "@pages/products/products.page.tsx";
+import { CategoriesPage } from "@pages/categories/categories.page.async.ts";
+import { ProductsPage } from "@pages/products/products.page.async.ts";
+import { MarketPage } from "@pages/market/market.page.async.ts";
 
 export const appRoute = createBrowserRouter([
   {
@@ -21,11 +22,17 @@ export const appRoute = createBrowserRouter([
       },
       {
         path: LINKS.MARKET,
-        element: <Market />,
+        element: <MarketPage />,
       },
       {
-        path: LINKS.MARKET_CATEGORY,
-        element: <ProductsPage />,
+        path: LINKS.CATEGORY,
+        element: <CategoriesPage />,
+        children: [
+          {
+            path: LINKS.CATEGORY,
+            element: <ProductsPage />,
+          },
+        ],
       },
       {
         element: <Protected />,

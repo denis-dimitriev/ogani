@@ -8,6 +8,6 @@ export enum LINKS {
   USER = "/user",
   USER_PROFILE = "/user/:id",
   MARKET = "/market",
-  MARKET_CATEGORY = "/market/:category",
-  MARKET_CATEGORY_PRODUCT = "/market/:category/:product",
+  CATEGORY = "/categories/:category",
+  CATEGORY_PRODUCT = "/categories/:category/:product",
 }

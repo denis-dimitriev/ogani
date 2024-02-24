@@ -17,9 +17,9 @@ function CategoriesMenu() {
   return (
     <div
       className={`${
-        shortedMenu ? "shadow" : "shadow-xl"
-      } absolute top-0 z-10 w-[256px] flex-col rounded border
-        border-[--light] bg-white transition-all duration-300`}
+        shortedMenu ? "border-[--light] shadow" : "border-[--gray] shadow-2xl"
+      } absolute top-0 z-10 w-[256px] flex-col rounded-b-lg border
+        bg-white transition-all duration-300`}
       style={{
         display: open ? "flex" : "none",
         height: shortedMenu ? "450px" : `${listHeight}px`,
@@ -33,7 +33,7 @@ function CategoriesMenu() {
               className="flex px-[20px] py-[10px] transition hover:bg-[--light]"
             >
               <Link
-                to={`/market/${category.replaceAll(" ", "-")}`}
+                to={`/categories/${category.replaceAll(" ", "-")}`}
                 className="w-full text-[14px] text-black hover:text-[--gray-light]"
               >
                 {t?.categories[category]}

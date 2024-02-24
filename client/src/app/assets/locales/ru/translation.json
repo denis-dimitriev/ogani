@@ -87,6 +87,9 @@
     "shop now": "Купить сейчас",
     "save up to": "Сэкономить до"
   },
+  "market": {
+    "goods": "Товаров"
+  },
   "product": {
     "discount": "Скидка",
     "new": "Новинка",
