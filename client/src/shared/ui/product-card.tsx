@@ -22,8 +22,8 @@ function ProductCard({ product }: Props) {
     >
       <figure className="relative flex w-full flex-col pb-3">
         <Link
-          to={`/market/${category.name.toLowerCase()}/${_id}`}
-          className="relative  bg-blue-100/20"
+          to={`/categories/${category.name.toLowerCase()}/${_id}`}
+          className="relative bg-blue-100/20"
         >
           <img
             className="absolute h-[256px] w-[256px] object-contain opacity-0 transition-opacity

@@ -2,21 +2,19 @@ import { useContext, useEffect, useState } from "react";
 import { QuickViewContext } from "@context/quick-view.context.ts";
 import { ArrowIco, CloseIco } from "@app/assets/icons";
 import { LanguageContext } from "@context/language.context.ts";
-import Skeleton from "react-loading-skeleton";
 import ApiService from "@app/service/api.service";
 import { ProductType } from "@shared/types/product.types";
 import ShoppingCartStore from "@app/store/shopping-cart.store.ts";
-import shoppingCartStore from "@app/store/shopping-cart.store.ts";
 import { observer } from "mobx-react-lite";
-
-// todo Need to implement Shopppingcart Store
+import Backdrop from "@shared/ui/backdrop.tsx";
+import Spinner from "@shared/ui/spinner.tsx";
 
 const ProductQuickView = observer(function () {
   const { productID, setView } = useContext(QuickViewContext);
+
+  const { t, language } = useContext(LanguageContext);
   const [product, setProduct] = useState<ProductType | never>();
   const [qty, setQTY] = useState(0);
-  const { t, language } = useContext(LanguageContext);
-  const [isloaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     ApiService.getSingleProduct(productID)
@@ -27,10 +25,6 @@ const ProductQuickView = observer(function () {
       })
       .catch((err) => console.error(err));
   }, [productID]);
-
-  function onImageLoading() {
-    setTimeout(() => setIsLoaded(true), 1000);
-  }
 
   const unitQty = product?.unit === "kg" ? 0.5 : 1;
 
@@ -61,9 +55,15 @@ const ProductQuickView = observer(function () {
   const onAddToCartHandler = () =>
     ShoppingCartStore.addToCartFromView(product, qty);
 
-  console.log(shoppingCartStore.totalSum);
-
   const onViewExitHandler = () => setView(false);
+
+  if (!product) {
+    return (
+      <Backdrop>
+        <Spinner />
+      </Backdrop>
+    );
+  }
 
   return (
     <div className="quick-view flex items-center justify-center">
@@ -84,7 +84,6 @@ const ProductQuickView = observer(function () {
               className="absolute h-full w-full object-contain"
               loading="lazy"
               src={product?.images[0]}
-              onLoad={onImageLoading}
               alt=""
             />
           </figure>

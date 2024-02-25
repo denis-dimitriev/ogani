@@ -10,6 +10,7 @@ import Guest from "@pages/guest.tsx";
 import { CategoriesPage } from "@pages/categories/categories.page.async.ts";
 import { ProductsPage } from "@pages/products/products.page.async.ts";
 import { MarketPage } from "@pages/market/market.page.async.ts";
+import { ProductPage } from "@pages/product/product.async.ts";
 
 export const appRoute = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const appRoute = createBrowserRouter([
             element: <ProductsPage />,
           },
         ],
+      },
+      {
+        path: LINKS.CATEGORY_SINGLE_PRODUCT,
+        element: <ProductPage />,
       },
       {
         element: <Protected />,

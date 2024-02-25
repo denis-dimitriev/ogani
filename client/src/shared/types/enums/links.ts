@@ -9,5 +9,5 @@ export enum LINKS {
   USER_PROFILE = "/user/:id",
   MARKET = "/market",
   CATEGORY = "/categories/:category",
-  CATEGORY_PRODUCT = "/categories/:category/:product",
+  CATEGORY_SINGLE_PRODUCT = "/categories/:category/:productID",
 }
