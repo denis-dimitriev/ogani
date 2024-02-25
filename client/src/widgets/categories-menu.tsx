@@ -17,12 +17,14 @@ function CategoriesMenu() {
   useEffect(() => {
     if (location.pathname === LINKS.HOME) {
       setOpen(true);
-    }
 
-    if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 768) {
+        setOpen(false);
+      }
+    } else {
       setOpen(false);
     }
-  }, [location, window.innerWidth]);
+  }, [location, setOpen]);
 
   const categories = Object.values(CATEGORIES);
   const listHeight = categories.length * 41;

@@ -9,7 +9,7 @@ function CategoriesPage() {
 
   return (
     <Fragment>
-      <div className="container relative">
+      <div className="container relative min-h-screen">
         <div className="flex gap-x-[24px]">
           <div className="col-sm relative">
             <CategoriesMenu />

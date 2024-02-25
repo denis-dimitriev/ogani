@@ -11,9 +11,14 @@ function CategoriesToggleButton() {
   const location = useLocation();
 
   function onMenuToggleHandler() {
-    if (location.pathname === LINKS.HOME && window.innerHeight >= 768) {
-      return setOpen(true);
+    if (location.pathname === LINKS.HOME) {
+      if (window.innerWidth <= 768) {
+        setOpen(!open);
+      }
+
+      return;
     }
+
     setOpen(!open);
   }
 
