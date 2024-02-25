@@ -11,7 +11,7 @@ function CategoriesPage() {
     <Fragment>
       <div className="container relative">
         <div className="flex gap-x-[24px]">
-          <div className="col-sm">
+          <div className="col-sm relative">
             <CategoriesMenu />
           </div>
 

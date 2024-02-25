@@ -8,7 +8,7 @@ const ShoppingCartCounter = observer(function () {
   const count = ShoppingCartStore.getCart().length;
 
   return (
-    <Link to="/shopping-cart" className="relative block">
+    <Link to="/shopping-cart" className="relative mr-[15px] block">
       <ShoppingCartIco />
       <ItemBadge className="absolute right-[-15px] top-[-10px]" count={count} />
     </Link>

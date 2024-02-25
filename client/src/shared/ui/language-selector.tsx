@@ -17,17 +17,17 @@ function LanguageSelector() {
 
   return (
     <div
-      className="group relative
-           flex cursor-pointer items-center gap-x-1 p-1"
+      className="group relative flex w-[125px]
+           cursor-pointer items-center gap-x-1 p-1"
     >
       {language === "ro" ? (
         <span className="flex items-center gap-x-1">
-          <img className="" src={mdFlag} alt="" />
+          <img src={mdFlag} alt="" />
           Română
         </span>
       ) : (
-        <span className="flex items-center  gap-x-1">
-          <img className="" src={ruFlag} alt="" />
+        <span className="flex items-center gap-x-1">
+          <img src={ruFlag} alt="" />
           Русский
         </span>
       )}
@@ -35,7 +35,7 @@ function LanguageSelector() {
       <div
         className="invisible absolute left-0 right-0 top-[27px] z-[99] translate-y-1/2
         rounded bg-[--darkest] text-[--white] shadow-lg transition
-        duration-300 group-hover:visible  group-hover:translate-y-0"
+        duration-300 group-hover:visible group-hover:translate-y-0"
       >
         <ul className="py-2 text-center">
           {language !== "ro" ? (

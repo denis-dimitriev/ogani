@@ -31,7 +31,9 @@ const Header = observer(function () {
           </div>
 
           <div className="col-lg">
-            <p>{t?.header["free shipping for all order of 1000 lei"]}</p>
+            <p className="bp992:hidden">
+              {t?.header["free shipping for all order of 1000 lei"]}
+            </p>
           </div>
 
           <div className="col-sm flex justify-end gap-[30px]">
@@ -51,11 +53,11 @@ const Header = observer(function () {
 
       {/* menu */}
       <div className="header-menu">
-        <div className="container flex items-center gap-[--col-gap]">
+        <div className="container flex items-center gap-[--col-gap] bp834:justify-between">
           <div className="col-sm">
             <Logo />
           </div>
-          <div className="col-lg">
+          <div className="col-lg bp834:hidden">
             <MainNav />
           </div>
           <div className="col-sm flex items-center justify-end gap-x-[30px]">
@@ -75,7 +77,7 @@ const Header = observer(function () {
           <div className="col-lg">
             <SearchForm />
           </div>
-          <div className="col-sm flex justify-end">
+          <div className="col-sm flex justify-end bp834:hidden">
             <div className="flex items-center gap-x-3">
               <CustomerSupportIco className="h-[35px] w-[35px]" />
               <span className="flex flex-col items-start justify-start">

@@ -32,9 +32,9 @@ function HomePage() {
 
   return (
     <Fragment>
-      <div className="container relative flex flex-col gap-[50px]">
-        <section className="flex h-[450px] gap-[24px]">
-          <div className="col-sm">
+      <div className="container flex flex-col gap-[50px]">
+        <section className="flex h-[450px]  gap-[24px] bp768:gap-0">
+          <div className="col-sm relative bp768:w-0">
             <CategoriesMenu />
           </div>
           <div className="col-xl">

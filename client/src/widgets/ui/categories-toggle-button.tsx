@@ -11,15 +11,14 @@ function CategoriesToggleButton() {
   const location = useLocation();
 
   function onMenuToggleHandler() {
-    if (location.pathname === LINKS.HOME) {
+    if (location.pathname === LINKS.HOME && window.innerHeight >= 768) {
       return setOpen(true);
     }
-
     setOpen(!open);
   }
 
   return (
-    <div className="h-[50px] w-full rounded-t-md bg-[--red]">
+    <div className="h-[50px] w-[256px] rounded-t-md bg-[--red] bp1024:w-[206px]">
       <button
         className="flex h-full w-full items-center gap-x-3 px-4 font-[500] text-[--white]"
         onClick={onMenuToggleHandler}

@@ -42,12 +42,10 @@ function ProductCard({ product }: Props) {
         </Link>
 
         {promo?.has && (
-          <Badge className="absolute left-5 top-3 z-10">
-            {t?.product.discount}
-          </Badge>
+          <Badge className="absolute left-5 top-3">{t?.product.discount}</Badge>
         )}
 
-        <Badge className="absolute right-5 top-3 z-10">{t?.product.new}</Badge>
+        <Badge className="absolute right-5 top-3">{t?.product.new}</Badge>
 
         <figcaption className="relative mt-3 flex flex-col items-center justify-center">
           <p>{language === "ro" ? name.ro : name.ru}</p>
