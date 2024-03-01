@@ -8,6 +8,8 @@ import ShoppingCartStore from "@app/store/shopping-cart.store.ts";
 import { observer } from "mobx-react-lite";
 import Backdrop from "@shared/ui/backdrop.tsx";
 import Spinner from "@shared/ui/spinner.tsx";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ProductQuickView = observer(function () {
   const { productID, setView } = useContext(QuickViewContext);
@@ -38,7 +40,7 @@ const ProductQuickView = observer(function () {
     } else {
       setQTY(unitQty);
     }
-  }, [unitQty]);
+  }, [product?._id, unitQty]);
 
   const onIncHandler = () =>
     setQTY((prev) => {
@@ -53,7 +55,7 @@ const ProductQuickView = observer(function () {
   const onDecHandler = () => setQTY((prev) => prev - unitQty);
 
   const onAddToCartHandler = () =>
-    ShoppingCartStore.addToCartFromView(product, qty);
+    ShoppingCartStore.addToCartFromView(product!, qty);
 
   const onViewExitHandler = () => setView(false);
 
@@ -66,7 +68,7 @@ const ProductQuickView = observer(function () {
   }
 
   return (
-    <div className="quick-view flex items-center justify-center">
+    <div className="backdrop-dark flex items-center justify-center">
       <div
         className="relative h-[500px] w-[900px] animate-fadeQView
        rounded-sm bg-white p-[30px] shadow-2xl"
@@ -78,18 +80,18 @@ const ProductQuickView = observer(function () {
         >
           <CloseIco className="scale-75" />
         </button>
-        <div className="relative flex gap-x-5">
-          <figure className="relative flex max-h-[450px] w-1/2 flex-col justify-center">
-            <img
-              className="absolute h-full w-full object-contain"
-              loading="lazy"
-              src={product?.images[0]}
+        <div className="grid grid-cols-2 gap-[24px]">
+          <figure className="flex max-h-[450px] flex-col justify-center">
+            <LazyLoadImage
+              className="h-full w-full object-contain"
+              effect="blur"
+              src={product.images[0]}
               alt=""
             />
           </figure>
-          <div className="flex w-1/2 flex-col">
+          <div className="flex flex-col">
             <h4 className="mb-5">
-              {language === "ro" ? product?.name.ro : product?.name.ru}
+              {language === "ro" ? product.name.ro : product.name.ru}
             </h4>
             <div className="flex items-center gap-x-2">
               {product?.promo?.has ? (

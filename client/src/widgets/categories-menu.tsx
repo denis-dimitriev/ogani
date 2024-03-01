@@ -17,12 +17,14 @@ function CategoriesMenu() {
   useEffect(() => {
     if (location.pathname === LINKS.HOME) {
       setOpen(true);
+      setShortedMenu(true);
 
       if (window.innerWidth <= 768) {
         setOpen(false);
       }
     } else {
       setOpen(false);
+      setShortedMenu(false);
     }
   }, [location, setOpen]);
 

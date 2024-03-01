@@ -11,7 +11,7 @@ function HeaderFixed() {
 
   return (
     <div
-      className="bg-gradient fixed left-0 right-0 top-0 z-[1999]
+      className="bg-gradient fixed left-0 right-0 top-0 z-[89]
                 border-b border-b-[--red] shadow-2xl transition-transform
                 duration-500 ease-in-out"
       style={{

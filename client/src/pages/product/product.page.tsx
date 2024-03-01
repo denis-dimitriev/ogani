@@ -8,6 +8,9 @@ import { ArrowIco } from "@app/assets/icons";
 import Backdrop from "@shared/ui/backdrop.tsx";
 import Spinner from "@shared/ui/spinner.tsx";
 import CategoriesMenu from "@widgets/categories-menu.tsx";
+import ProductRating from "@shared/ui/product-rating.tsx";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 function ProductPage() {
   const { productID } = useParams();
@@ -64,8 +67,20 @@ function ProductPage() {
     );
   }
 
+  function onSketchClickHandler(sketch: string) {
+    const imageId = sketch
+      .replace("https://ucarecdn.com/", "")
+      .split("/")
+      .shift();
+    const slide = product?.images.find((img) => img.includes(imageId!));
+
+    if (slide) {
+      setSlide(slide);
+    }
+  }
+
   return (
-    <div className="container relative min-h-screen">
+    <div className="container relative min-h-full">
       <CategoriesMenu />
       <div className="grid grid-cols-2 gap-[24px]">
         <figure className="flex flex-col">
@@ -75,9 +90,9 @@ function ProductPage() {
                 key={image}
                 className={`${slide === image ? "block" : "hidden"} appearance`}
               >
-                <img
-                  className="h-full w-full object-contain"
-                  loading="lazy"
+                <LazyLoadImage
+                  className="max-h-[450px] w-full object-contain"
+                  effect="blur"
                   src={image}
                   alt=""
                 />
@@ -85,24 +100,22 @@ function ProductPage() {
             ))}
           </ul>
 
-          <div className="flex h-[90px] w-[90px] items-center rounded border-2 border-[--gray-light]">
-            <ul>
-              {product.images.map((image) => (
-                <li
-                  key={image}
-                  className={`${
-                    slide !== image ? "block opacity-100" : "hidden opacity-0"
-                  } cursor-pointer duration-300`}
-                  onClick={() => setSlide(image)}
-                >
-                  <img
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                    src={image}
-                    alt=""
-                  />
-                </li>
-              ))}
+          <div className="">
+            <ul className="flex gap-[24px]">
+              <li
+                className="flex h-[60px] w-[60px] cursor-pointer items-center rounded
+              border border-[--gray-light]"
+                onClick={() => onSketchClickHandler(product?.thumbnail)}
+              >
+                <img src={product.thumbnail} alt="" />
+              </li>
+              <li
+                className="flex h-[60px] w-[60px] cursor-pointer items-center rounded
+              border border-[--gray-light]"
+                onClick={() => onSketchClickHandler(product?.sketch)}
+              >
+                <img src={product.sketch} alt="" />
+              </li>
             </ul>
           </div>
         </figure>
@@ -111,6 +124,7 @@ function ProductPage() {
           <h3 className="mb-5">
             {language === "ro" ? product.name.ro : product.name.ru}
           </h3>
+          <ProductRating rating={product.rating} />
           <div className="flex items-center gap-x-2">
             {product?.promo?.has ? (
               <>
@@ -140,7 +154,7 @@ function ProductPage() {
 
             <li className="flex justify-between">
               <span className="font-semibold">{t?.product.description}</span>
-              <span>
+              <span className="ml-16">
                 {language === "ro"
                   ? product?.info.description.ro
                   : product?.info.description.ru}

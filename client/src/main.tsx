@@ -9,8 +9,7 @@ import { AuthProvider } from "@app/providers/auth.provider.tsx";
 import { QuickViewProvider } from "@app/providers/quick-view.provider.tsx";
 import { HeaderScrollProvider } from "@app/providers/header-scroll.provider.tsx";
 import { CategoriesMenuProvider } from "@app/providers/categories-menu.provider.tsx";
-import { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import { MiniCartProvider } from "@app/providers/mini-cart.provider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense
@@ -25,9 +24,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <CategoriesMenuProvider>
           <AuthProvider>
             <QuickViewProvider>
-              <SkeletonTheme baseColor="#fff" highlightColor="#e0e0e0">
+              <MiniCartProvider>
                 <RouterProvider router={appRoute} />
-              </SkeletonTheme>
+              </MiniCartProvider>
             </QuickViewProvider>
           </AuthProvider>
         </CategoriesMenuProvider>

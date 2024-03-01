@@ -271,7 +271,7 @@
         gap-x-1 transition-opacity duration-300
     }
 
-    .quick-view {
+    .backdrop-dark {
         position: fixed;
         top: 0;
         left: 0;
@@ -288,4 +288,5 @@
     .appearance {
         animation: appearance 600ms ease-in-out;
     }
+
 }

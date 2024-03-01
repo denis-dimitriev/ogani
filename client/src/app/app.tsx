@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.ts";
 import Spinner from "@shared/ui/spinner.tsx";
 import { observer } from "mobx-react-lite";
+import MiniCart from "@widgets/mini-cart.tsx";
 
 const App = observer(function () {
   const { loading } = useContext(LanguageContext);
@@ -21,6 +22,7 @@ const App = observer(function () {
       <main className="main">
         <Outlet />
       </main>
+      <MiniCart />
       <Footer />
     </Layout>
   );

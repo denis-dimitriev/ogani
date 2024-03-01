@@ -1,5 +1,6 @@
 import { StarGoldIco, StarIco } from "@app/assets/icons";
 import { Rating } from "@shared/types/enums/product.types.ts";
+import { JSX } from "react";
 
 interface Props {
   rating: Rating;
@@ -13,7 +14,7 @@ function ProductRating({ rating }: Props) {
     return <StarIco key={i} className="scale-75" />;
   });
 
-  return <>{productRating}</>;
+  return <div className="flex">{productRating}</div>;
 }
 
 export default ProductRating;

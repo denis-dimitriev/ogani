@@ -44,7 +44,7 @@ const Header = observer(function () {
                 user.role !== "guest" && "hidden"
               } flex items-center gap-x-2`}
             >
-              <LoginIco className="h-[18px] w-[18px]" />
+              <LoginIco className="h-[18px] w-[18px] stroke-[--darkest]" />
               <span>{t?.common.enter}</span>
             </Link>
           </div>
