@@ -101,5 +101,15 @@
     "unit": "Unit. de măsură",
     "kg": "kg",
     "pcs": "buc"
+  },
+  "cart": {
+    "shopping cart": "Coș",
+    "is empty": "Coșul este gol",
+    "add to cart": "Adaugă in coş",
+    "Items in cart": "Produse în coș",
+    "view cart": "Vizualizare coș",
+    "sub total": "Sub total",
+    "total": "Total",
+    "checkout": "Finalizați cumpărăturile"
   }
 }

@@ -70,7 +70,7 @@ class ShoppingCartStore {
     this.onTotalSumCalc();
   }
 
-  removeFromCart(product: ProductType) {
+  removeUnitFromCart(product: ProductType) {
     const unitQty = product.unit === "kg" ? 0.5 : 1;
 
     this.cart.forEach((p) => {
@@ -89,6 +89,11 @@ class ShoppingCartStore {
       this.cart = this.cart.filter((p) => p.qty !== 0);
     }
 
+    this.onTotalSumCalc();
+  }
+
+  removeItemFromCart(id: string) {
+    this.cart = this.cart.filter((p) => p._id !== id);
     this.onTotalSumCalc();
   }
 

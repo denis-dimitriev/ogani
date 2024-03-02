@@ -36,7 +36,7 @@ const Action = observer(function ({ className, product }: Props) {
   const onIncHandler = () => ShoppingCartStore.addToCartFromAction(product);
 
   function onDecHandler() {
-    ShoppingCartStore.removeFromCart(product);
+    ShoppingCartStore.removeUnitFromCart(product);
 
     const cartItem = ShoppingCartStore.getCart().find(
       (p) => p._id === product._id,

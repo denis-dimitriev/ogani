@@ -1,29 +1,38 @@
-import { ShoppingCartItem } from "@app/store/shopping-cart.store.ts";
+import ShoppingCartStore, {
+  ShoppingCartItem,
+} from "@app/store/shopping-cart.store.ts";
 import { CloseIco } from "@app/assets/icons";
+import { useContext } from "react";
+import { LanguageContext } from "@context/language.context.ts";
 
 type Props = {
-  product?: ShoppingCartItem;
+  product: ShoppingCartItem;
 };
 
-function ShopCartCard({ product }: Props) {
+// TODO when will be promo price, to add functionality
+
+function ShopCartCard({
+  product: { name, thumbnail, qty, price, _id },
+}: Props) {
+  const { language } = useContext(LanguageContext);
+
+  const onDeleteItemHandler = () => ShoppingCartStore.removeItemFromCart(_id);
+
   return (
     <div className="flex items-start justify-between gap-x-3">
       <figure className="h-[90px] w-[90px]">
-        <img
-          src="https://htmldemo.net/safira/safira/assets/img/s-product/product.jpg"
-          alt=""
-        />
+        <img src={thumbnail} alt="" />
       </figure>
       <figcaption className="flex flex-col text-[14px]">
-        <p>Varza din Moldova Varza din Moldova</p>
+        {language === "ro" ? <p>{name.ro}</p> : <p>{name.ru}</p>}
         <p>
-          <span className="">{1}</span>&nbsp;
+          <span className="">{qty}</span>&nbsp;
           <span className="">x</span>&nbsp;
-          <span className="font-bold">{12.9}</span>
+          <span className="font-bold">{price}</span>
           <span className="text-[13px]">mdl</span>
         </p>
       </figcaption>
-      <button>
+      <button onClick={onDeleteItemHandler}>
         <CloseIco className="scale-50" />
       </button>
     </div>
