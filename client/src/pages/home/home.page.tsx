@@ -42,7 +42,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="h-[450px] w-full">
+        <section className="h-[450px] w-full bp768:hidden bp834:max-h-[250px] bp1024:h-[350px]">
           <BannerArea />
         </section>
 

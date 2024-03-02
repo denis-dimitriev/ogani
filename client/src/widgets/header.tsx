@@ -57,7 +57,7 @@ const Header = observer(function () {
           <div className="col-sm">
             <Logo />
           </div>
-          <div className="col-lg bp834:hidden">
+          <div className="col-lg">
             <MainNav />
           </div>
           <div className="col-sm flex items-center justify-end gap-x-[30px]">

@@ -51,7 +51,7 @@ function BannerArea() {
 
   return (
     <Fragment>
-      <ul className="flex h-full justify-between">
+      <ul className="flex h-full justify-between gap-x-2">
         <li className="col-sm">
           <BannerCard
             title={t?.banner["fresh fruits" as never]}

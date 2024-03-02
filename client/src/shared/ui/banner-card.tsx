@@ -29,7 +29,7 @@ function BannerCard({ title = "", thumbnail = "", link = "#" }: Props) {
       <figure className="banner-thumb relative flex w-full items-end justify-end">
         <img className="object-contain" src={thumbnail} alt="" />
         <figcaption className="absolute left-4 top-2">
-          <h4 className="font-thin leading-6">{modTitle}</h4>
+          <h4 className="font-thin leading-6 text-[--gray]">{modTitle}</h4>
           <BadgeShop
             className="mt-1 text-[13px] font-semibold uppercase text-[--gray]"
             withIco
