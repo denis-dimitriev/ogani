@@ -22,7 +22,7 @@ const MiniCart = observer(function () {
       style={{
         display: miniCartOpen ? "block" : "none",
       }}
-      onClick={onCloseMiniCartHandler}
+      // onClick={onCloseMiniCartHandler}
     >
       <div
         className="appearance absolute bottom-0 right-0 top-0 flex min-w-[320px] max-w-[350px]
@@ -39,9 +39,9 @@ const MiniCart = observer(function () {
         </div>
 
         {products.length === 0 ? (
-          <div className="flex flex-col items-center justify-center gap-[24px]">
-            <img src={emptyCart} alt="" />
-            <h3>{t?.cart["is empty"]}</h3>
+          <div className="mt-[50px] flex flex-col items-center justify-center gap-[50px]">
+            <img className="w-[150px] object-contain" src={emptyCart} alt="" />
+            <h4>{t?.cart["is empty"]}</h4>
           </div>
         ) : (
           <Fragment>

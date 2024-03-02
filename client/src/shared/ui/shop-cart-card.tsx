@@ -12,9 +12,9 @@ type Props = {
 // TODO when will be promo price, to add functionality
 
 function ShopCartCard({
-  product: { name, thumbnail, qty, price, _id },
+  product: { name, thumbnail, qty, unit, price, _id },
 }: Props) {
-  const { language } = useContext(LanguageContext);
+  const { language, t } = useContext(LanguageContext);
 
   const onDeleteItemHandler = () => ShoppingCartStore.removeItemFromCart(_id);
 
@@ -26,7 +26,7 @@ function ShopCartCard({
       <figcaption className="flex flex-col text-[14px]">
         {language === "ro" ? <p>{name.ro}</p> : <p>{name.ru}</p>}
         <p>
-          <span className="">{qty}</span>&nbsp;
+          <span className="">{`${qty}${t?.product[`${unit}`]}`}</span>&nbsp;
           <span className="">x</span>&nbsp;
           <span className="font-bold">{price}</span>
           <span className="text-[13px]">mdl</span>
