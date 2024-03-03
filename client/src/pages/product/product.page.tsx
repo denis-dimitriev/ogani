@@ -11,6 +11,7 @@ import CategoriesMenu from "@widgets/categories-menu.tsx";
 import ProductRating from "@shared/ui/product-rating.tsx";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import SetRating from "@widgets/ui/set-rating.tsx";
 
 function ProductPage() {
   const { productID } = useParams();
@@ -124,7 +125,11 @@ function ProductPage() {
           <h3 className="mb-5">
             {language === "ro" ? product.name.ro : product.name.ru}
           </h3>
-          <ProductRating rating={product.rating} />
+
+          <div className="flex items-center gap-2">
+            <SetRating incomingRating={product.rating} />
+          </div>
+
           <div className="flex items-center gap-x-2">
             {product?.promo?.has ? (
               <>

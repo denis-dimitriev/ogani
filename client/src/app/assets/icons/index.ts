@@ -25,6 +25,8 @@ import DeleteIco from "./delete.svg";
 import FacebookIco from "./facebook.svg";
 import InstagramIco from "./instagram.svg";
 import LinkedinIco from "./linkedin.svg";
+import OKIco from "./ok.svg";
+import ConfirmIco from "./confirm.svg";
 
 export {
   ArrowIco,
@@ -54,4 +56,6 @@ export {
   VisualIco,
   DeleteIco,
   LinkedinIco,
+  OKIco,
+  ConfirmIco,
 };

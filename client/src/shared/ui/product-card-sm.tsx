@@ -15,7 +15,7 @@ function ProductCardSm({ product }: Props) {
     title.length > 20 ? title.substring(0, 15).concat("...") : title;
 
   return (
-    <article className="h-full rounded border border-[--light] shadow">
+    <article className="card-sm h-full rounded border border-[--light] shadow">
       <figure className="group relative flex h-full items-start justify-center gap-x-2 text-[--darkest]">
         <div className="relative min-w-[90px]">
           <Link to={`/market/${category.toLowerCase()}/${_id}`}>
@@ -39,7 +39,7 @@ function ProductCardSm({ product }: Props) {
             <p>
               <span className="font-semibold text-[--red-dark]">
                 {promoPrice}
-                <span className="text-sm">lei</span>
+                <span className="text-sm">mdl</span>
               </span>
             </p>
             <p className="line-through">

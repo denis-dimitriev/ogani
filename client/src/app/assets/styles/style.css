@@ -261,6 +261,12 @@
 
     }
 
+    .card-sm {
+        svg {
+            @apply scale-75
+        }
+    }
+
     .figcaption {
         animation: figcaption 400ms ease-in;
     }

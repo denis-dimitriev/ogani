@@ -111,5 +111,8 @@
     "sub total": "Sub total",
     "total": "Total",
     "checkout": "Finalizați cumpărăturile"
+  },
+  "rating": {
+    "put a star too": "Pune si tu o stea"
   }
 }
