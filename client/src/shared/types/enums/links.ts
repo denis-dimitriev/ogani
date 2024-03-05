@@ -10,4 +10,5 @@ export enum LINKS {
   MARKET = "/market",
   CATEGORY = "/categories/:category",
   CATEGORY_SINGLE_PRODUCT = "/categories/:category/:productID",
+  SHOPPING_CART = "/shopping-cart",
 }

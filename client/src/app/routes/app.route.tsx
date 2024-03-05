@@ -11,6 +11,7 @@ import { CategoriesPage } from "@pages/categories/categories.page.async.ts";
 import { ProductsPage } from "@pages/products/products.page.async.ts";
 import { MarketPage } from "@pages/market/market.page.async.ts";
 import { ProductPage } from "@pages/product/product.async.ts";
+import { ShoppingCartPage } from "@pages/shopping-cart/shopping-cart.page.async.ts";
 
 export const appRoute = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const appRoute = createBrowserRouter([
       {
         path: LINKS.CATEGORY_SINGLE_PRODUCT,
         element: <ProductPage />,
+      },
+      {
+        path: LINKS.SHOPPING_CART,
+        element: <ShoppingCartPage />,
       },
       {
         element: <Protected />,

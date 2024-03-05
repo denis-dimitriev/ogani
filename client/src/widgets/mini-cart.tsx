@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite";
 import ShoppingCartStore from "@app/store/shopping-cart.store.ts";
 import { LanguageContext } from "@context/language.context.ts";
 import emptyCart from "@app/assets/img/shopping_cart_empty.png";
+import { LINKS } from "@shared/types/enums/links.ts";
 
 const MiniCart = observer(function () {
   const { setMiniCartOpen, miniCartOpen } = useContext(MiniCartContext);
@@ -67,7 +68,7 @@ const MiniCart = observer(function () {
             </div>
             <div className="flex flex-col gap-3">
               <Link
-                to=""
+                to={LINKS.SHOPPING_CART}
                 className="group inline-flex items-center justify-center rounded
                            bg-[--gray-lighter] p-2 text-[14px] uppercase transition
                            duration-300 hover:bg-[--red] hover:text-white"

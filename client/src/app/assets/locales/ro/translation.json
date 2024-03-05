@@ -110,7 +110,12 @@
     "view cart": "Vizualizare coș",
     "sub total": "Sub total",
     "total": "Total",
-    "checkout": "Finalizați cumpărăturile"
+    "checkout": "Finalizați cumpărăturile",
+    "delete": "Ştergere",
+    "image": "Imagine",
+    "product": "Produsul",
+    "price": "Preț",
+    "quantity": "Cantitate"
   },
   "rating": {
     "put a star too": "Pune si tu o stea"
