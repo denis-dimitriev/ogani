@@ -84,7 +84,7 @@ function HomePage() {
                 link={""}
               />
             </div>
-
+{/*
             <div className="mt-6 flex h-[150px] gap-[24px]">
               <BannerCardSm
                 thumbnail={sos_condim}

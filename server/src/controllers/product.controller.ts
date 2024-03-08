@@ -142,7 +142,9 @@ export const getProductsByCategory = asyncHandler(
     if (foundCategory) {
       const products = await Products.find({
         $or: [{ category: foundCategory }],
-      }).populate("category");
+      })
+        .sort({ createdAt: "asc" })
+        .populate("category");
 
       if (products) {
         return res.status(STATUS_CODE.SUCCESS_OK).json({

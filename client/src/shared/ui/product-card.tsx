@@ -28,14 +28,12 @@ function ProductCard({ product }: Props) {
           <img
             className="absolute h-[256px] w-[256px] object-contain opacity-0 transition-opacity
             duration-500 group-hover:opacity-100"
-            loading="lazy"
             src={sketch}
             alt=""
           />
           <img
             className="h-[256px] w-[256px] object-contain opacity-100 transition-opacity
                        duration-500 group-hover:opacity-0"
-            loading="lazy"
             src={thumbnail}
             alt=""
           />

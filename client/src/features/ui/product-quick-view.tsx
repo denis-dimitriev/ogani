@@ -8,8 +8,6 @@ import ShoppingCartStore from "@app/store/shopping-cart.store.ts";
 import { observer } from "mobx-react-lite";
 import Backdrop from "@shared/ui/backdrop.tsx";
 import Spinner from "@shared/ui/spinner.tsx";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ProductQuickView = observer(function () {
   const { productID, setView } = useContext(QuickViewContext);
@@ -82,9 +80,8 @@ const ProductQuickView = observer(function () {
         </button>
         <div className="grid grid-cols-2 gap-[24px]">
           <figure className="flex max-h-[450px] flex-col justify-center">
-            <LazyLoadImage
+            <img
               className="h-full w-full object-contain"
-              effect="blur"
               src={product.images[0]}
               alt=""
             />

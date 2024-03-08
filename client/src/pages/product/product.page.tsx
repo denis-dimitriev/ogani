@@ -8,10 +8,8 @@ import { ArrowIco } from "@app/assets/icons";
 import Backdrop from "@shared/ui/backdrop.tsx";
 import Spinner from "@shared/ui/spinner.tsx";
 import CategoriesMenu from "@widgets/categories-menu.tsx";
-import ProductRating from "@shared/ui/product-rating.tsx";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 import SetRating from "@widgets/ui/set-rating.tsx";
+import Skeleton from "react-loading-skeleton";
 
 function ProductPage() {
   const { productID } = useParams();
@@ -24,7 +22,7 @@ function ProductPage() {
     ApiService.getSingleProduct(productID!)
       .then((res) => {
         if (res.data) {
-          setProduct(res.data.product);
+          setTimeout(() => setProduct(res.data.product), 5000);
           setSlide(res.data.product.images[0]);
         }
       })
@@ -62,9 +60,28 @@ function ProductPage() {
 
   if (!product) {
     return (
-      <Backdrop>
-        <Spinner />
-      </Backdrop>
+      <div className="container grid grid-cols-2 gap-[24px]">
+        <div>
+          <div>
+            <Skeleton className="h-[400px] w-full" />
+          </div>
+          <div className="mt-5 flex gap-[24px]">
+            <Skeleton className="h-[90px] min-w-[90px]" />
+            <Skeleton className="h-[90px] min-w-[90px]" />
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <Skeleton className="max-w-[250px] p-4" />
+          <Skeleton className="mt-[30px] max-w-[200px] p-2" />
+          <Skeleton className="mt-[30px] max-w-[200px] p-2" />
+          <Skeleton className="mt-[30px] max-w-[200px] p-2" />
+          <Skeleton className="mt-[30px]" count={4} />
+          <div className="flex justify-center gap-[24px]">
+            <Skeleton className="mt-[30px] min-w-[150px] p-4" />
+            <Skeleton className="mt-[30px] min-w-[150px] p-4" />
+          </div>
+        </div>
+      </div>
     );
   }
 
@@ -91,9 +108,8 @@ function ProductPage() {
                 key={image}
                 className={`${slide === image ? "block" : "hidden"} appearance`}
               >
-                <LazyLoadImage
+                <img
                   className="max-h-[450px] w-full object-contain"
-                  effect="blur"
                   src={image}
                   alt=""
                 />
