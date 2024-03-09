@@ -6,10 +6,10 @@ import ApiService from "@app/service/api.service.ts";
 import ShoppingCartStore from "@app/store/shopping-cart.store.ts";
 import { ArrowIco } from "@app/assets/icons";
 import Backdrop from "@shared/ui/backdrop.tsx";
-import Spinner from "@shared/ui/spinner.tsx";
 import CategoriesMenu from "@widgets/categories-menu.tsx";
 import SetRating from "@widgets/ui/set-rating.tsx";
 import Skeleton from "react-loading-skeleton";
+import { ImagesPreloader } from "@shared/helpers/images.preloader.ts";
 
 function ProductPage() {
   const { productID } = useParams();
@@ -17,12 +17,16 @@ function ProductPage() {
   const [qty, setQTY] = useState(0);
   const [slide, setSlide] = useState<string>("");
   const { t, language } = useContext(LanguageContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
+    window.scrollTo(0, 0);
+    document.body.style.overflow = "hidden";
     ApiService.getSingleProduct(productID!)
       .then((res) => {
         if (res.data) {
-          setTimeout(() => setProduct(res.data.product), 5000);
+          setProduct(res.data.product);
           setSlide(res.data.product.images[0]);
         }
       })
@@ -43,6 +47,17 @@ function ProductPage() {
     }
   }, [unitQty]);
 
+  useEffect(() => {
+    if (product) {
+      ImagesPreloader(product.images).finally(() =>
+        setTimeout(() => {
+          setLoading(false);
+          document.body.style.overflow = "auto";
+        }, 800),
+      );
+    }
+  }, [product]);
+
   const onIncHandler = () =>
     setQTY((prev) => {
       if (product && prev >= product?.stock) {
@@ -58,33 +73,6 @@ function ProductPage() {
   const onAddToCartHandler = () =>
     ShoppingCartStore.addToCartFromView(product!, qty);
 
-  if (!product) {
-    return (
-      <div className="container grid grid-cols-2 gap-[24px]">
-        <div>
-          <div>
-            <Skeleton className="h-[400px] w-full" />
-          </div>
-          <div className="mt-5 flex gap-[24px]">
-            <Skeleton className="h-[90px] min-w-[90px]" />
-            <Skeleton className="h-[90px] min-w-[90px]" />
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <Skeleton className="max-w-[250px] p-4" />
-          <Skeleton className="mt-[30px] max-w-[200px] p-2" />
-          <Skeleton className="mt-[30px] max-w-[200px] p-2" />
-          <Skeleton className="mt-[30px] max-w-[200px] p-2" />
-          <Skeleton className="mt-[30px]" count={4} />
-          <div className="flex justify-center gap-[24px]">
-            <Skeleton className="mt-[30px] min-w-[150px] p-4" />
-            <Skeleton className="mt-[30px] min-w-[150px] p-4" />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   function onSketchClickHandler(sketch: string) {
     const imageId = sketch
       .replace("https://ucarecdn.com/", "")
@@ -97,20 +85,49 @@ function ProductPage() {
     }
   }
 
+  if (!product || loading) {
+    return (
+      <Backdrop>
+        <div className="container mt-[250px] grid h-full grid-cols-2 gap-[24px]">
+          <div>
+            <div>
+              <Skeleton className="h-[400px] w-full" />
+            </div>
+            <div className="mt-5 flex gap-[24px]">
+              <Skeleton className="h-[90px] min-w-[90px]" />
+              <Skeleton className="h-[90px] min-w-[90px]" />
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <Skeleton className="max-w-[250px] p-4" />
+            <Skeleton className="mt-[30px] max-w-[200px] p-2" />
+            <Skeleton className="mt-[30px] max-w-[200px] p-2" />
+            <Skeleton className="mt-[30px] max-w-[200px] p-2" />
+            <Skeleton className="mt-[30px]" count={4} />
+            <div className="flex justify-center gap-[24px]">
+              <Skeleton className="mt-[30px] min-w-[150px] p-4" />
+              <Skeleton className="mt-[30px] min-w-[150px] p-4" />
+            </div>
+          </div>
+        </div>
+      </Backdrop>
+    );
+  }
+
   return (
     <div className="container relative min-h-full">
       <CategoriesMenu />
-      <div className="grid grid-cols-2 gap-[24px]">
+      <div className="mt-[50px] grid grid-cols-2 gap-[24px]">
         <figure className="flex flex-col">
           <ul className="h-[450px] w-full">
-            {product.images.map((image) => (
+            {product.images.map((image: string) => (
               <li
                 key={image}
                 className={`${slide === image ? "block" : "hidden"} appearance`}
               >
                 <img
-                  className="max-h-[450px] w-full object-contain"
                   src={image}
+                  className="max-h-[450px] w-full object-contain"
                   alt=""
                 />
               </li>
