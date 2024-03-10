@@ -1,7 +1,7 @@
 import "./assets/styles/index.css";
 import { Outlet } from "react-router-dom";
 import Layout from "layout/layout";
-import Header from "@widgets/header";
+import Header from "@widgets/header.tsx";
 import Footer from "@widgets/footer";
 import { useContext } from "react";
 import { LanguageContext } from "@context/language.context.ts";

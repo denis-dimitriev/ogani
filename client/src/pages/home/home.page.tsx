@@ -19,7 +19,7 @@ import OurProducts from "@features/ui/our-products.tsx";
 import ReviewsSlider from "@features/ui/reviews-slider.tsx";
 import BlogsSection from "@widgets/blogs-section.tsx";
 import apiService from "@app/service/api.service.ts";
-import ProductCard from "@shared/ui/product-card.tsx";
+import ProductCard from "@shared/ui/product-card/product-card.tsx";
 import { CATEGORIES } from "@shared/types/enums/categories.ts";
 import { ProductType } from "@shared/types/product.types.ts";
 import { CategoriesMenuContext } from "@context/categories-menu.context.ts";

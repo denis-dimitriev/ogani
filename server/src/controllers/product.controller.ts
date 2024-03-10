@@ -61,15 +61,33 @@ export const createProduct = asyncHandler(
   },
 );
 
+type QueryParamsType = {
+  limit?: string;
+  page?: string;
+  sort?: string;
+};
+
 export const getProducts = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const products = await Products.find().populate("category").select("-__v");
+    const { page, sort } = req.query as QueryParamsType;
+
+    const pageNumber = page ? +page - 1 : 0;
+    const limitPerPage = 20;
+
+    const products = await Products.find()
+      .sort({ name: "asc" })
+      .limit(limitPerPage)
+      .skip(pageNumber * limitPerPage)
+      .populate("category")
+      .select("-__v");
+
+    const count = await Products.find().count();
 
     if (products) {
       return res.status(STATUS_CODE.SUCCESS_OK).json({
         status: STATUS_CODE.SUCCESS_OK,
         message: MESSAGES.RESOURCE_HAS_FOUND,
-        length: products.length,
+        count,
         products: products,
       });
     } else {

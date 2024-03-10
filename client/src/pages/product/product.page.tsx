@@ -10,6 +10,7 @@ import CategoriesMenu from "@widgets/categories-menu.tsx";
 import SetRating from "@widgets/ui/set-rating.tsx";
 import Skeleton from "react-loading-skeleton";
 import { ImagesPreloader } from "@shared/helpers/images.preloader.ts";
+import { LoadingContext } from "@context/loading.context.ts";
 
 function ProductPage() {
   const { productID } = useParams();
@@ -17,12 +18,11 @@ function ProductPage() {
   const [qty, setQTY] = useState(0);
   const [slide, setSlide] = useState<string>("");
   const { t, language } = useContext(LanguageContext);
-  const [loading, setLoading] = useState(false);
+  const { loading, setLoading } = useContext(LoadingContext);
 
   useEffect(() => {
     setLoading(true);
     window.scrollTo(0, 0);
-    document.body.style.overflow = "hidden";
     ApiService.getSingleProduct(productID!)
       .then((res) => {
         if (res.data) {
@@ -52,7 +52,6 @@ function ProductPage() {
       ImagesPreloader(product.images).finally(() =>
         setTimeout(() => {
           setLoading(false);
-          document.body.style.overflow = "auto";
         }, 800),
       );
     }

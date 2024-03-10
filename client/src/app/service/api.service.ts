@@ -31,12 +31,16 @@ class ApiService {
     return await axios.get(API.BANNER_GET);
   }
 
-  static async getProducts() {
-    return await axios.get(API.PRODUCTS_GET);
+  static async getProducts(params = {}) {
+    return await axios.get(API.PRODUCTS_GET, {
+      params: { ...params },
+    });
   }
 
-  static async getProductsByCategory(category: string) {
-    return await axios.get(API.PRODUCTS_BY_CATEGORY_GET.concat(category));
+  static async getProductsByCategory(category: string, params = {}) {
+    return await axios.get(API.PRODUCTS_BY_CATEGORY_GET.concat(category), {
+      params: { ...params },
+    });
   }
 
   static async getSingleProduct(id: string) {

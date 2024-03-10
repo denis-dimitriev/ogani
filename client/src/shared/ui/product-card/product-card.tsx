@@ -5,9 +5,9 @@ import Badge from "@shared/ui/badge.tsx";
 import { Link } from "react-router-dom";
 import { ProductType } from "@shared/types/product.types.ts";
 
-interface Props {
+type Props = {
   product: ProductType;
-}
+};
 
 function ProductCard({ product }: Props) {
   const { _id, name, category, thumbnail, sketch, price, promo, info } =

@@ -5,9 +5,11 @@ import { LanguageContext } from "@context/language.context.ts";
 import { MinusIco, PlusIco } from "@app/assets/icons";
 import { CategoriesMenuContext } from "@context/categories-menu.context.ts";
 import { LINKS } from "@shared/types/enums/links.ts";
+import { LoadingContext } from "@context/loading.context.ts";
 
 function CategoriesMenu() {
   const { t } = useContext(LanguageContext);
+  const { setLoading } = useContext(LoadingContext);
   const { open } = useContext(CategoriesMenuContext);
 
   const [shortedMenu, setShortedMenu] = useState(true);
@@ -31,6 +33,8 @@ function CategoriesMenu() {
   const categories = Object.values(CATEGORIES);
   const listHeight = categories.length * 41;
 
+  const onSetLoadingHandler = () => setLoading(true);
+
   return (
     <div
       className={`${
@@ -52,6 +56,7 @@ function CategoriesMenu() {
               <Link
                 to={`/categories/${category.replaceAll(" ", "-")}`}
                 className="w-full text-[14px] text-black hover:text-[--gray-light]"
+                onClick={onSetLoadingHandler}
               >
                 {t?.categories[category]}
               </Link>

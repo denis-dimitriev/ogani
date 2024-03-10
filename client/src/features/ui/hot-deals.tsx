@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ProductCard from "@shared/ui/product-card.tsx";
+import ProductCard from "@shared/ui/product-card/product-card.tsx";
 import { IProduct } from "@shared/ui/product-card-sm.tsx";
 import { LanguageContext } from "@context/language.context.ts";
 import { useSlider } from "@shared/helpers/slider.hook.ts";

@@ -1,4 +1,4 @@
-import ProductCard from "@shared/ui/product-card.tsx";
+import ProductCard from "@shared/ui/product-card/product-card.tsx";
 import { useSlider } from "@shared/helpers/slider.hook.ts";
 import SectionHeader from "@shared/ui/section-header.tsx";
 

@@ -6,9 +6,12 @@ import { MiniCartContext } from "@context/mini-cart.context.ts";
 import { useContext } from "react";
 import { LINKS } from "@shared/types/enums/links.ts";
 import { useLocation } from "react-router-dom";
+import { LoadingContext } from "@context/loading.context.ts";
+import Skeleton from "react-loading-skeleton";
 
 const ShoppingCartCounter = observer(function () {
   const { setMiniCartOpen } = useContext(MiniCartContext);
+  const { loading } = useContext(LoadingContext);
   const count = ShoppingCartStore.getCart().length;
   const location = useLocation();
 
@@ -18,6 +21,10 @@ const ShoppingCartCounter = observer(function () {
     } else {
       setMiniCartOpen(true);
     }
+  }
+
+  if (loading) {
+    return <Skeleton className="h-[50px] min-w-[50px]" circle />;
   }
 
   return (

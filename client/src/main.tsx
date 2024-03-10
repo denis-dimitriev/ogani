@@ -12,6 +12,7 @@ import { CategoriesMenuProvider } from "@app/providers/categories-menu.provider.
 import { MiniCartProvider } from "@app/providers/mini-cart.provider.tsx";
 import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { LoadingProvider } from "@app/providers/loading.provider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense
@@ -22,19 +23,21 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     }
   >
     <TranslateProvider>
-      <HeaderScrollProvider>
-        <CategoriesMenuProvider>
-          <AuthProvider>
-            <QuickViewProvider>
-              <MiniCartProvider>
-                <SkeletonTheme baseColor="#e2e2e2" highlightColor="#fff">
-                  <RouterProvider router={appRoute} />
-                </SkeletonTheme>
-              </MiniCartProvider>
-            </QuickViewProvider>
-          </AuthProvider>
-        </CategoriesMenuProvider>
-      </HeaderScrollProvider>
+      <LoadingProvider>
+        <HeaderScrollProvider>
+          <CategoriesMenuProvider>
+            <AuthProvider>
+              <QuickViewProvider>
+                <MiniCartProvider>
+                  <SkeletonTheme baseColor="#e2e2e2" highlightColor="#fff">
+                    <RouterProvider router={appRoute} />
+                  </SkeletonTheme>
+                </MiniCartProvider>
+              </QuickViewProvider>
+            </AuthProvider>
+          </CategoriesMenuProvider>
+        </HeaderScrollProvider>
+      </LoadingProvider>
     </TranslateProvider>
   </Suspense>,
 );
