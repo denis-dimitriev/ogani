@@ -69,13 +69,17 @@ type QueryParamsType = {
 
 export const getProducts = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { page, sort } = req.query as QueryParamsType;
+    const { limit = "20", page = "0", sort } = req.query as QueryParamsType;
 
-    const pageNumber = page ? +page - 1 : 0;
-    const limitPerPage = 20;
+    console.log(req.query);
+
+    const pageNumber = +page;
+    const limitPerPage = +limit;
+
+    console.log(pageNumber);
 
     const products = await Products.find()
-      .sort({ name: "asc" })
+      .sort(sort ? sort : { name: "asc" })
       .limit(limitPerPage)
       .skip(pageNumber * limitPerPage)
       .populate("category")

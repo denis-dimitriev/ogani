@@ -6,6 +6,7 @@ import ProductCard from "@shared/ui/product-card/product-card.tsx";
 import Skeleton from "react-loading-skeleton";
 import { LoadingContext } from "@context/loading.context.ts";
 import { LanguageContext } from "@context/language.context.ts";
+import Paginate from "@features/ui/paginate.tsx";
 
 type ServerResponse = {
   status: number;
@@ -18,11 +19,14 @@ function MarketPage() {
   const [data, setData] = useState<ServerResponse | unknown[]>([]);
   const { t } = useContext(LanguageContext);
   const { loading, setLoading } = useContext(LoadingContext);
+  const [page, setPage] = useState(1);
+
+  const itemsPerPage = 20;
 
   useEffect(() => {
     setLoading(true);
     apiService
-      .getProducts()
+      .getProducts({ page: page - 1, limit: itemsPerPage })
       .then((res) => {
         if (res.data) {
           setData(res.data);
@@ -30,9 +34,13 @@ function MarketPage() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [setLoading, page]);
 
   const { count, products } = data as ServerResponse;
+
+  const countOfPages = Math.ceil(count / itemsPerPage);
+
+  console.log(page);
 
   return (
     <div className="container">
@@ -68,6 +76,7 @@ function MarketPage() {
               ))}
         </ul>
       </Fragment>
+      <Paginate countOfPages={countOfPages} page={page} setPage={setPage} />
     </div>
   );
 }

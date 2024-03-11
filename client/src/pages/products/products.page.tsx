@@ -24,6 +24,7 @@ function ProductsPage() {
   const [products, setProducts] = useState<ProductType[] | null>(null);
 
   useEffect(() => {
+    setLoading(true);
     apiService.getProductsByCategory(currentCategory!).then((res) => {
       if (res.data as ServerResponse) {
         setProducts(res.data.products);
