@@ -7,11 +7,12 @@ import { ProductType } from "@shared/types/product.types.ts";
 import Skeleton from "react-loading-skeleton";
 import { LoadingContext } from "@context/loading.context.ts";
 import ProductCardSkeleton from "@shared/ui/product-card/product-card-skeleton.tsx";
+import Paginate from "@features/ui/paginate.tsx";
 
 type ServerResponse = {
   status: number;
   message: string;
-  length: number;
+  count: number;
   products: ProductType[];
 };
 
@@ -21,17 +22,29 @@ function ProductsPage() {
   const { loading, setLoading } = useContext(LoadingContext);
   const { t } = useContext(LanguageContext);
 
-  const [products, setProducts] = useState<ProductType[] | null>(null);
+  const [data, setData] = useState<ServerResponse | unknown>({});
+  const [page, setPage] = useState(1);
+
+  const itemsPerPage = 12;
 
   useEffect(() => {
     setLoading(true);
-    apiService.getProductsByCategory(currentCategory!).then((res) => {
-      if (res.data as ServerResponse) {
-        setProducts(res.data.products);
-        setTimeout(() => setLoading(false), 800);
-      }
-    });
-  }, [currentCategory]);
+    apiService
+      .getProductsByCategory(currentCategory!, {
+        page: page - 1,
+        limit: itemsPerPage,
+      })
+      .then((res) => {
+        if (res.data as ServerResponse) {
+          setData(res.data);
+          setTimeout(() => setLoading(false), 800);
+        }
+      });
+  }, [currentCategory, page]);
+
+  const { count, products } = data as ServerResponse;
+
+  const countOfPages = Math.ceil(count / itemsPerPage);
 
   return (
     <Fragment>
@@ -45,7 +58,7 @@ function ProductsPage() {
           <Fragment>
             <h3>{t?.categories[currentCategory as never]}</h3>
             <p className="mt-2 text-[14px] text-[--gray]">
-              {`${products?.length} ${t?.market.goods.toLowerCase()}`}
+              {`${count} ${t?.market.goods.toLowerCase()}`}
             </p>
           </Fragment>
         )}
@@ -65,6 +78,9 @@ function ProductsPage() {
               </li>
             ))}
       </ul>
+      {!loading && (
+        <Paginate countOfPages={countOfPages} page={page} setPage={setPage} />
+      )}
     </Fragment>
   );
 }

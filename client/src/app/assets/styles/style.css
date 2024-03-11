@@ -135,7 +135,6 @@
 
     .main {
         flex: 1 1 auto;
-        min-height: 560px;
     }
 
     .footer {
@@ -174,7 +173,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(232, 253, 234, 0.31);
+        background: rgba(193, 198, 193, 0.31);
         backdrop-filter: blur(3px);
         z-index: 199;
     }

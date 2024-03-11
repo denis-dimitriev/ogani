@@ -71,12 +71,8 @@ export const getProducts = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const { limit = "20", page = "0", sort } = req.query as QueryParamsType;
 
-    console.log(req.query);
-
     const pageNumber = +page;
     const limitPerPage = +limit;
-
-    console.log(pageNumber);
 
     const products = await Products.find()
       .sort(sort ? sort : { name: "asc" })
@@ -156,6 +152,10 @@ export const deleteProduct = async (req: Request, res: Response) => {
 export const getProductsByCategory = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const category = req.params.category as string;
+    const { limit = "12", page = "0", sort } = req.query as QueryParamsType;
+
+    const pageNumber = +page;
+    const limitPerPage = +limit;
 
     const foundCategory = await Categories.findOne({
       name: category,
@@ -165,14 +165,20 @@ export const getProductsByCategory = asyncHandler(
       const products = await Products.find({
         $or: [{ category: foundCategory }],
       })
-        .sort({ createdAt: "asc" })
+        .sort({ name: "asc" })
+        .limit(limitPerPage)
+        .skip(pageNumber * limitPerPage)
         .populate("category");
+
+      const count = await Products.find({
+        $or: [{ category: foundCategory }],
+      }).count();
 
       if (products) {
         return res.status(STATUS_CODE.SUCCESS_OK).json({
           status: STATUS_CODE.SUCCESS_OK,
           message: MESSAGES.RESOURCE_HAS_FOUND,
-          length: products.length,
+          count,
           products,
         });
       } else {

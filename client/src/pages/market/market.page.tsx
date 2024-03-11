@@ -16,7 +16,7 @@ type ServerResponse = {
 };
 
 function MarketPage() {
-  const [data, setData] = useState<ServerResponse | unknown[]>([]);
+  const [data, setData] = useState<ServerResponse | unknown>({});
   const { t } = useContext(LanguageContext);
   const { loading, setLoading } = useContext(LoadingContext);
   const [page, setPage] = useState(1);
@@ -39,8 +39,6 @@ function MarketPage() {
   const { count, products } = data as ServerResponse;
 
   const countOfPages = Math.ceil(count / itemsPerPage);
-
-  console.log(page);
 
   return (
     <div className="container">
@@ -76,7 +74,9 @@ function MarketPage() {
               ))}
         </ul>
       </Fragment>
-      <Paginate countOfPages={countOfPages} page={page} setPage={setPage} />
+      {!loading && (
+        <Paginate countOfPages={countOfPages} page={page} setPage={setPage} />
+      )}
     </div>
   );
 }

@@ -46,7 +46,9 @@ function ProductCard({ product }: Props) {
         <Badge className="absolute right-5 top-3">{t?.product.new}</Badge>
 
         <figcaption className="relative mt-3 flex flex-col items-center justify-center">
-          <p>{language === "ro" ? name.ro : name.ru}</p>
+          <p className="px-2 text-center">
+            {language === "ro" ? name.ro : name.ru}
+          </p>
           <small>{t?.categories[category.name.toLowerCase() as never]}</small>
           <small>
             {language === "ro" ? info.manufacturer.ro : info.manufacturer.ru}
@@ -58,13 +60,13 @@ function ProductCard({ product }: Props) {
               }`}
             >
               <span className="">
-                {price}
+                {price.toFixed(2)}
                 <span className="ml-1 text-[12px] text-black">mdl</span>
               </span>
             </p>
             {promo?.has && (
               <p className="line-through ">
-                {promo.oldPrice}
+                {promo.oldPrice?.toFixed(2)}
                 <span className="text-[12px]">mdl</span>
               </p>
             )}

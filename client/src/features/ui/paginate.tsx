@@ -34,15 +34,16 @@ function Paginate({ countOfPages, setPage, page }: Props) {
 
   return (
     <div className="mt-6 flex justify-center">
-      <ul className="flex items-center gap-x-1">
-        <li>
+      <ul className="flex items-center gap-x-2 text-[14px]">
+        <li className="flex items-center">
           <button
-            className="group rounded bg-[--red] px-5 py-2 transition
-                               hover:bg-[--red-dark]"
-            disabled={page <= 1}
+            className={`${
+              page <= 1 ? "hidden" : "block"
+            } group mr-[5px] rounded border border-[--gray] bg-[--light]
+              px-1 py-0.5 transition hover:bg-[--lime]`}
             onClick={onPrevPageHandler}
           >
-            <ArrowIco className="rotate-90 fill-white transition group-hover:scale-110" />
+            <ArrowIco className="rotate-90 transition group-hover:scale-110 group-hover:fill-white" />
           </button>
         </li>
 
@@ -53,8 +54,8 @@ function Paginate({ countOfPages, setPage, page }: Props) {
                 value={value}
                 className={`${
                   page === value ? "bg-[--red]" : "bg-[--light]"
-                } group w-[40px] rounded border border-[--gray]
-                   p-2 transition hover:bg-[--red]`}
+                } group h-[30px] w-[30px] rounded border
+                   border-[--gray] transition hover:bg-[--red]`}
                 onClick={onPageNumberClickHandler}
               >
                 <span
@@ -69,14 +70,18 @@ function Paginate({ countOfPages, setPage, page }: Props) {
           ),
         )}
 
-        <li>
+        <li className="flex items-center">
           <button
-            className="group rounded bg-[--red] px-5 py-2 transition
-                               hover:bg-[--red-dark]"
-            disabled={page === countOfPages}
+            className={`${
+              page === countOfPages ? "hidden" : "block"
+            } group ml-[5px] rounded border border-[--gray] bg-[--light]
+              px-1 py-0.5 transition hover:bg-[--lime]`}
             onClick={onNextPageHandler}
           >
-            <ArrowIco className="-rotate-90 fill-white transition group-hover:scale-110" />
+            <ArrowIco
+              className="-rotate-90 transition group-hover:scale-110
+                                 group-hover:fill-white"
+            />
           </button>
         </li>
       </ul>
