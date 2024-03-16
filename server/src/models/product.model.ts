@@ -23,7 +23,7 @@ export type ProductType = {
       ru: string;
       ro: string;
     };
-    manufacturer?: {
+    manufacturer: {
       ru: string;
       ro: string;
     };

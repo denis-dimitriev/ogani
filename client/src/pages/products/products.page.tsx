@@ -8,6 +8,10 @@ import Skeleton from "react-loading-skeleton";
 import { LoadingContext } from "@context/loading.context.ts";
 import ProductCardSkeleton from "@shared/ui/product-card/product-card-skeleton.tsx";
 import Paginate from "@features/ui/paginate.tsx";
+import CategoriesMenu from "@widgets/categories-menu.tsx";
+import Filter from "@shared/ui/filter.tsx";
+import ProductQuickView from "@features/ui/product-quick-view.tsx";
+import { QuickViewContext } from "@context/quick-view.context.ts";
 
 type ServerResponse = {
   status: number;
@@ -21,7 +25,7 @@ function ProductsPage() {
   const currentCategory = category?.replaceAll("-", " ");
   const { loading, setLoading } = useContext(LoadingContext);
   const { t } = useContext(LanguageContext);
-
+  const { view } = useContext(QuickViewContext);
   const [data, setData] = useState<ServerResponse | unknown>({});
   const [page, setPage] = useState(1);
 
@@ -48,39 +52,55 @@ function ProductsPage() {
 
   return (
     <Fragment>
-      <div className="py-[30px]">
-        {loading ? (
-          <Fragment>
-            <Skeleton className="max-w-[150px] p-2" />
-            <Skeleton className="mt-2 max-w-[120px]" />
-          </Fragment>
-        ) : (
-          <Fragment>
-            <h3>{t?.categories[currentCategory as never]}</h3>
-            <p className="mt-2 text-[14px] text-[--gray]">
-              {`${count} ${t?.market.goods.toLowerCase()}`}
-            </p>
-          </Fragment>
-        )}
+      <div className="container relative">
+        <div className="flex gap-x-[24px]">
+          <div className="col-sm relative">
+            <CategoriesMenu />
+            <Filter products={products} />
+          </div>
+
+          <div className="col-xl">
+            <div className="py-[30px]">
+              {loading ? (
+                <Fragment>
+                  <Skeleton className="max-w-[150px] p-2" />
+                  <Skeleton className="mt-2 max-w-[120px]" />
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <h3>{t?.categories[currentCategory as never]}</h3>
+                  <p className="mt-2 text-[14px] text-[--gray]">
+                    {`${count} ${t?.market.goods.toLowerCase()}`}
+                  </p>
+                </Fragment>
+              )}
+            </div>
+            <ul className="grid grid-cols-3 gap-[24px] bp834:grid-cols-2">
+              {loading
+                ? Array.from({ length: itemsPerPage })
+                    .fill(6)
+                    .map((_, i) => (
+                      <li key={i + 1}>
+                        <ProductCardSkeleton />
+                      </li>
+                    ))
+                : products?.map((p) => (
+                    <li key={p._id}>
+                      <ProductCard product={p} />
+                    </li>
+                  ))}
+            </ul>
+            {!loading && (
+              <Paginate
+                countOfPages={countOfPages}
+                page={page}
+                setPage={setPage}
+              />
+            )}
+          </div>
+        </div>
       </div>
-      <ul className="grid grid-cols-3 gap-[24px] bp834:grid-cols-2">
-        {loading
-          ? Array.from({ length: 6 })
-              .fill(6)
-              .map((_, i) => (
-                <li key={i + 1}>
-                  <ProductCardSkeleton />
-                </li>
-              ))
-          : products?.map((p) => (
-              <li key={p._id}>
-                <ProductCard product={p} />
-              </li>
-            ))}
-      </ul>
-      {!loading && (
-        <Paginate countOfPages={countOfPages} page={page} setPage={setPage} />
-      )}
+      {view && <ProductQuickView />}
     </Fragment>
   );
 }

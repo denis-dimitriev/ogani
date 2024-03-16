@@ -5,6 +5,8 @@ import { asyncHandler } from "../helpers/async-handler";
 import AppError from "../helpers/appError";
 import { STATUS_CODE } from "../types/enums/status-code";
 import { MESSAGES } from "../types/enums/messages";
+import { info } from "@uploadcare/upload-client";
+import { name } from "cookie-parser";
 
 export const createProduct = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -82,6 +84,12 @@ export const getProducts = asyncHandler(
       .select("-__v");
 
     const count = await Products.find().count();
+
+    const el = await Products.find({
+      "info.manufacturer.ro": "Moldova",
+    }).count();
+
+    console.log(el);
 
     if (products) {
       return res.status(STATUS_CODE.SUCCESS_OK).json({

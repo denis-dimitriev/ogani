@@ -145,13 +145,14 @@
     .container {
         min-width: var(--min-width-container);
         max-width: var(--max-width-container);
-        min-height: auto;
+        min-height: 100%;
         margin: 0 auto;
         padding: 0 var(--padding-container);
     }
 
     .col-sm {
-        width: var(--col-sm-width)
+        width: var(--col-sm-width);
+        min-width: 206px;
     }
 
     .col-md {
@@ -295,5 +296,15 @@
     .appearance {
         animation: appearance 600ms ease-in-out;
     }
+
+    .four-items-list {
+        display: grid;
+        @apply grid-cols-3 bp1024:grid-cols-3 gap-[24px] bp1024:gap-[10px];
+        @media (max-width: 992px) {
+            @apply grid-cols-2
+        }
+    }
+
+    .three-items-list {}
 
 }

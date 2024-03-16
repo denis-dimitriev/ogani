@@ -27,6 +27,7 @@ import InstagramIco from "./instagram.svg";
 import LinkedinIco from "./linkedin.svg";
 import OKIco from "./ok.svg";
 import ConfirmIco from "./confirm.svg";
+import FilterIco from "./filter.svg";
 
 export {
   ArrowIco,
@@ -58,4 +59,5 @@ export {
   LinkedinIco,
   OKIco,
   ConfirmIco,
+  FilterIco,
 };

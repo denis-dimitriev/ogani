@@ -18,13 +18,6 @@ import BannerCardSm from "@shared/ui/banner-card-sm.tsx";
 import OurProducts from "@features/ui/our-products.tsx";
 import ReviewsSlider from "@features/ui/reviews-slider.tsx";
 import BlogsSection from "@widgets/blogs-section.tsx";
-import apiService from "@app/service/api.service.ts";
-import ProductCard from "@shared/ui/product-card/product-card.tsx";
-import { CATEGORIES } from "@shared/types/enums/categories.ts";
-import { ProductType } from "@shared/types/product.types.ts";
-import { CategoriesMenuContext } from "@context/categories-menu.context.ts";
-import { useLocation } from "react-router-dom";
-import { LINKS } from "@shared/types/enums/links.ts";
 
 function HomePage() {
   const { view } = useContext(QuickViewContext);
@@ -46,6 +39,7 @@ function HomePage() {
           <BannerArea />
         </section>
 
+        {/*
         <section className="flex h-auto w-full gap-[24px]">
           <div className="col-sm flex  flex-col gap-[50px]">
             <FeaturedProducts />
@@ -67,7 +61,6 @@ function HomePage() {
             </article>
           </div>
 
-          {/*
           <div className="col-xl flex flex-col justify-between">
             <NewProducts />
 
@@ -84,7 +77,7 @@ function HomePage() {
                 link={""}
               />
             </div>
-{/*
+
             <div className="mt-6 flex h-[150px] gap-[24px]">
               <BannerCardSm
                 thumbnail={sos_condim}
@@ -117,8 +110,8 @@ function HomePage() {
           </div>
           <div className="col-xl">
             <OurProducts />
-          </div>*/}
-        </section>
+          </div>
+        </section> */}
 
         <section className="h-[450px] w-full">
           <BlogsSection />
