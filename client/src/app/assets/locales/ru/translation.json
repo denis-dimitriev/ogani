@@ -119,5 +119,9 @@
   },
   "rating": {
     "put a star too": "Тоже поставь звезду"
+  },
+  "filter": {
+    "filter": "Фильтр",
+    "by country": "По странам"
   }
 }

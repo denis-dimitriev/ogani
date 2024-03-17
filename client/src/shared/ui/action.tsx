@@ -80,8 +80,8 @@ const Action = observer(function ({ className, product }: Props) {
             type="text"
             inputMode="decimal"
             readOnly
-            value={`${cartItem?.qty}${cartItem?.unit}`}
-            className="w-[65px] text-center text-[20px] font-thin"
+            value={`${cartItem?.qty}${t?.product[cartItem?.unit as never]}`}
+            className="w-[65px] text-center text-[18px] font-thin"
           />
           <button className="h-[30px] w-[30px]" onClick={onIncHandler}>
             +

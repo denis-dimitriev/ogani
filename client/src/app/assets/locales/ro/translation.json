@@ -119,5 +119,9 @@
   },
   "rating": {
     "put a star too": "Pune si tu o stea"
+  },
+  "filter": {
+    "filter": "Filtru",
+    "by country": "După țară"
   }
 }
