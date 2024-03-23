@@ -66,29 +66,40 @@ type QueryParamsType = {
   limit?: string;
   page?: string;
   sort?: string;
+  country?: string;
 };
 
 export const getProducts = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { limit = "20", page = "0", sort } = req.query as QueryParamsType;
+    const {
+      limit = "20",
+      page = "0",
+      sort,
+      country,
+    } = req.query as QueryParamsType;
 
     const pageNumber = +page;
     const limitPerPage = +limit;
+    let count = 0;
+    let products: ProductType[];
 
-    const products = await Products.find()
-      .sort(sort ? sort : { name: "asc" })
+    products = await Products.find()
+      .sort(sort ? sort : "")
       .limit(limitPerPage)
       .skip(pageNumber * limitPerPage)
       .populate("category")
       .select("-__v");
 
-    const count = await Products.find().count();
+    count = await Products.find().count();
+
+    const allProducts = await Products.find().populate("category");
 
     if (products) {
       return res.status(STATUS_CODE.SUCCESS_OK).json({
         status: STATUS_CODE.SUCCESS_OK,
         message: MESSAGES.RESOURCE_HAS_FOUND,
         count,
+        allProducts,
         products: products,
       });
     } else {

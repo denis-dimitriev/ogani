@@ -122,6 +122,8 @@
   },
   "filter": {
     "filter": "Filtru",
-    "by country": "După țară"
+    "by country": "După țară",
+    "show more": "Afișați mai multe",
+    "show less": "Afișați mai putin"
   }
 }

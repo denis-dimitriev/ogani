@@ -9,7 +9,7 @@ import { LoadingContext } from "@context/loading.context.ts";
 import ProductCardSkeleton from "@shared/ui/product-card/product-card-skeleton.tsx";
 import Paginate from "@features/ui/paginate.tsx";
 import CategoriesMenu from "@widgets/categories-menu.tsx";
-import Filter from "@shared/ui/filter.tsx";
+import MainFilter from "@shared/ui/main-filter.tsx";
 import ProductQuickView from "@features/ui/product-quick-view.tsx";
 import { QuickViewContext } from "@context/quick-view.context.ts";
 
@@ -56,7 +56,7 @@ function ProductsPage() {
         <div className="flex gap-x-[24px]">
           <div className="col-sm relative">
             <CategoriesMenu />
-            <Filter products={products} />
+            <MainFilter products={products} />
           </div>
 
           <div className="col-xl">

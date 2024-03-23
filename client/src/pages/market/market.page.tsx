@@ -8,12 +8,14 @@ import { LoadingContext } from "@context/loading.context.ts";
 import { LanguageContext } from "@context/language.context.ts";
 import Paginate from "@features/ui/paginate.tsx";
 import CategoriesMenu from "@widgets/categories-menu.tsx";
+import MainFilter from "@shared/ui/main-filter.tsx";
 
 type ServerResponse = {
   status: number;
   message: string;
   count: number;
   products: ProductType[];
+  allProducts: ProductType[];
 };
 
 function MarketPage() {
@@ -37,7 +39,7 @@ function MarketPage() {
       .catch((err) => console.log(err));
   }, [setLoading, page]);
 
-  const { count, products } = data as ServerResponse;
+  const { count, products, allProducts } = data as ServerResponse;
 
   const countOfPages = Math.ceil(count / itemsPerPage);
 
@@ -46,6 +48,7 @@ function MarketPage() {
       <div className="flex gap-[24px]">
         <div className="col-sm">
           <CategoriesMenu />
+          <MainFilter products={allProducts} />
         </div>
         <div className="col-xl">
           <Fragment>
