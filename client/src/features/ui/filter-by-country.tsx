@@ -73,8 +73,11 @@ function FilterByCountry({ products }: Props) {
           }}
         >
           {countries?.map((el) => (
-            <li key={el.country} className="flex justify-between p-1">
-              <button className="hover:text-[--gray]">{el.country}</button>
+            <li
+              key={el.country}
+              className="flex cursor-pointer justify-between p-1 hover:text-[--gray]"
+            >
+              {el.country}
               <span>({el.count})</span>
             </li>
           ))}
