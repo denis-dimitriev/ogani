@@ -9,6 +9,8 @@ import { LanguageContext } from "@context/language.context.ts";
 import Paginate from "@features/ui/paginate.tsx";
 import CategoriesMenu from "@widgets/categories-menu.tsx";
 import MainFilter from "@shared/ui/main-filter.tsx";
+import { QuickViewContext } from "@context/quick-view.context.ts";
+import ProductQuickView from "@features/ui/product-quick-view.tsx";
 
 type ServerResponse = {
   status: number;
@@ -21,6 +23,7 @@ type ServerResponse = {
 function MarketPage() {
   const [data, setData] = useState<ServerResponse | unknown>({});
   const { t } = useContext(LanguageContext);
+  const { view } = useContext(QuickViewContext);
   const { loading, setLoading } = useContext(LoadingContext);
   const [page, setPage] = useState(1);
 
@@ -92,6 +95,7 @@ function MarketPage() {
           )}
         </div>
       </div>
+      {view && <ProductQuickView />}
     </div>
   );
 }
